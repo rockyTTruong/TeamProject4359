@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkeletonWarriorAttackingState : EnemyAttackingState
+public class SkeletonWarriorAttackingState : EnemyState
 {
     private SkeletonWarriorStateMachine skeletonWarriorStateMachine;
+
     public SkeletonWarriorAttackingState(SkeletonWarriorStateMachine skeletonWarriorStateMachine, int attackIndex) : base(skeletonWarriorStateMachine)
     {
         this.skeletonWarriorStateMachine = skeletonWarriorStateMachine;
