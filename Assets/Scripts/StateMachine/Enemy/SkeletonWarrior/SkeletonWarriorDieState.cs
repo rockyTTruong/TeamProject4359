@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkeletonWarriorDieState : EnemyDieState
+public class SkeletonWarriorDieState : EnemyState
 {
     private SkeletonWarriorStateMachine skeletonWarriorStateMachine;
     public SkeletonWarriorDieState(SkeletonWarriorStateMachine skeletonWarriorStateMachine) : base(skeletonWarriorStateMachine)

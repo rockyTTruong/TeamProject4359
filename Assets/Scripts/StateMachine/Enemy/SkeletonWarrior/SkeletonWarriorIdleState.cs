@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class SkeletonWarriorIdleState : EnemyIdleState
+public class SkeletonWarriorIdleState : EnemyState
 {
-    private SkeletonWarriorStateMachine skeletonWarriorStateMachine;
+    private SkeletonWarriorStateMachine sm;
 
     public SkeletonWarriorIdleState(SkeletonWarriorStateMachine skeletonWarriorStateMachine) : base(skeletonWarriorStateMachine)
     {
-        this.skeletonWarriorStateMachine = skeletonWarriorStateMachine;
+        sm = skeletonWarriorStateMachine;
     }
 
     private int idleHash = Animator.StringToHash("Idle");
@@ -25,12 +25,12 @@ public class SkeletonWarriorIdleState : EnemyIdleState
 
     public override void Enter()
     {
-        if (skeletonWarriorStateMachine.patrolPath.Count() != 0)
+        if (sm.patrolPath.Count() != 0)
         {
             patrolIndex = 0;
         }
         PlayAnimation(idleHash, crossFixedDuration);
-        skeletonWarriorStateMachine.animator.SetFloat(idleBlendHash, 0f);
+        sm.animator.SetFloat(idleBlendHash, 0f);
         randomIdleTime = Random.Range(0.5f, 1.0f);
     }
 
@@ -45,28 +45,28 @@ public class SkeletonWarriorIdleState : EnemyIdleState
         {
             FaceTarget(2f);
 
-            if (skeletonWarriorStateMachine.isAggro)
+            if (sm.isAggro)
             {
-                skeletonWarriorStateMachine.isPatrol = false;
+                sm.isPatrol = false;
                 if (playingAnimation)
                 {
-                    if (GetNormalizedTime(skeletonWarriorStateMachine.animator, aggroHash) >= 1f)
+                    if (GetNormalizedTime(sm.animator, aggroHash) >= 1f)
                     {
-                        skeletonWarriorStateMachine.SwitchState(new SkeletonWarriorChasingState(skeletonWarriorStateMachine));
+                        sm.SwitchState(new SkeletonWarriorChasingState(sm));
                     }
                 }
-                else skeletonWarriorStateMachine.SwitchState(new SkeletonWarriorChasingState(skeletonWarriorStateMachine));
+                else sm.SwitchState(new SkeletonWarriorChasingState(sm));
                 return;
             }
             else
             {
-                skeletonWarriorStateMachine.isAggro = true;
+                sm.isAggro = true;
                 PlayAnimation(aggroHash, crossFixedDuration);
                 playingAnimation = true;
             }
             return;
         }
-        else skeletonWarriorStateMachine.isAggro = false;
+        else sm.isAggro = false;
 
         if (idleTime < randomIdleTime)
         {
@@ -74,13 +74,13 @@ public class SkeletonWarriorIdleState : EnemyIdleState
             return;
         }
 
-        if (!skeletonWarriorStateMachine.isPatrol)
+        if (!sm.isPatrol)
         {
             PlayAnimation(idleHash, crossFixedDuration);
-            skeletonWarriorStateMachine.isPatrol = true;
+            sm.isPatrol = true;
         }
 
-        if (skeletonWarriorStateMachine.patrolPath.Count() != 0)
+        if (sm.patrolPath.Count() != 0)
         {
             if (idleTime < patrolIdleTime)
             {
@@ -88,13 +88,13 @@ public class SkeletonWarriorIdleState : EnemyIdleState
             }
             else
             {
-                Vector3 destination = skeletonWarriorStateMachine.patrolPath[patrolIndex].transform.position;
-                destination.y = skeletonWarriorStateMachine.transform.position.y;
-                if (Vector3.Distance(destination, skeletonWarriorStateMachine.transform.position) <= 0.01f)
+                Vector3 destination = sm.patrolPath[patrolIndex].transform.position;
+                destination.y = sm.transform.position.y;
+                if (Vector3.Distance(destination, sm.transform.position) <= 0.01f)
                 {
                     patrolIndex++;
-                    skeletonWarriorStateMachine.animator.SetFloat(idleBlendHash, 0f);
-                    if (patrolIndex == skeletonWarriorStateMachine.patrolPath.Count()) patrolIndex = 0;
+                    sm.animator.SetFloat(idleBlendHash, 0f);
+                    if (patrolIndex == sm.patrolPath.Count()) patrolIndex = 0;
                     idleTime = 0f;
                     patrolIdleTime = Random.Range(1, 10);
                     return;
@@ -102,8 +102,8 @@ public class SkeletonWarriorIdleState : EnemyIdleState
                 else
                 {
                     FaceTargetInstantly(destination);
-                    Move(skeletonWarriorStateMachine.transform.forward * skeletonWarriorStateMachine.walkSpeed);
-                    skeletonWarriorStateMachine.animator.SetFloat(idleBlendHash, 1f, 0.1f, Time.deltaTime);
+                    Move(sm.transform.forward * sm.walkSpeed);
+                    sm.animator.SetFloat(idleBlendHash, 1f, 0.1f, Time.deltaTime);
                 }
             }
         }

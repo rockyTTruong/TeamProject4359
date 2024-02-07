@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class SkeletonWarriorChasingState : EnemyChasingState
+public class SkeletonWarriorChasingState : EnemyState
 {
+    private bool targetInRange;
+    private float targetDistance;
+
     public SkeletonWarriorChasingState(SkeletonWarriorStateMachine skeletonWarriorStateMachine) : base(skeletonWarriorStateMachine)
     {
         this.skeletonWarriorStateMachine = skeletonWarriorStateMachine;
@@ -53,6 +56,22 @@ public class SkeletonWarriorChasingState : EnemyChasingState
             {
                 enemyStateMachine.SwitchState(new SkeletonWarriorAttackingState(skeletonWarriorStateMachine, 0));
             }
+        }
+    }
+
+    private void ChaseTarget(float chaseStopRange)
+    {
+        targetDistance = enemyStateMachine.targetManager.GetDistanceToTarget();
+
+        if (targetDistance <= chaseStopRange)
+        {
+            targetInRange = true;
+        }
+        else
+        {
+            targetInRange = false;
+            FaceTarget(enemyStateMachine.changeDirectionSpeed);
+            Move(enemyStateMachine.transform.forward * enemyStateMachine.chaseSpeed);
         }
     }
 }

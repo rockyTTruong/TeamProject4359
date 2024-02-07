@@ -11,19 +11,26 @@ public class SkeletonWarriorStateMachine : EnemyStateMachine
 
     public override void Start()
     {
-        base.Start();
+        controller = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
+        forceReceiver = GetComponent<ForceReceiver>();
+        comboManager = GetComponent<ComboManager>();
+        character = GetComponent<Character>();
+        targetManager = GetComponentInChildren<TargetManager>();
+        groundChecker = GetComponent<GroundChecker>();
+        character.DamageEvent += OnDamage;
+        character.DieEvent += OnDie;
+
         SwitchState(new SkeletonWarriorIdleState(this));
     }
 
     public override void OnDamage()
     {
-        base.OnDamage();
         SwitchState(new SkeletonWarriorImpactState(this));
     }
 
     public override void OnDie(GameObject dieCharacter)
     {
-        base.OnDie(dieCharacter);
         SwitchState(new SkeletonWarriorDieState(this));
     }
 }

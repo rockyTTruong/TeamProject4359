@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkeletonWarriorImpactState : EnemyImpactState
+public class SkeletonWarriorImpactState : EnemyState
 {
     private SkeletonWarriorStateMachine skeletonWarriorStateMachine;
+
     public SkeletonWarriorImpactState(SkeletonWarriorStateMachine skeletonWarriorStateMachine) : base(skeletonWarriorStateMachine)
     {
         this.skeletonWarriorStateMachine = skeletonWarriorStateMachine;
@@ -31,5 +32,10 @@ public class SkeletonWarriorImpactState : EnemyImpactState
         {
             skeletonWarriorStateMachine.SwitchState(new SkeletonWarriorIdleState(skeletonWarriorStateMachine));
         }
+    }
+
+    public void ApplyForce()
+    {
+        Move(Vector3.zero);
     }
 }
