@@ -29,6 +29,7 @@ public class PlayerStateMachine : StateMachine
     public Character character;
     public TargetManager targetManager;
     public GroundChecker groundChecker;
+    public InteractableHandler interactableHandler;
 
     private Vector3 groundNormal;
 
@@ -55,6 +56,7 @@ public class PlayerStateMachine : StateMachine
         character = GetComponent<Character>();
         targetManager = GetComponentInChildren<TargetManager>();
         groundChecker = GetComponent<GroundChecker>();
+        interactableHandler = GetComponent<InteractableHandler>();
         character.DamageEvent += OnDamage;
         character.DieEvent += OnDie;
 

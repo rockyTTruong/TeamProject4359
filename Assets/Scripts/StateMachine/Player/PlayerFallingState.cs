@@ -12,27 +12,27 @@ public class PlayerFallingState : PlayerState
 
     public override void Enter()
     {
-        playerStateMachine.isFalling = true;
-        AttackHandler attackHandler = playerStateMachine.GetComponent<AttackHandler>();
+        psm.isFalling = true;
+        AttackHandler attackHandler = psm.GetComponent<AttackHandler>();
         attackHandler.HitboxDisabled();
         attackHandler.DisabledSwordTrail();
         PlayAnimation(fallHash, crossFadeDuration);
-        InputReader.Instance.DpadDownButtonPressEvent += LockOnMode;
+        InputReader.Instance.buttonPress[(int)GamePadButton.DpadDown] += LockOnMode;
     }
 
     public override void Exit()
     {
-        playerStateMachine.isFalling = false;
-        InputReader.Instance.DpadDownButtonPressEvent -= LockOnMode;
+        psm.isFalling = false;
+        InputReader.Instance.buttonPress[(int)GamePadButton.DpadDown] -= LockOnMode;
     }
 
     public override void Tick()
     {
         HandlePlayerMovement();
         HandleCameraMovement();
-        if (playerStateMachine.groundChecker.IsGrounded)
+        if (psm.groundChecker.IsGrounded)
         {
-            playerStateMachine.SwitchState(new PlayerFreeLookState(playerStateMachine));
+            psm.SwitchState(new PlayerFreeLookState(psm));
         }
     }
 }

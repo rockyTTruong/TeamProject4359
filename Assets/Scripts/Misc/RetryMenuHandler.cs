@@ -29,7 +29,7 @@ public class RetryMenuHandler : MonoBehaviour
 
     public IEnumerator RetryCoroutine(GameObject player)
     {
-        InputReader.Instance.DisableFreelookInputReader();
+        InputReader.Instance.DisableInput();
         CharacterController controller = player.GetComponent<CharacterController>();
         PlayerStateMachine psm = player.GetComponent<PlayerStateMachine>();
         Character character = player.GetComponent<Character>();
@@ -67,7 +67,7 @@ public class RetryMenuHandler : MonoBehaviour
         FadeScreen.Instance.FadeIn();
         yield return new WaitForSeconds(fadeDuration);
 
-        InputReader.Instance.EnableFreelookInputReader();
+        InputReader.Instance.EnableInput();
         GameManager.Instance.SetInMenuBool(false);
         this.gameObject.SetActive(false);
         yield break;

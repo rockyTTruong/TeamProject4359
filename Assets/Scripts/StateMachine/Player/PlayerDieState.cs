@@ -11,13 +11,13 @@ public class PlayerDieState : PlayerState
 
     public override void Enter()
     {
-        AttackHandler attackHandler = playerStateMachine.GetComponent<AttackHandler>();
+        AttackHandler attackHandler = psm.GetComponent<AttackHandler>();
         attackHandler.HitboxDisabled();
         attackHandler.DisabledSwordTrail();
 
         PlayAnimation(dieHash, crossFixedDuration);
-        playerStateMachine.forceReceiver.enabled = false;
-        playerStateMachine.controller.enabled = false;
+        psm.forceReceiver.enabled = false;
+        psm.controller.enabled = false;
     }
 
     public override void Exit()

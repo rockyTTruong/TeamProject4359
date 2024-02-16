@@ -32,7 +32,7 @@ public class VideoPlayerController : MonoBehaviour
     public void PlayVideo()
     {
         AudioManager.Instance.MuteBGM();
-        InputReader.Instance.DisableFreelookInputReader();
+        InputReader.Instance.DisableInput();
         canvasUI.SetActive(false);
         Time.timeScale = 0.0f;
         videoPlayer = GetComponent<VideoPlayer>();
@@ -48,7 +48,7 @@ public class VideoPlayerController : MonoBehaviour
         videoPlayer.Stop();
         Time.timeScale = 1.0f;
         canvasUI.SetActive(true);
-        InputReader.Instance.EnableFreelookInputReader();
+        InputReader.Instance.EnableInput();
         AudioManager.Instance.UnmuteBGM();
         videoPlayer.loopPointReached -= OnVideoFinished;
         skipTooltip.SetActive(false);

@@ -17,7 +17,7 @@ public class CutsceneTrigger : MonoBehaviour
 
     public IEnumerator TriggerCoroutine()
     {
-        InputReader.Instance.DisableFreelookInputReader();
+        InputReader.Instance.DisableInput();
         float fadeDuration = FadeScreen.Instance.GetFadeDuration();
 
         FadeScreen.Instance.FadeOut();

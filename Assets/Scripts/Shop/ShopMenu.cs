@@ -60,10 +60,6 @@ public class ShopMenu : MonoBehaviour
                 QuestA2Manager.Instance.acceptQuest(4);
             }
         }
-        else
-        {
-            defaultResponse.triggerDialogue();
-        }
     }
 
 
@@ -75,7 +71,6 @@ public class ShopMenu : MonoBehaviour
 
         if(Item.quantityToSell == 0)
         {
-            defaultResponse.dialogue = OutOfStock;
             button.interactable = false;
             button.transform.Find("SoldOut").gameObject.SetActive(true);
             return false;
@@ -83,17 +78,14 @@ public class ShopMenu : MonoBehaviour
         
         if (prices[0] > InventoryBox.Instance.CheckInventory("9999").quantity)
         {
-            defaultResponse.dialogue = NotEnoughMoney;
             return false;
         }
         if (prices[1] > InventoryBox.Instance.CheckInventory("9998").quantity)
         {
-            defaultResponse.dialogue = NotEnoughMoney;
             return false;
         }
         if (prices[2] > InventoryBox.Instance.CheckInventory("9997").quantity)
         {
-            defaultResponse.dialogue = NotEnoughMoney;
             return false;
         }
 

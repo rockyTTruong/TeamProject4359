@@ -9,29 +9,29 @@ public class PlayerJumpState : PlayerState
 
     public override void Enter()
     {
-        playerStateMachine.isJumping = true;
-        AttackHandler attackHandler = playerStateMachine.GetComponent<AttackHandler>();
+        psm.isJumping = true;
+        AttackHandler attackHandler = psm.GetComponent<AttackHandler>();
         attackHandler.HitboxDisabled();
         attackHandler.DisabledSwordTrail();
 
-        playerStateMachine.forceReceiver.Jump();
+        psm.forceReceiver.Jump();
         PlayAnimation(jumpHash, crossFadeDuration);
-        InputReader.Instance.DpadDownButtonPressEvent += LockOnMode;
+        InputReader.Instance.buttonPress[(int)GamePadButton.DpadDown] += LockOnMode;
     }
 
     public override void Exit()
     {
-        playerStateMachine.isJumping = false;
-        InputReader.Instance.DpadDownButtonPressEvent -= LockOnMode;
+        psm.isJumping = false;
+        InputReader.Instance.buttonPress[(int)GamePadButton.DpadDown] -= LockOnMode;
     }
 
     public override void Tick()
     {
         HandlePlayerMovement();
         HandleCameraMovement();
-        if (playerStateMachine.controller.velocity.y <= 0)
+        if (psm.controller.velocity.y <= 0)
         {
-            playerStateMachine.SwitchState(new PlayerFallingState(playerStateMachine));
+            psm.SwitchState(new PlayerFallingState(psm));
             return;
         }
     }

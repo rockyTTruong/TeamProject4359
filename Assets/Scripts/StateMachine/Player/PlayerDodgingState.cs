@@ -13,55 +13,55 @@ public class PlayerDodgingState : PlayerState
 
     public override void Enter()
     {
-        AttackHandler attackHandler = playerStateMachine.GetComponent<AttackHandler>();
+        AttackHandler attackHandler = psm.GetComponent<AttackHandler>();
         attackHandler.HitboxDisabled();
         attackHandler.DisabledSwordTrail();
 
-        playerStateMachine.character.isInvincible = true;
+        psm.character.isInvincible = true;
         invincibleTimer = 0f;
 
         movement = CalculateMovement();
         if (movement != Vector3.zero) ChangeDirectionInstantly(movement);
 
         PlayAnimation(dodgeHash, crossFadeDuration);
-        InputReader.Instance.DpadDownButtonPressEvent += LockOnMode;
-        InputReader.Instance.SouthButtonPressEvent += Jump;
-        InputReader.Instance.DpadLeftButtonPressEvent += QuickSwitchWeapon;
+        InputReader.Instance.buttonPress[(int)GamePadButton.DpadDown] += LockOnMode;
+        InputReader.Instance.buttonPress[(int)GamePadButton.SouthButton] += Jump;
+        InputReader.Instance.buttonPress[(int)GamePadButton.DpadLeft] += QuickSwitchWeapon;
     }
 
     public override void Exit()
     {
-        playerStateMachine.character.isInvincible = false;
-        InputReader.Instance.DpadDownButtonPressEvent -= LockOnMode;
-        InputReader.Instance.SouthButtonPressEvent -= Jump;
-        InputReader.Instance.DpadLeftButtonPressEvent -= QuickSwitchWeapon;
+        psm.character.isInvincible = false;
+        InputReader.Instance.buttonPress[(int)GamePadButton.DpadDown] -= LockOnMode;
+        InputReader.Instance.buttonPress[(int)GamePadButton.SouthButton] -= Jump;
+        InputReader.Instance.buttonPress[(int)GamePadButton.DpadLeft] -= QuickSwitchWeapon;
     }
 
     public override void Tick()
     {
         HandleCameraMovement();
 
-        if (invincibleTimer < 0.5f && playerStateMachine.character.isInvincible == true)
+        if (invincibleTimer < 0.5f && psm.character.isInvincible == true)
         {
             invincibleTimer += Time.deltaTime;
         }
-        else if (playerStateMachine.character.isInvincible == true)
+        else if (psm.character.isInvincible == true)
         {
-            playerStateMachine.character.isInvincible = false;
+            psm.character.isInvincible = false;
         }
 
-        float normalizedTime = GetNormalizedTime(playerStateMachine.animator, dodgeHash);
+        float normalizedTime = GetNormalizedTime(psm.animator, dodgeHash);
         if (normalizedTime <= 0.7f)
         {
-            Move(playerStateMachine.transform.forward * playerStateMachine.dodgeSpeed);
+            Move(psm.transform.forward * psm.dodgeSpeed);
         }
         else
         {
-            Move(playerStateMachine.transform.forward * playerStateMachine.dodgeSpeed * 0.2f);
+            Move(psm.transform.forward * psm.dodgeSpeed * 0.2f);
         }
         if (normalizedTime >= 0.9f)
         {
-            playerStateMachine.SwitchState(new PlayerFreeLookState(playerStateMachine));
+            psm.SwitchState(new PlayerFreeLookState(psm));
         }
     }
 }

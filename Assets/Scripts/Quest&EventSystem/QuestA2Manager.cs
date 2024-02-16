@@ -30,11 +30,6 @@ public class QuestA2Manager : SingletonMonobehaviour<QuestA2Manager>
             Invoke("turnNotifS", 2.0f);
             
         }
-        else
-        {
-            DialogueManager.Instance.StartDialogue(qB.questDatabase[quest].defaultResponse);
-        }
-        
     }
 
     public void finishQuest(int quest)

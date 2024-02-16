@@ -26,7 +26,7 @@ public class Portal : MonoBehaviour
 
     public IEnumerator TeleportCoroutine(Collider other)
     {
-        InputReader.Instance.DisableFreelookInputReader();
+        InputReader.Instance.DisableInput();
         CharacterController controller = other.GetComponent<CharacterController>();
 
         FadeScreen.Instance.FadeOut();
@@ -56,7 +56,7 @@ public class Portal : MonoBehaviour
         FadeScreen.Instance.FadeIn();
         yield return new WaitForSeconds(fadeDuration);
 
-        InputReader.Instance.EnableFreelookInputReader();
+        InputReader.Instance.EnableInput();
         yield break;
     }
 }

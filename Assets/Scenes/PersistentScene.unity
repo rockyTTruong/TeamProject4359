@@ -737,6 +737,7 @@ GameObject:
   - component: {fileID: 51192924}
   - component: {fileID: 51192927}
   - component: {fileID: 51192928}
+  - component: {fileID: 51192929}
   m_Layer: 0
   m_Name: Shopkeeper
   m_TagString: Untagged
@@ -841,14 +842,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultResponse: {fileID: 51192928}
   OutOfStock:
-    NPC: Shopkeeper
-    dialogue:
-    - I don't have anything left to sell you... you bought all I had. Next shipment
-      isn't here for awhile.
+    speaker: 
+    message: 
   NotEnoughMoney:
-    NPC: Shopkeeper
-    dialogue:
-    - You don't seem to have the wallet to match your eyes. Come back when it does.
+    speaker: 
+    message: 
   itemsForSale:
   - {fileID: 11400000, guid: e5134d107d178314dbef67674e82c857, type: 2}
   - {fileID: 11400000, guid: 28b75b870f459b14eaac601fd436667f, type: 2}
@@ -865,10 +863,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a4e88ced558724c8b7416a7a4cfb01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    NPC: Shopkeeper
-    dialogue:
-    - You want another one? You might wanna be careful what you wish for...
+  dialogues: []
+  facePlayerSpeed: 0
+--- !u!135 &51192929
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51192922}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &52939852
 GameObject:
   m_ObjectHideFlags: 0
@@ -3624,6 +3641,7 @@ GameObject:
   - component: {fileID: 291751083}
   - component: {fileID: 291751086}
   - component: {fileID: 291751087}
+  - component: {fileID: 291751088}
   m_Layer: 0
   m_Name: Wizard
   m_TagString: Untagged
@@ -3728,13 +3746,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultResponse: {fileID: 291751087}
   OutOfStock:
-    NPC: Wizard
-    dialogue:
-    - I don't have any more potions to give you... try again later.
+    speaker: 
+    message: 
   NotEnoughMoney:
-    NPC: Wizard
-    dialogue:
-    - You don't have enough coins to purchase that... come back later.
+    speaker: 
+    message: 
   itemsForSale:
   - {fileID: 11400000, guid: 13ee59dc93858674ba11d6108af22bfa, type: 2}
   - {fileID: 11400000, guid: 017d6bcdecb764046bf7573392deaddd, type: 2}
@@ -3751,11 +3767,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a4e88ced558724c8b7416a7a4cfb01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    NPC: Wizard
-    dialogue:
-    - I don't think you'll be seeing that for a bit... you'll just have to carry
-      on with what you have.
+  dialogues: []
+  facePlayerSpeed: 0
+--- !u!135 &291751088
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291751081}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &301290935
 GameObject:
   m_ObjectHideFlags: 0
@@ -4318,7 +4352,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.55614203, y: 0.000000046885688, z: -0.00000003137469, w: 0.83108723}
+  m_LocalRotation: {x: 0.55614203, y: -0.00000004688571, z: 0.0000000313747, w: 0.83108723}
   m_LocalPosition: {x: -1187, y: 4.231864, z: -1.031864}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5531,6 +5565,81 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 413417585}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &414252222
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 414252223}
+  - component: {fileID: 414252225}
+  - component: {fileID: 414252224}
+  m_Layer: 5
+  m_Name: BG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &414252223
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414252222}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 986857645}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &414252224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414252222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5882353}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &414252225
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414252222}
+  m_CullTransparentMesh: 1
 --- !u!1 &416706879
 GameObject:
   m_ObjectHideFlags: 0
@@ -5645,9 +5754,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 425531466}
-  - component: {fileID: 425531469}
-  - component: {fileID: 425531468}
-  - component: {fileID: 425531467}
   m_Layer: 5
   m_Name: Dialogue
   m_TagString: Untagged
@@ -5667,6 +5773,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1637579556}
   - {fileID: 570527848}
   m_Father: {fileID: 1205702707}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5675,88 +5782,6 @@ RectTransform:
   m_AnchoredPosition: {x: -1, y: -37.2791}
   m_SizeDelta: {x: 978.37, y: 244.1992}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &425531467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 425531465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 0
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.27450982, g: 0.23137257, b: 0.23137257, a: 1}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 0
-  m_TargetGraphic: {fileID: 425531468}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &425531468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 425531465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.2735849, g: 0.23099858, b: 0.23099858, a: 0.6431373}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &425531469
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 425531465}
-  m_CullTransparentMesh: 1
 --- !u!1 &428130202
 GameObject:
   m_ObjectHideFlags: 0
@@ -7832,7 +7857,7 @@ GameObject:
   - component: {fileID: 570527849}
   - component: {fileID: 570527850}
   m_Layer: 5
-  m_Name: Dialogue
+  m_Name: DialogueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7855,7 +7880,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -60, y: -29.999996}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &570527849
 CanvasRenderer:
@@ -7885,7 +7910,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: Dialogue Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c4be189a0837ff44a953ebdb24c2dab4, type: 2}
   m_sharedMaterial: {fileID: -2133924677388839969, guid: c4be189a0837ff44a953ebdb24c2dab4,
@@ -7913,15 +7938,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_fontStyle: 1
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -8392,45 +8417,45 @@ MonoBehaviour:
     completed: 0
     coinReward: 020000000300000004000000
     defaultResponse:
-      NPC: NA
-      dialogue: []
+      speaker: 
+      message: 
   - questName: Forboding Darkness
     questDescription: There's been an explosion! Head home as quickly as possible.
     completed: 0
     coinReward: 010000000100000002000000
     defaultResponse:
-      NPC: NA
-      dialogue: []
+      speaker: 
+      message: 
   - questName: A Grocer...
     questDescription: Who won the most "Most Disgusting Shopkeeper contest?
     completed: 0
     coinReward: 020000000100000002000000
     defaultResponse:
-      NPC: 
-      dialogue: []
+      speaker: 
+      message: 
   - questName: Off to See the Wizard
     questDescription: A little Hocus Pocus never hurt anyone!
     completed: 0
     coinReward: 070000000700000007000000
     defaultResponse:
-      NPC: 
-      dialogue: []
+      speaker: 
+      message: 
   - questName: Bone-jour
     questDescription: You got some new tools! Say hi to the skeletons! Head deeper
       into the forest to clear out the Skeletons invading.
     completed: 0
     coinReward: 140000001400000014000000
     defaultResponse:
-      NPC: 
-      dialogue: []
+      speaker: 
+      message: 
   - questName: Finale
     questDescription: You cleared out the skeletons in the deep forest. Return to
       the village and see where the true source of evil is...
     completed: 0
     coinReward: 140000001400000014000000
     defaultResponse:
-      NPC: 
-      dialogue: []
+      speaker: 
+      message: 
 --- !u!1 &603764599 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2695373051307879278, guid: 2364ad62b5f738147b395de46398c33f,
@@ -16250,7 +16275,7 @@ GameObject:
   - component: {fileID: 852199111}
   - component: {fileID: 852199110}
   m_Layer: 5
-  m_Name: NPC
+  m_Name: SpeakerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16295,7 +16320,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: Name
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c4be189a0837ff44a953ebdb24c2dab4, type: 2}
   m_sharedMaterial: {fileID: -2133924677388839969, guid: c4be189a0837ff44a953ebdb24c2dab4,
@@ -16323,8 +16348,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -18778,11 +18803,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 986857645}
-  - component: {fileID: 986857648}
-  - component: {fileID: 986857647}
-  - component: {fileID: 986857646}
   m_Layer: 5
-  m_Name: NPC
+  m_Name: Speaker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18800,6 +18822,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 414252223}
   - {fileID: 852199109}
   m_Father: {fileID: 1205702707}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18808,88 +18831,6 @@ RectTransform:
   m_AnchoredPosition: {x: -330.66, y: 130}
   m_SizeDelta: {x: 319.0526, y: 59.822}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &986857646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 986857644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 0
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.27450982, g: 0.23137257, b: 0.23137257, a: 1}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 0
-  m_TargetGraphic: {fileID: 986857647}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &986857647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 986857644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.2735849, g: 0.23099858, b: 0.23099858, a: 0.6392157}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &986857648
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 986857644}
-  m_CullTransparentMesh: 1
 --- !u!1 &1002449404
 GameObject:
   m_ObjectHideFlags: 0
@@ -21476,14 +21417,13 @@ GameObject:
   - component: {fileID: 1205702707}
   - component: {fileID: 1205702710}
   - component: {fileID: 1205702709}
-  - component: {fileID: 1205702708}
   m_Layer: 5
-  m_Name: Image
+  m_Name: DialogueBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1205702707
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21506,27 +21446,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -272}
   m_SizeDelta: {x: 1020.2644, y: 360}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &1205702708
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1205702706}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 02688c52f88a3d247a3ebef747fc8f97, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 2
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1205702709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28913,6 +28832,7 @@ GameObject:
   - component: {fileID: 1469337931}
   - component: {fileID: 1469337932}
   - component: {fileID: 1469337933}
+  - component: {fileID: 1469337934}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -29021,7 +28941,8 @@ MonoBehaviour:
   comboManager: {fileID: 1469337924}
   character: {fileID: 1469337929}
   targetManager: {fileID: 1554147453}
-  groundChecker: {fileID: 0}
+  groundChecker: {fileID: 1469337933}
+  interactableHandler: {fileID: 1469337934}
   mainCameraTransform: {fileID: 330585546}
   swordMainHand: {fileID: 919132148478926654}
   bowMainHand: {fileID: 919132147884902844}
@@ -29048,22 +28969,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   longPressDuration: 0.5
-  isPressingLTRT: 0
-  isPressingLTRS: 0
-  isPressingSouthButton: 0
-  isPressingNorthButton: 0
-  isPressingEastButton: 0
-  isPressingWestButton: 0
-  isPressingLeftTrigger: 0
-  isPressingRightTrigger: 0
-  isPressingLeftShoulder: 0
-  isPressingRightShoulder: 0
-  rightStickValue: {x: 0, y: 0}
   leftStickValue: {x: 0, y: 0}
-  isPressingDpadUp: 0
-  isPressingDpadDown: 0
-  isPressingDpadLeft: 0
-  isPressingDpadRight: 0
+  rightStickValue: {x: 0, y: 0}
+  buttonHold: 00000000000000000000000000000000
 --- !u!114 &1469337923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29336,6 +29244,18 @@ MonoBehaviour:
   slideStrength: 1
   groundAngle: 0
   groundDistance: 0
+--- !u!114 &1469337934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469337917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d2d6743eb421e747b786b154904a471, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1490451005
 GameObject:
   m_ObjectHideFlags: 0
@@ -35930,6 +35850,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634804432}
   m_CullTransparentMesh: 1
+--- !u!1 &1637579555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1637579556}
+  - component: {fileID: 1637579558}
+  - component: {fileID: 1637579557}
+  m_Layer: 5
+  m_Name: BG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1637579556
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637579555}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 425531466}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1637579557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637579555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5882353}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1637579558
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637579555}
+  m_CullTransparentMesh: 1
 --- !u!1 &1644131767
 GameObject:
   m_ObjectHideFlags: 0
@@ -37212,7 +37207,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1725330101
 RectTransform:
   m_ObjectHideFlags: 0
@@ -38351,7 +38346,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781189906}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.71160614, y: 0.00000006818278, z: -0.00000002784301, w: 0.7025786}
+  m_LocalRotation: {x: 0.71160614, y: -0.000000032563577, z: 0.000000013297608, w: 0.7025786}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -41996,7 +41991,7 @@ GameObject:
   - component: {fileID: 2050264866}
   - component: {fileID: 2050264867}
   m_Layer: 0
-  m_Name: DialogueBox
+  m_Name: DialogueManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42030,9 +42025,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c0e6a1232b94641982b8bd480088f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sentenceObj: {fileID: 570527850}
-  nameBox: {fileID: 852199110}
-  textAnim: {fileID: 1205702708}
+  auto: 0
+  textMesh: {fileID: 570527850}
+  speakerNameMesh: {fileID: 852199110}
+  dialogueBox: {fileID: 1205702706}
+  textSpeed: 0.05
+  autoSpeed: 0.3
 --- !u!1 &2051572255
 GameObject:
   m_ObjectHideFlags: 0
@@ -46296,6 +46294,7 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1429486223}
+  - {fileID: 2050264866}
   - {fileID: 1689956480}
   - {fileID: 1644131769}
   - {fileID: 349743997}
@@ -46309,5 +46308,4 @@ SceneRoots:
   - {fileID: 19497099}
   - {fileID: 981258468}
   - {fileID: 1628877419}
-  - {fileID: 2050264866}
   - {fileID: 1355038560}

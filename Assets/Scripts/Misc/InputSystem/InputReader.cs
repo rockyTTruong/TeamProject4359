@@ -5,69 +5,34 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
+public enum GamePadButton
+{
+    DpadUp, DpadDown, DpadLeft, DpadRight,
+    NorthButton, SouthButton, WestButton, EastButton,
+    LeftShoulder, LeftTrigger, RightShoulder, RightTrigger,
+    LeftStickPress, RightStickPress,
+    Select, Start,
+    Count
+}
+
 public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFreeLookActions
 {
+    public delegate void ButtonPress();
+    public delegate void ButtonLongPress();
+
     public float longPressDuration = 0.2f;
 
-    public bool isPressingLTRT;
-    public bool isPressingLTRS;
-
-    public bool isPressingSouthButton;
-    public event Action SouthButtonPressEvent;
-    public event Action SouthButtonLongPressEvent;
-
-    public bool isPressingNorthButton;
-    public event Action NorthButtonPressEvent;
-    public event Action NorthButtonLongPressEvent;
-
-    public bool isPressingEastButton;
-    public event Action EastButtonPressEvent;
-    public event Action EastButtonLongPressEvent;
-
-    public bool isPressingWestButton;
-    public event Action WestButtonPressEvent;
-    public event Action WestButtonLongPressEvent;
-
-    public bool isPressingLeftTrigger;
-    public event Action LeftTriggerPressEvent;
-    public event Action LeftTriggerLongPressEvent;
-
-    public bool isPressingRightTrigger;
-    public event Action RightTriggerPressEvent;
-    public event Action RightTriggerLongPressEvent;
-
-    public bool isPressingLeftShoulder;
-    public event Action LeftShoulderPressEvent;
-    public event Action LeftShoulderLongPressEvent;
-
-    public bool isPressingRightShoulder;
-    public event Action RightShoulderPressEvent;
-    public event Action RightShoulderLongPressEvent;
-
-    public Vector2 rightStickValue;
-    public event Action RightStickPressEvent;
-    public Vector2 leftStickValue;
-    public event Action LeftStickPressEvent;
-
-    public bool isPressingDpadUp;
-    public event Action DpadUpButtonPressEvent;
-    public bool isPressingDpadDown;
-    public event Action DpadDownButtonPressEvent;
-    public bool isPressingDpadLeft;
-    public event Action DpadLeftButtonPressEvent;
-    public bool isPressingDpadRight;
-    public event Action DpadRightButtonPressEvent;
-
-    public event Action StartButtonPressEvent;
-    public event Action StartButtonLongPressEvent;
-    public event Action SelectButtonPressEvent;
-    public event Action SelectButtonLongPressEvent;
+    [HideInInspector] public Vector2 leftStickValue;
+    [HideInInspector] public Vector2 rightStickValue;
+    [HideInInspector] public bool[] buttonHold = new bool[(int)GamePadButton.Count];
+    [HideInInspector] public ButtonPress[] buttonPress = new ButtonPress[(int)GamePadButton.Count];
+    [HideInInspector] public ButtonLongPress[] buttonLongPress = new ButtonLongPress[(int)GamePadButton.Count];
 
     private PlayerInput playerInput;
-    private bool isPressing = false;
-    private float pressTime = 0f;
+    private float timer = 0f;
+    private int buttonIndex;
 
-    private Action longPressAction;
+    private ButtonLongPress longPressAction;
 
     protected override void Awake()
     {
@@ -76,224 +41,48 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
         playerInput.FreeLook.SetCallbacks(this);
     }
 
+    private void Start()
+    {
+        EnableInput();
+    }
+
     private void Update()
     {
-        if (isPressing)
+        if (buttonHold[buttonIndex])
         {
-            pressTime += Time.unscaledDeltaTime;
-            if (pressTime >= longPressDuration)
+            timer += Time.unscaledDeltaTime;
+            if (timer >= longPressDuration)
             {
                 longPressAction?.Invoke();
                 longPressAction = null;
-                isPressing = false;
             }
         }
     }
 
-    public void EnableFreelookInputReader()
+    private void HandleInputAction(InputAction.CallbackContext context, GamePadButton button)
+    {
+        buttonIndex = (int)button;
+        if (context.started)
+        {
+            buttonPress[buttonIndex]?.Invoke();
+            timer = 0f;
+            buttonHold[buttonIndex] = true;
+            longPressAction = buttonLongPress[buttonIndex];
+        }
+        else if (context.canceled)
+        {
+            buttonHold[buttonIndex] = false;
+        }
+    }
+
+    public void EnableInput()
     {
         playerInput.FreeLook.Enable();
     }
 
-    public void DisableFreelookInputReader()
+    public void DisableInput()
     {
         playerInput.FreeLook.Disable();
-    }
-
-    public void OnNorthButton(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            isPressing = true;
-            isPressingNorthButton = true;
-            longPressAction = NorthButtonLongPressEvent;
-            pressTime = 0f;
-        }
-        else if (context.canceled)
-        {
-            if (pressTime < longPressDuration && isPressing)
-            {
-                NorthButtonPressEvent?.Invoke();
-            }
-            isPressing = false;
-            isPressingNorthButton = false;
-        }
-    }
-
-    public void OnSouthButton(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            isPressing = true;
-            isPressingSouthButton = true;
-            longPressAction = SouthButtonLongPressEvent;
-            pressTime = 0f;
-        }
-        else if (context.canceled)
-        {
-            if (pressTime < longPressDuration && isPressing)
-            {
-                SouthButtonPressEvent?.Invoke();
-            }
-            isPressing = false;
-            isPressingSouthButton = false;
-        }
-    }
-
-    public void OnEastButton(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            isPressing = true;
-            isPressingEastButton = true;
-            longPressAction = EastButtonLongPressEvent;
-            pressTime = 0f;
-        }
-        else if (context.canceled)
-        {
-            if (pressTime < longPressDuration && isPressing)
-            {
-                EastButtonPressEvent?.Invoke();
-            }
-            isPressing = false;
-            isPressingEastButton = false;
-        }
-    }
-
-    public void OnWestButton(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            isPressing = true;
-            isPressingWestButton = true;
-            longPressAction = WestButtonLongPressEvent;
-            pressTime = 0f;
-        }
-        else if (context.canceled)
-        {
-            if (pressTime < longPressDuration && isPressing)
-            {
-                WestButtonPressEvent?.Invoke();
-            }
-            isPressing = false;
-            isPressingWestButton = false;
-        }
-    }
-
-    public void OnLeftTrigger(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            isPressing = true;
-            isPressingLeftTrigger = true;
-            longPressAction = LeftTriggerLongPressEvent;
-            pressTime = 0f;
-        }
-        else if (context.canceled)
-        {
-            if (pressTime < longPressDuration && isPressing)
-            {
-                LeftTriggerPressEvent?.Invoke();
-            }
-            isPressing = false;
-            isPressingLeftTrigger = false;
-        }
-    }
-
-    public void OnRightTrigger(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            isPressing = true;
-            isPressingRightTrigger = true;
-            longPressAction = RightTriggerLongPressEvent;
-            pressTime = 0f;
-        }
-        else if (context.canceled)
-        {
-            if (pressTime < longPressDuration && isPressing)
-            {
-                RightTriggerPressEvent?.Invoke();
-            }
-            isPressing = false;
-            isPressingRightTrigger = false;
-        }
-    }
-
-    public void OnLeftShoulder(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            isPressing = true;
-            isPressingLeftShoulder = true;
-            longPressAction = LeftShoulderLongPressEvent;
-            pressTime = 0f;
-        }
-        else if (context.canceled)
-        {
-            if (pressTime < longPressDuration && isPressing)
-            {
-                LeftShoulderPressEvent?.Invoke();
-            }
-            isPressing = false;
-            isPressingLeftShoulder = false;
-        }
-    }
-
-    public void OnRightShoulder(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            isPressing = true;
-            isPressingRightShoulder = true;
-            longPressAction = RightShoulderLongPressEvent;
-            pressTime = 0f;
-        }
-        else if (context.canceled)
-        {
-            if (pressTime < longPressDuration && isPressing)
-            {
-                RightShoulderPressEvent?.Invoke();
-            }
-            isPressing = false;
-            isPressingRightShoulder = false;
-        }
-    }
-
-    public void OnStartButton(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            isPressing = true;
-            longPressAction = StartButtonLongPressEvent;
-            pressTime = 0f;
-        }
-        else if (context.canceled)
-        {
-            if (pressTime < longPressDuration && isPressing)
-            {
-                StartButtonPressEvent?.Invoke();
-            }
-            isPressing = false;
-        }
-    }
-
-    public void OnSelectButton(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            isPressing = true;
-            longPressAction = SelectButtonLongPressEvent;
-            pressTime = 0f;
-        }
-        else if (context.canceled)
-        {
-            if (pressTime < longPressDuration && isPressing)
-            {
-                SelectButtonPressEvent?.Invoke();
-            }
-            isPressing = false;
-        }
     }
 
     public void OnLeftStick(InputAction.CallbackContext context)
@@ -301,120 +90,88 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
         leftStickValue = context.ReadValue<Vector2>();
     }
 
-    public void OnLeftStickPress(InputAction.CallbackContext context)
-    {
-        if (!context.performed) return;
-        LeftStickPressEvent?.Invoke();
-    }
-
     public void OnRightStick(InputAction.CallbackContext context)
     {
         rightStickValue = context.ReadValue<Vector2>();
     }
 
+    public void OnNorthButton(InputAction.CallbackContext context)
+    {
+        HandleInputAction(context, GamePadButton.NorthButton);
+    }
+
+    public void OnSouthButton(InputAction.CallbackContext context)
+    {
+        HandleInputAction(context, GamePadButton.SouthButton);
+    }
+
+    public void OnEastButton(InputAction.CallbackContext context)
+    {
+        HandleInputAction(context, GamePadButton.EastButton);
+    }
+
+    public void OnWestButton(InputAction.CallbackContext context)
+    {
+        HandleInputAction(context, GamePadButton.WestButton);
+    }
+
+    public void OnLeftTrigger(InputAction.CallbackContext context)
+    {
+        HandleInputAction(context, GamePadButton.LeftTrigger);
+    }
+
+    public void OnRightTrigger(InputAction.CallbackContext context)
+    {
+        HandleInputAction(context, GamePadButton.RightTrigger);
+    }
+
+    public void OnLeftShoulder(InputAction.CallbackContext context)
+    {
+        HandleInputAction(context, GamePadButton.LeftShoulder);
+    }
+
+    public void OnRightShoulder(InputAction.CallbackContext context)
+    {
+        HandleInputAction(context, GamePadButton.RightShoulder);
+    }
+
+    public void OnStartButton(InputAction.CallbackContext context)
+    {
+        HandleInputAction(context, GamePadButton.Start);
+    }
+
+    public void OnSelectButton(InputAction.CallbackContext context)
+    {
+        HandleInputAction(context, GamePadButton.Select);
+    }
+
+    public void OnLeftStickPress(InputAction.CallbackContext context)
+    {
+        HandleInputAction(context, GamePadButton.LeftStickPress);
+    }
+
     public void OnRightStickPress(InputAction.CallbackContext context)
     {
-        if (!context.performed) return;
-        RightStickPressEvent?.Invoke();
+        HandleInputAction(context, GamePadButton.RightStickPress);
     }
 
     public void OnDpadUpButton(InputAction.CallbackContext context)
     {
-        if (context.started)
-        {
-            isPressing = true;
-            isPressingDpadUp = true;
-            pressTime = 0f;
-        }
-        else if (context.canceled)
-        {
-            if (pressTime < longPressDuration && isPressing)
-            {
-                DpadUpButtonPressEvent?.Invoke();
-            }
-            isPressing = false;
-            isPressingDpadUp = false;
-        }
+        HandleInputAction(context, GamePadButton.DpadUp);
     }
 
     public void OnDpadDownButton(InputAction.CallbackContext context)
     {
-        if (context.started)
-        {
-            isPressing = true;
-            isPressingDpadDown = true;
-            pressTime = 0f;
-        }
-        else if (context.canceled)
-        {
-            if (pressTime < longPressDuration && isPressing)
-            {
-                DpadDownButtonPressEvent?.Invoke();
-            }
-            isPressing = false;
-            isPressingDpadDown = false;
-        }
+        HandleInputAction(context, GamePadButton.DpadDown);
     }
 
     public void OnDpadLeftButton(InputAction.CallbackContext context)
     {
-        if (context.started)
-        {
-            isPressing = true;
-            isPressingDpadLeft = true;
-            pressTime = 0f;
-        }
-        else if (context.canceled)
-        {
-            if (pressTime < longPressDuration && isPressing)
-            {
-                DpadLeftButtonPressEvent?.Invoke();
-            }
-            isPressing = false;
-            isPressingDpadLeft = false;
-        }
+        HandleInputAction(context, GamePadButton.DpadLeft);
     }
 
     public void OnDpadRightButton(InputAction.CallbackContext context)
     {
-        if (context.started)
-        {
-            isPressing = true;
-            isPressingDpadRight = true;
-            pressTime = 0f;
-        }
-        else if (context.canceled)
-        {
-            if (pressTime < longPressDuration && isPressing)
-            {
-                DpadRightButtonPressEvent?.Invoke();
-            }
-            isPressing = false;
-            isPressingDpadRight = false;
-        }
-    }
-
-    public void OnLTRT(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            isPressingLTRT = true;
-        }
-        else if (context.canceled)
-        {
-            isPressingLTRT = false;
-        }
-    }
-
-    public void OnLTRS(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            isPressingLTRS = true;
-        }
-        else if (context.canceled)
-        {
-            isPressingLTRS = false;
-        }
+        HandleInputAction(context, GamePadButton.DpadRight);
     }
 }

@@ -3,72 +3,106 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Playables;
 
 public class DialogueManager : SingletonMonobehaviour<DialogueManager>
-
 {
-    public TMP_Text sentenceObj;
-    public TMP_Text nameBox;
+    [SerializeField] private bool auto;
+    [SerializeField] private TextMeshProUGUI textMesh;
+    [SerializeField] private TextMeshProUGUI speakerNameMesh;
+    [SerializeField] private GameObject dialogueBox;
+    [SerializeField] private float textSpeed = 0.05f;
+    [SerializeField] private float autoSpeed = 0.3f;
 
-    public Animator textAnim;
+    private Queue<Dialogue> dialogueQueue = new Queue<Dialogue>();
+    private Coroutine typing;
+    private Dialogue currentDialogue;
+    private PlayableDirector playableDirector;
 
-    private Queue<string> sentences;
-    
-    // Start is called before the first frame update
-    void Start()
+    protected override void Awake()
     {
-        sentences = new Queue<string>();
+        base.Awake();
     }
-    private void Update()
+
+    public void StartDialogue(TextAsset textJson, PlayableDirector playableDirector)
     {
-        if (Input.GetKeyDown(KeyCode.X) || (Gamepad.current != null && Gamepad.current.aButton.IsPressed()))
+        LoadDialogue(textJson);
+        dialogueBox.SetActive(true);
+        if (playableDirector != null)
         {
-            DisplayNextSentence();
+            this.playableDirector = playableDirector;
+            playableDirector.Play();
+        }
+        GoToNextDialogue();
+    }
+
+    public void LoadDialogue(TextAsset jsonFile)
+    {
+        if (jsonFile != null)
+        {
+            string jsonText = jsonFile.text;
+            Dialogues dialogues = JsonUtility.FromJson<Dialogues>(jsonText);
+            foreach (Dialogue dialogue in dialogues.dialogues)
+            {
+                dialogueQueue.Enqueue(dialogue);
+            }
+        }
+        else Debug.LogError("JSON file not found.");
+    }
+
+    public void HandleUserInput()
+    {
+        if (typing == null)
+        {
+            GoToNextDialogue();
+        }
+        else
+        {
+            StopCoroutine(typing);
+            typing = null;
+            textMesh.text = currentDialogue.message;
         }
     }
-    // Update is called once per frame
-    public void StartDialogue(Dialogue dialogue)
-    {
-        textAnim.SetBool("isOpen", true);
-        sentences.Clear();
-        nameBox.text = dialogue.NPC;
 
-        foreach(string sentence in dialogue.dialogue)
+    private void GoToNextDialogue()
+    {
+        if (dialogueQueue.Count == 0)
         {
-            sentences.Enqueue(sentence);
-        }
-        DisplayNextSentence();
-    }
-
-    public void DisplayNextSentence()
-    {
-        if(sentences.Count == 0) {
             EndDialogue();
             return;
         }
-        string sentence = sentences.Dequeue();
-        StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence));
+        Dialogue dialogue = dialogueQueue.Dequeue();
+        if (dialogue.message == null)
+        {
+            GoToNextDialogue();
+            return;
+        }
+
+        currentDialogue = dialogue;
+        speakerNameMesh.text = dialogue.speaker;
+        typing = StartCoroutine(TypeText(dialogue.message));
     }
 
-    IEnumerator TypeSentence(string sentence)
+    private void EndDialogue()
     {
-        sentenceObj.text = "";
-        foreach (char c in sentence.ToCharArray())
+        dialogueBox.SetActive(false);
+        PlayerStateMachine psm = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateMachine>();
+        psm.SwitchState(new PlayerFreeLookState(psm));
+    }
+
+    private IEnumerator TypeText(string text)
+    {
+        textMesh.text = "";
+        foreach (char letter in text)
         {
-            sentenceObj.text += c;
-            yield return null;
+            textMesh.text += letter;
+            yield return new WaitForSeconds(textSpeed);
+        }
+        typing = null;
+        if (auto)
+        {
+            yield return new WaitForSeconds(autoSpeed);
+            GoToNextDialogue();
         }
     }
-
-    void EndDialogue()
-    {
-        textAnim.SetBool("isOpen", false);
-        sentenceObj.text=null;
-        nameBox.text = null;
-        return;
-    }
-
-
-
 }
