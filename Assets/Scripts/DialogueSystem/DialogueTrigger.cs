@@ -7,6 +7,7 @@ using UnityEngine.Timeline;
 [RequireComponent(typeof(SphereCollider))]
 public class DialogueTrigger : MonoBehaviour, IInteractable
 {
+    [SerializeField] private GameObject interactableUIIndicator;
     [SerializeField] private List<DialogueData> dialogues = new List<DialogueData>();
     [SerializeField] private float facePlayerSpeed;
 
@@ -48,6 +49,7 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
     {
         if (other.TryGetComponent<PlayerStateMachine>(out PlayerStateMachine psm))
         {
+            interactableUIIndicator.SetActive(true);
             psm.interactableHandler.Subscribe(this);
         }
     }
@@ -56,6 +58,7 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
     {
         if (other.TryGetComponent<PlayerStateMachine>(out PlayerStateMachine psm))
         {
+            interactableUIIndicator.SetActive(false);
             psm.interactableHandler.Unsubscribe(this);
         }
     }

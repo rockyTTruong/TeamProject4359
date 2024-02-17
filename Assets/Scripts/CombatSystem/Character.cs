@@ -17,6 +17,7 @@ public class Character : MonoBehaviour, IDamageable
     
 
     [SerializeField] private GaugeBar healthBar;
+    [SerializeField] private GaugeBar staminaBar;
     [SerializeField] private TextMeshProUGUI healthBarTextMesh;
     [SerializeField] private CharacterBaseStats baseStats;
     [SerializeField] private CharacterEquipmentData equipmentData;
@@ -24,15 +25,24 @@ public class Character : MonoBehaviour, IDamageable
     [SerializeField] protected float healthDisplayDistance;
 
     private float currentHp;
+    private float currentStamina;
+    private Coroutine recoveringStamina;
     public float CurrentHpPercent => currentHp / GetMaxHp();
+    public float CurrentStamina => currentStamina;
 
     private void Start()
     {
         int maxHp = GetMaxHp();
         currentHp = maxHp;
         healthBar.SetBar(maxHp);
-        UpdateHPUI();
-        
+        UpdateHPBar();
+        if (this.gameObject.CompareTag("Player"))
+        {
+            int maxStamina = GetMaxStamina();
+            currentStamina = maxStamina;
+            staminaBar.SetBar(maxStamina);
+            UpdateStaminaBar();
+        }
     }
 
     private IEnumerator DestroyCoroutine()
@@ -55,7 +65,7 @@ public class Character : MonoBehaviour, IDamageable
         if (!isUnflinching) DamageEvent?.Invoke();
 
         currentHp = Mathf.Max(currentHp - damage, 0);
-        UpdateHPUI();
+        UpdateHPBar();
         if (currentHp == 0) Die();
         return true;
     }
@@ -67,23 +77,43 @@ public class Character : MonoBehaviour, IDamageable
         StartCoroutine(DestroyCoroutine());
     }
 
+    public bool TryUseStamina(float amount)
+    {
+        if (currentStamina == 0) return false;
+        currentStamina = Mathf.Max(currentStamina - amount, 0f);
+        UpdateStaminaBar();
+        RecoverStamina();
+        return true;
+    }
+
     public void RecoverHp(int amount)
     {
         int maxHp = Mathf.RoundToInt(GetMaxHp());
         currentHp = Mathf.Min(currentHp + amount, maxHp);
-        UpdateHPUI();
+        UpdateHPBar();
     }
 
-    public void UpdateHPUI()
+    public void UpdateHPBar()
     {
         int maxHp = Mathf.RoundToInt(GetMaxHp());
         healthBar.ChangeBar(Mathf.RoundToInt(currentHp));
         if (healthBarTextMesh != null) healthBarTextMesh.text = $"HP {currentHp}/{maxHp}";
     }
 
+    public void UpdateStaminaBar()
+    {
+        int maxStamina = Mathf.RoundToInt(GetMaxStamina());
+        staminaBar.ChangeBar(Mathf.RoundToInt(currentStamina));
+    }
+
     public int GetMaxHp()
     {
         return Mathf.RoundToInt(baseStats.hp + equipmentData.TotalHp());
+    }
+
+    public int GetMaxStamina()
+    {
+        return Mathf.RoundToInt(baseStats.stamina + equipmentData.TotalStamina());
     }
 
     public float GetAttack()
@@ -137,10 +167,33 @@ public class Character : MonoBehaviour, IDamageable
         isDead = false;
         int maxHp = GetMaxHp();
         currentHp = maxHp;
-        UpdateHPUI();
+        UpdateHPBar();
     }
     private void turnOff()
     {
         obj.transform.Find("DamageBuff").gameObject.SetActive(false);
+    }
+
+    private void RecoverStamina()
+    {
+        if (recoveringStamina != null)
+        {
+            StopCoroutine(recoveringStamina);
+            recoveringStamina = null;
+        }
+        recoveringStamina = StartCoroutine(RecoverStaminaCoroutine());
+    }
+
+    private IEnumerator RecoverStaminaCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
+        int maxStamina = GetMaxStamina();
+        while (currentStamina != maxStamina)
+        {
+            currentStamina = Mathf.Min(currentStamina + 1, maxStamina);
+            UpdateStaminaBar();
+            yield return new WaitForEndOfFrame();
+        }
+        recoveringStamina = null;
     }
 }

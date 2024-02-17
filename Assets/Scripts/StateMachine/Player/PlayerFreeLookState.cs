@@ -18,10 +18,10 @@ public class PlayerFreeLookState : PlayerState
         InputReader.Instance.buttonPress[(int)GamePadButton.DpadUp] += UseItem;
         InputReader.Instance.buttonPress[(int)GamePadButton.DpadRight] += SwitchItem;
         InputReader.Instance.buttonPress[(int)GamePadButton.DpadLeft] += QuickSwitchWeapon;
-        InputReader.Instance.buttonPress[(int)GamePadButton.SouthButton] += TryInteract;
+        InputReader.Instance.buttonPress[(int)GamePadButton.SouthButton] += Jump;
         InputReader.Instance.buttonPress[(int)GamePadButton.EastButton] += Dodge;
         InputReader.Instance.buttonPress[(int)GamePadButton.LeftStickPress] += Dash;
-        InputReader.Instance.buttonPress[(int)GamePadButton.NorthButton] += StrongAttack;
+        InputReader.Instance.buttonPress[(int)GamePadButton.NorthButton] += TryInteract;
         InputReader.Instance.buttonLongPress[(int)GamePadButton.DpadUp] += ChargeAttack;
         InputReader.Instance.buttonPress[(int)GamePadButton.RightStickPress] += SpanCameraFaceTarget;
         InputReader.Instance.buttonPress[(int)GamePadButton.DpadDown] += LockOnMode;
@@ -34,10 +34,10 @@ public class PlayerFreeLookState : PlayerState
         InputReader.Instance.buttonPress[(int)GamePadButton.DpadUp] -= UseItem;
         InputReader.Instance.buttonPress[(int)GamePadButton.DpadRight] -= SwitchItem;
         InputReader.Instance.buttonPress[(int)GamePadButton.DpadLeft] -= QuickSwitchWeapon;
-        InputReader.Instance.buttonPress[(int)GamePadButton.SouthButton] -= TryInteract;
+        InputReader.Instance.buttonPress[(int)GamePadButton.SouthButton] -= Jump;
         InputReader.Instance.buttonPress[(int)GamePadButton.EastButton] -= Dodge;
         InputReader.Instance.buttonPress[(int)GamePadButton.LeftStickPress] -= Dash;
-        InputReader.Instance.buttonPress[(int)GamePadButton.NorthButton] -= StrongAttack;
+        InputReader.Instance.buttonPress[(int)GamePadButton.NorthButton] -= TryInteract;
         InputReader.Instance.buttonLongPress[(int)GamePadButton.DpadUp] -= ChargeAttack;
         InputReader.Instance.buttonPress[(int)GamePadButton.RightStickPress] -= SpanCameraFaceTarget;
         InputReader.Instance.buttonPress[(int)GamePadButton.DpadDown] -= LockOnMode;
@@ -80,6 +80,11 @@ public class PlayerFreeLookState : PlayerState
                 footstepInterval -= 0.2f;
             }
         }
+
+        if (psm.isDashing)
+        {
+            if (!psm.character.TryUseStamina(PlayerActionCost.runAction)) psm.isDashing = false;
+        }
     }
 
     private void TryInteract()
@@ -89,7 +94,7 @@ public class PlayerFreeLookState : PlayerState
             psm.animator.SetFloat(blendSpeedHash, 0f);
             psm.SwitchState(new PlayerTalkingState(psm));
         }
-        else Jump();
+        else StrongAttack();
     }
 
     private void UpdateAnimator()
@@ -115,6 +120,7 @@ public class PlayerFreeLookState : PlayerState
 
     private void NormalAttack()
     {
+        if (!psm.character.TryUseStamina(PlayerActionCost.attackAction)) return;
         psm.isDashing = false;
         WeaponType weaponType = psm.character.GetCurrentWeaponData().weaponType;
         if (weaponType == WeaponType.Sword)
@@ -138,6 +144,7 @@ public class PlayerFreeLookState : PlayerState
 
     private void ChargeAttack()
     {
+        if (!psm.character.TryUseStamina(PlayerActionCost.chargeAttackAction)) return;
         psm.isDashing = false;
         WeaponType weaponType = psm.character.GetCurrentWeaponData().weaponType;
         if (weaponType == WeaponType.Sword)
@@ -154,14 +161,11 @@ public class PlayerFreeLookState : PlayerState
 
     private void StrongAttack()
     {
+        if (!psm.character.TryUseStamina(PlayerActionCost.strongAttackAction)) return;
         psm.isDashing = false;
         WeaponType weaponType = psm.character.GetCurrentWeaponData().weaponType;
         if (weaponType == WeaponType.Sword)
-        {/*
-            playerStateMachine.swordMainHand.SetActive(true);
-            playerStateMachine.bowBack.SetActive(true);
-            playerStateMachine.swordBack.SetActive(false);
-            playerStateMachine.bowMainHand.SetActive(false);*/
+        {
             psm.SwitchState(new PlayerAttackingState(psm, psm.comboManager.strongSwordAttackCombo, 0));
         }
         else return;
@@ -198,7 +202,7 @@ public class PlayerFreeLookState : PlayerState
             GameObject.FindObjectOfType<QuickSlotManager>().UpdateCurrentItemInfo("1001");
 
         }
-        
+
         Debug.Log($"Current Item {psm.currentItemGuid}");
     }
 

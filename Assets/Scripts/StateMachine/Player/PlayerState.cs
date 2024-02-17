@@ -86,7 +86,8 @@ public abstract class PlayerState : State
     }
     public void Dodge()
     {
-        psm.SwitchState(new PlayerDodgingState(psm));
+        if (psm.character.TryUseStamina(PlayerActionCost.dodgeAction))
+            psm.SwitchState(new PlayerDodgingState(psm));
     }
 
     public void Jump()

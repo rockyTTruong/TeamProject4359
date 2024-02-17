@@ -75,6 +75,7 @@ public class PlayerAttackingState : PlayerState
     {
         if (attack.nextComboIndex == -1) return;
         if (normalizedTime < attack.nextComboEnableTime) return;
+        if (!psm.character.TryUseStamina(PlayerActionCost.attackAction)) return;
 
         WeaponType weaponType = psm.character.GetCurrentWeaponData().weaponType;
         if (weaponType == WeaponType.Sword)
@@ -113,6 +114,7 @@ public class PlayerAttackingState : PlayerState
 
     private void ChargeAttack()
     {
+        if (!psm.character.TryUseStamina(PlayerActionCost.chargeAttackAction)) return;
         WeaponType weaponType = psm.character.GetCurrentWeaponData().weaponType;
         if (weaponType == WeaponType.Sword)
         {
@@ -130,6 +132,7 @@ public class PlayerAttackingState : PlayerState
     {
         if (attack.nextStrongComboIndex == -1) return;
         if (normalizedTime < attack.nextComboEnableTime) return;
+        if (!psm.character.TryUseStamina(PlayerActionCost.strongAttackAction)) return;
 
         WeaponType weaponType = psm.character.GetCurrentWeaponData().weaponType;
         if (weaponType == WeaponType.Sword)

@@ -7,6 +7,7 @@ public class EquipmentItemData : ItemData
 {
     public EquipmentType equipmentType;
     public float hp;
+    public float stamina;
     public float atk;
     public float def;
 
