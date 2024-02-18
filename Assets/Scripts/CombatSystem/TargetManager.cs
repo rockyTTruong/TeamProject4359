@@ -88,7 +88,7 @@ public class TargetManager : MonoBehaviour
         if (targets.Count() == 1) currentTarget = targets[0];
         else currentTarget = GetNearestTarget();
 
-        currentTarget.GetComponent<EnemyStateMachine>().targetManager.EnabledTargetedMark();
+        //currentTarget.GetComponent<EnemyStateMachine>().targetManager.EnabledTargetedMark();
         return true;
     }
 

@@ -9,6 +9,7 @@ using UnityEngine;
 public class AttackHandler : MonoBehaviour
 {
     [SerializeField] private AttackCollider weaponCollider;
+    [SerializeField] private AttackCollider bowCollider;
     [SerializeField] private List<Attack> attacks;
     [SerializeField] private GameObject swordTrailEffect;
 
