@@ -4,23 +4,23 @@ using UnityEngine;
 
 public abstract class PlayerState : State
 {
-    public PlayerStateMachine playerStateMachine;
+    public PlayerStateMachine psm;
 
     public PlayerState(PlayerStateMachine playerStateMachine)
     {
-        this.playerStateMachine = playerStateMachine;
+        this.psm = playerStateMachine;
     }
 
     public void Move(Vector3 movement)
     {
-        playerStateMachine.controller.Move((movement + playerStateMachine.forceReceiver.GetForce() + playerStateMachine.groundChecker.slidingForce) * Time.deltaTime);
+        psm.controller.Move((movement + psm.forceReceiver.GetForce() + psm.groundChecker.slidingForce) * Time.deltaTime);
     }
 
     public Vector3 CalculateMovement()
     {
         Vector2 movementInput = InputReader.Instance.leftStickValue;
-        Vector3 forward = playerStateMachine.mainCameraTransform.forward;
-        Vector3 right = playerStateMachine.mainCameraTransform.right;
+        Vector3 forward = psm.mainCameraTransform.forward;
+        Vector3 right = psm.mainCameraTransform.right;
         forward.y = 0f;
         right.y = 0f;
         forward.Normalize();
@@ -33,40 +33,40 @@ public abstract class PlayerState : State
         Vector3 movement = CalculateMovement();
         if (InputReader.Instance.leftStickValue == Vector2.zero)
         {
-            playerStateMachine.isDashing = false;
+            psm.isDashing = false;
             Move(Vector3.zero);
         }
         else
         {
-            if (playerStateMachine.walkMode) Move(movement * playerStateMachine.walkSpeed);
-            else Move(movement * (playerStateMachine.isDashing ? playerStateMachine.dashSpeed : playerStateMachine.movementSpeed));
+            if (psm.walkMode) Move(movement * psm.walkSpeed);
+            else Move(movement * (psm.isDashing ? psm.dashSpeed : psm.movementSpeed));
             ChangeDirection(movement);
         }
     }
 
     public void FaceTarget(GameObject target)
     {
-        Vector3 lookPos = target.transform.position - playerStateMachine.transform.position;
+        Vector3 lookPos = target.transform.position - psm.transform.position;
         lookPos.y = 0f;
         Quaternion lookRotation = Quaternion.LookRotation(lookPos);
-        playerStateMachine.transform.rotation = Quaternion.Slerp(playerStateMachine.transform.rotation, lookRotation, playerStateMachine.changeDirectionSpeed * Time.deltaTime);
+        psm.transform.rotation = Quaternion.Slerp(psm.transform.rotation, lookRotation, psm.changeDirectionSpeed * Time.deltaTime);
     }
 
     public void FaceTargetInstantly(GameObject target)
     {
-        Vector3 lookPos = target.transform.position - playerStateMachine.transform.position;
+        Vector3 lookPos = target.transform.position - psm.transform.position;
         lookPos.y = 0f;
-        playerStateMachine.transform.rotation = Quaternion.LookRotation(lookPos);
+        psm.transform.rotation = Quaternion.LookRotation(lookPos);
     }
 
     public void ChangeDirection(Vector3 movement)
     {
-        playerStateMachine.transform.rotation = Quaternion.Lerp(playerStateMachine.transform.rotation, Quaternion.LookRotation(movement), playerStateMachine.changeDirectionSpeed * Time.deltaTime);
+        psm.transform.rotation = Quaternion.Lerp(psm.transform.rotation, Quaternion.LookRotation(movement), psm.changeDirectionSpeed * Time.deltaTime);
     }
 
     public void ChangeDirectionInstantly(Vector3 movement)
     {
-        playerStateMachine.transform.rotation = Quaternion.LookRotation(movement);
+        psm.transform.rotation = Quaternion.LookRotation(movement);
     }
 
     public void HandleCameraMovement()
@@ -75,35 +75,36 @@ public abstract class PlayerState : State
         {
             CameraController.Instance.RotateCamera();
         }
-        if (InputReader.Instance.isPressingLeftTrigger)
+        if (InputReader.Instance.buttonHold[(int)GamePadButton.LeftTrigger])
         {
             CameraController.Instance.ZoomOut();
         }
-        if (InputReader.Instance.isPressingRightTrigger)
+        if (InputReader.Instance.buttonHold[(int)GamePadButton.RightTrigger])
         {
             CameraController.Instance.ZoomIn();
         }
     }
     public void Dodge()
     {
-        playerStateMachine.SwitchState(new PlayerDodgingState(playerStateMachine));
+        if (psm.character.TryUseStamina(PlayerActionCost.dodgeAction))
+            psm.SwitchState(new PlayerDodgingState(psm));
     }
 
     public void Jump()
     {
-        playerStateMachine.SwitchState(new PlayerJumpState(playerStateMachine));
+        psm.SwitchState(new PlayerJumpState(psm));
     }
 
     public void PlayAnimation(int animationHash, float crossFixedDuration)
     {
-        playerStateMachine.animator.CrossFadeInFixedTime(animationHash, crossFixedDuration);
+        psm.animator.CrossFadeInFixedTime(animationHash, crossFixedDuration);
     }
 
     public void LockOnMode()
     {
-        if (playerStateMachine.targetManager.GetCurrentTarget() == null)
+        if (psm.targetManager.GetCurrentTarget() == null)
         {
-            if (playerStateMachine.targetManager.TryLockOn())
+            if (psm.targetManager.TryLockOn())
                 SpanCameraFaceTarget();
         }
         else
@@ -115,29 +116,29 @@ public abstract class PlayerState : State
 
     public void LockOnNextTarget()
     {
-        if (playerStateMachine.targetManager.GetCurrentTarget() == null) return;
-        playerStateMachine.targetManager.NextTarget();
+        if (psm.targetManager.GetCurrentTarget() == null) return;
+        psm.targetManager.NextTarget();
         SpanCameraFaceTarget();
     }
 
     public void LockOnPreviousTarget()
     {
-        if (playerStateMachine.targetManager.GetCurrentTarget() == null) return;
-        playerStateMachine.targetManager.PreviouTarget();
+        if (psm.targetManager.GetCurrentTarget() == null) return;
+        psm.targetManager.PreviouTarget();
         SpanCameraFaceTarget();
     }
 
     public void SpanCameraFaceTarget()
     {
-        if (playerStateMachine.targetManager.GetCurrentTarget() == null) return;
-        Vector3 direction = playerStateMachine.targetManager.GetCurrentTarget().transform.position - playerStateMachine.transform.position;
+        if (psm.targetManager.GetCurrentTarget() == null) return;
+        Vector3 direction = psm.targetManager.GetCurrentTarget().transform.position - psm.transform.position;
         float cameraAngle = Quaternion.FromToRotation(Vector3.forward, direction).eulerAngles.y;
         CameraController.Instance.SpanCamera(cameraAngle);
     }
 
     public void QuickSwitchWeapon()
     {
-        WeaponItemData currentWeapon = playerStateMachine.character.GetCurrentWeaponData();
+        WeaponItemData currentWeapon = psm.character.GetCurrentWeaponData();
         if (currentWeapon.weaponType == WeaponType.Sword)
         {
             if (InventoryBox.Instance.CheckInventory("5002") == null)
@@ -146,20 +147,20 @@ public abstract class PlayerState : State
                 return;
             }
             Debug.Log($"Switch to Bow.");
-            playerStateMachine.character.ChangeWeapon("5002");
-            playerStateMachine.swordMainHand.SetActive(false);
-            playerStateMachine.bowBack.SetActive(false);
-            playerStateMachine.swordBack.SetActive(true);
-            playerStateMachine.bowMainHand.SetActive(true);
+            psm.character.ChangeWeapon("5002");
+            psm.swordMainHand.SetActive(false);
+            psm.bowBack.SetActive(false);
+            psm.swordBack.SetActive(true);
+            psm.bowMainHand.SetActive(true);
         }
         else if (currentWeapon.weaponType == WeaponType.Bow)
         {
             Debug.Log($"Switch to Sword.");
-            playerStateMachine.character.ChangeWeapon("5001");
-            playerStateMachine.swordMainHand.SetActive(true);
-            playerStateMachine.bowBack.SetActive(true);
-            playerStateMachine.swordBack.SetActive(false);
-            playerStateMachine.bowMainHand.SetActive(false);
+            psm.character.ChangeWeapon("5001");
+            psm.swordMainHand.SetActive(true);
+            psm.bowBack.SetActive(true);
+            psm.swordBack.SetActive(false);
+            psm.bowMainHand.SetActive(false);
         }
         EventHandler.OnSwitchWeaponEvent();
     }

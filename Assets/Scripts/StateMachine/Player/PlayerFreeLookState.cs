@@ -14,34 +14,33 @@ public class PlayerFreeLookState : PlayerState
 
     public override void Enter()
     {
-        InputReader.Instance.EnableFreelookInputReader();
-        InputReader.Instance.DpadUpButtonPressEvent += UseItem;
-        InputReader.Instance.DpadRightButtonPressEvent += SwitchItem;
-        InputReader.Instance.DpadLeftButtonPressEvent += QuickSwitchWeapon;
-        InputReader.Instance.SouthButtonPressEvent += Jump;
-        InputReader.Instance.EastButtonPressEvent += Dodge;
-        InputReader.Instance.EastButtonLongPressEvent += Dash;
-        InputReader.Instance.WestButtonPressEvent += NormalAttack;
-        InputReader.Instance.NorthButtonPressEvent += StrongAttack;
-        InputReader.Instance.WestButtonLongPressEvent += ChargeAttack;
-        InputReader.Instance.RightStickPressEvent += SpanCameraFaceTarget;
-        InputReader.Instance.DpadDownButtonPressEvent += LockOnMode;
+        InputReader.Instance.buttonPress[(int)GamePadButton.WestButton] += NormalAttack;
+        InputReader.Instance.buttonPress[(int)GamePadButton.DpadUp] += UseItem;
+        InputReader.Instance.buttonPress[(int)GamePadButton.DpadRight] += SwitchItem;
+        InputReader.Instance.buttonPress[(int)GamePadButton.DpadLeft] += QuickSwitchWeapon;
+        InputReader.Instance.buttonPress[(int)GamePadButton.SouthButton] += Jump;
+        InputReader.Instance.buttonPress[(int)GamePadButton.EastButton] += Dodge;
+        InputReader.Instance.buttonPress[(int)GamePadButton.LeftStickPress] += Dash;
+        InputReader.Instance.buttonPress[(int)GamePadButton.NorthButton] += TryInteract;
+        InputReader.Instance.buttonLongPress[(int)GamePadButton.DpadUp] += ChargeAttack;
+        InputReader.Instance.buttonPress[(int)GamePadButton.RightStickPress] += SpanCameraFaceTarget;
+        InputReader.Instance.buttonPress[(int)GamePadButton.DpadDown] += LockOnMode;
         PlayAnimation(freelookHash, crossFixedDuration);
     }
 
     public override void Exit()
     {
-        InputReader.Instance.DpadUpButtonPressEvent -= UseItem;
-        InputReader.Instance.DpadRightButtonPressEvent -= SwitchItem;
-        InputReader.Instance.DpadLeftButtonPressEvent -= QuickSwitchWeapon;
-        InputReader.Instance.SouthButtonPressEvent -= Jump;
-        InputReader.Instance.EastButtonPressEvent -= Dodge;
-        InputReader.Instance.EastButtonLongPressEvent -= Dash;
-        InputReader.Instance.WestButtonPressEvent -= NormalAttack;
-        InputReader.Instance.NorthButtonPressEvent -= StrongAttack;
-        InputReader.Instance.WestButtonLongPressEvent -= ChargeAttack;
-        InputReader.Instance.RightStickPressEvent -= SpanCameraFaceTarget;
-        InputReader.Instance.DpadDownButtonPressEvent -= LockOnMode;
+        InputReader.Instance.buttonPress[(int)GamePadButton.WestButton] -= NormalAttack;
+        InputReader.Instance.buttonPress[(int)GamePadButton.DpadUp] -= UseItem;
+        InputReader.Instance.buttonPress[(int)GamePadButton.DpadRight] -= SwitchItem;
+        InputReader.Instance.buttonPress[(int)GamePadButton.DpadLeft] -= QuickSwitchWeapon;
+        InputReader.Instance.buttonPress[(int)GamePadButton.SouthButton] -= Jump;
+        InputReader.Instance.buttonPress[(int)GamePadButton.EastButton] -= Dodge;
+        InputReader.Instance.buttonPress[(int)GamePadButton.LeftStickPress] -= Dash;
+        InputReader.Instance.buttonPress[(int)GamePadButton.NorthButton] -= TryInteract;
+        InputReader.Instance.buttonLongPress[(int)GamePadButton.DpadUp] -= ChargeAttack;
+        InputReader.Instance.buttonPress[(int)GamePadButton.RightStickPress] -= SpanCameraFaceTarget;
+        InputReader.Instance.buttonPress[(int)GamePadButton.DpadDown] -= LockOnMode;
     }
 
     public override void Tick()
@@ -53,23 +52,23 @@ public class PlayerFreeLookState : PlayerState
         UpdateAnimator();
         HandleCameraMovement();
         HandlePlayerMovement();
-        if (!playerStateMachine.groundChecker.IsGrounded) playerStateMachine.SwitchState(new PlayerFallingState(playerStateMachine));
+        if (!psm.groundChecker.IsGrounded) psm.SwitchState(new PlayerFallingState(psm));
 
         footstepInterval += Time.deltaTime;
         if (InputReader.Instance.leftStickValue == Vector2.zero) return;
-        if (playerStateMachine.walkMode || Mathf.Max(Mathf.Abs(InputReader.Instance.leftStickValue.x), Mathf.Abs(InputReader.Instance.leftStickValue.y)) < 0.7f)
+        if (psm.walkMode || Mathf.Max(Mathf.Abs(InputReader.Instance.leftStickValue.x), Mathf.Abs(InputReader.Instance.leftStickValue.y)) < 0.7f)
         {
             if (footstepInterval > 0.9f)
             {
-                if (!playerStateMachine.footstepSource.isPlaying) playerStateMachine.footstepSource.Play();
+                if (!psm.footstepSource.isPlaying) psm.footstepSource.Play();
                 footstepInterval -= 0.9f;
             }
         }
-        else if (playerStateMachine.isDashing)
+        else if (psm.isDashing)
         {
             if (footstepInterval > 0.1f)
             {
-                if (!playerStateMachine.footstepSource.isPlaying) playerStateMachine.footstepSource.Play();
+                if (!psm.footstepSource.isPlaying) psm.footstepSource.Play();
                 footstepInterval -= 0.1f;
             }
         }
@@ -77,20 +76,35 @@ public class PlayerFreeLookState : PlayerState
         {
             if (footstepInterval > 0.2f)
             {
-                if (!playerStateMachine.footstepSource.isPlaying) playerStateMachine.footstepSource.Play();
+                if (!psm.footstepSource.isPlaying) psm.footstepSource.Play();
                 footstepInterval -= 0.2f;
             }
         }
+
+        if (psm.isDashing)
+        {
+            if (!psm.character.TryUseStamina(PlayerActionCost.runAction)) psm.isDashing = false;
+        }
+    }
+
+    private void TryInteract()
+    {
+        if (psm.interactableHandler.TryInteract(psm))
+        {
+            psm.animator.SetFloat(blendSpeedHash, 0f);
+            psm.SwitchState(new PlayerTalkingState(psm));
+        }
+        else StrongAttack();
     }
 
     private void UpdateAnimator()
     {
         if (InputReader.Instance.leftStickValue == Vector2.zero)
         {
-            playerStateMachine.animator.SetFloat(blendSpeedHash, 0f, 0.1f, Time.deltaTime);
+            psm.animator.SetFloat(blendSpeedHash, 0f, 0.1f, Time.deltaTime);
             return;
         }
-        if (playerStateMachine.walkMode)
+        if (psm.walkMode)
         {
             blendValue = 0.5f;
         }
@@ -101,16 +115,17 @@ public class PlayerFreeLookState : PlayerState
             else blendValue = 0.5f;
         }
 
-        playerStateMachine.animator.SetFloat(blendSpeedHash, blendValue, 0.1f, Time.deltaTime);
+        psm.animator.SetFloat(blendSpeedHash, blendValue, 0.1f, Time.deltaTime);
     }
 
     private void NormalAttack()
     {
-        playerStateMachine.isDashing = false;
-        WeaponType weaponType = playerStateMachine.character.GetCurrentWeaponData().weaponType;
+        if (!psm.character.TryUseStamina(PlayerActionCost.attackAction)) return;
+        psm.isDashing = false;
+        WeaponType weaponType = psm.character.GetCurrentWeaponData().weaponType;
         if (weaponType == WeaponType.Sword)
         {
-            playerStateMachine.SwitchState(new PlayerAttackingState(playerStateMachine, playerStateMachine.comboManager.normalSwordCombo, 0));
+            psm.SwitchState(new PlayerAttackingState(psm, psm.comboManager.normalSwordCombo, 0));
         }
         else if (weaponType == WeaponType.Bow)
         {
@@ -122,15 +137,16 @@ public class PlayerFreeLookState : PlayerState
             }
             InventoryBox.Instance.RemoveItem("5003", 1);
             EventHandler.OnUseItemEvent("5003");
-            playerStateMachine.SwitchState(new PlayerAttackingState(playerStateMachine, playerStateMachine.comboManager.normalBowCombo, 0));
+            psm.SwitchState(new PlayerAttackingState(psm, psm.comboManager.normalBowCombo, 0));
         }
         else return;
     }
 
     private void ChargeAttack()
     {
-        playerStateMachine.isDashing = false;
-        WeaponType weaponType = playerStateMachine.character.GetCurrentWeaponData().weaponType;
+        if (!psm.character.TryUseStamina(PlayerActionCost.chargeAttackAction)) return;
+        psm.isDashing = false;
+        WeaponType weaponType = psm.character.GetCurrentWeaponData().weaponType;
         if (weaponType == WeaponType.Sword)
         {
             /*
@@ -138,59 +154,56 @@ public class PlayerFreeLookState : PlayerState
             playerStateMachine.bowBack.SetActive(true);
             playerStateMachine.swordBack.SetActive(false);
             playerStateMachine.bowMainHand.SetActive(false);*/
-            playerStateMachine.SwitchState(new PlayerChargeAttackingState(playerStateMachine));
+            psm.SwitchState(new PlayerChargeAttackingState(psm));
         }
         else return;
     }
 
     private void StrongAttack()
     {
-        playerStateMachine.isDashing = false;
-        WeaponType weaponType = playerStateMachine.character.GetCurrentWeaponData().weaponType;
+        if (!psm.character.TryUseStamina(PlayerActionCost.strongAttackAction)) return;
+        psm.isDashing = false;
+        WeaponType weaponType = psm.character.GetCurrentWeaponData().weaponType;
         if (weaponType == WeaponType.Sword)
-        {/*
-            playerStateMachine.swordMainHand.SetActive(true);
-            playerStateMachine.bowBack.SetActive(true);
-            playerStateMachine.swordBack.SetActive(false);
-            playerStateMachine.bowMainHand.SetActive(false);*/
-            playerStateMachine.SwitchState(new PlayerAttackingState(playerStateMachine, playerStateMachine.comboManager.strongSwordAttackCombo, 0));
+        {
+            psm.SwitchState(new PlayerAttackingState(psm, psm.comboManager.strongSwordAttackCombo, 0));
         }
         else return;
     }
 
     private void Dash()
     {
-        playerStateMachine.isDashing = true;
+        psm.isDashing = true;
     }
 
     private void UseItem()
     {
-        string itemGuid = playerStateMachine.currentItemGuid;
+        string itemGuid = psm.currentItemGuid;
         Debug.Log($"Try using item {itemGuid}");
         if (InventoryBox.Instance.RemoveItem(itemGuid, 1))
         {
             ConsumableItemData consumableItem = (ConsumableItemData)ItemDatabase.Instance.GetItemData(itemGuid);
-            consumableItem.Use(playerStateMachine.gameObject);
+            consumableItem.Use(psm.gameObject);
             EventHandler.OnUseItemEvent(itemGuid);
         }
     }
 
     private void SwitchItem()
     {
-        if (playerStateMachine.currentItemGuid == "1001")
+        if (psm.currentItemGuid == "1001")
         {
-            playerStateMachine.currentItemGuid = "1002";
+            psm.currentItemGuid = "1002";
             GameObject.FindObjectOfType<QuickSlotManager>().UpdateCurrentItemInfo("1002");
 
         }
-        else if (playerStateMachine.currentItemGuid == "1002")
+        else if (psm.currentItemGuid == "1002")
         {
-            playerStateMachine.currentItemGuid = "1001";
+            psm.currentItemGuid = "1001";
             GameObject.FindObjectOfType<QuickSlotManager>().UpdateCurrentItemInfo("1001");
 
         }
-        
-        Debug.Log($"Current Item {playerStateMachine.currentItemGuid}");
+
+        Debug.Log($"Current Item {psm.currentItemGuid}");
     }
 
     private void Cheat()

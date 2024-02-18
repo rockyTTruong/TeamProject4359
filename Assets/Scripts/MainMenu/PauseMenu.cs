@@ -20,7 +20,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Start()
     {
-        InputReader.Instance.StartButtonPressEvent += StartButtonHandler;
+        InputReader.Instance.buttonPress[(int)GamePadButton.Start] += StartButtonHandler;
     }
 
     // Update is called once per frame
@@ -50,6 +50,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         isPaused = true;
         GameManager.Instance.SetInMenuBool(true);
+        InputReader.Instance.DisableInput();
         CharacterUI.SetActive(false);
     }
 
@@ -59,6 +60,7 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
         Time.timeScale = 1f;
         GameManager.Instance.SetInMenuBool(false);
+        InputReader.Instance.EnableInput();
         CharacterUI.SetActive(true);
     }
 

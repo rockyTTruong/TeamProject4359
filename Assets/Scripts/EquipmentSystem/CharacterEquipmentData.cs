@@ -32,6 +32,18 @@ public class CharacterEquipmentData
         return totalHp;
     }
 
+    public float TotalStamina()
+    {
+        float total = 0;
+        for (int i = 0; i < equippingItemGuids.Length; i++)
+        {
+            EquipmentItemData equipmentData = GetEquipmentData(i);
+            if (equipmentData == null) continue;
+            total += equipmentData.stamina;
+        }
+        return total;
+    }
+
     public float TotalAttack()
     {
         float totalAttack = 0;

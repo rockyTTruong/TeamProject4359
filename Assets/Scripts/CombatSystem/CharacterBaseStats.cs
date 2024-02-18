@@ -8,6 +8,7 @@ public class CharacterBaseStats
     public int level;
     public float experience;
     public float hp;
+    public float stamina;
     public float attack;
     public float defense;
 }

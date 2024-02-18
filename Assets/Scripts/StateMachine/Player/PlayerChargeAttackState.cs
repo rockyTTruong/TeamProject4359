@@ -15,24 +15,24 @@ public class PlayerChargeAttackingState : PlayerState
 
     public override void Enter()
     {
-        AttackHandler attackHandler = playerStateMachine.GetComponent<AttackHandler>();
+        AttackHandler attackHandler = psm.GetComponent<AttackHandler>();
         attackHandler.HitboxDisabled();
         attackHandler.DisabledSwordTrail();
 
         PlayAnimation(chargingAttackHash, crossFixedDuration);
-        InputReader.Instance.DpadDownButtonPressEvent += LockOnMode;
+        InputReader.Instance.buttonPress[(int)GamePadButton.DpadDown] += LockOnMode;
     }
 
     public override void Exit()
     {
-        InputReader.Instance.DpadDownButtonPressEvent -= LockOnMode;
+        InputReader.Instance.buttonPress[(int)GamePadButton.DpadDown] -= LockOnMode;
     }
 
     public override void Tick()
     {
         HandleCameraMovement();
         Move(Vector3.zero);
-        GameObject target = playerStateMachine.targetManager.GetCurrentTarget();
+        GameObject target = psm.targetManager.GetCurrentTarget();
         if (target != null)
         {
             FaceTarget(target);
@@ -40,6 +40,6 @@ public class PlayerChargeAttackingState : PlayerState
 
         //if (InputReader.Instance.isPressingWestButton) return; 
 
-        playerStateMachine.SwitchState(new PlayerAttackingState(playerStateMachine, playerStateMachine.comboManager.chargeSwordAttackCombo, 0));
+        psm.SwitchState(new PlayerAttackingState(psm, psm.comboManager.chargeSwordAttackCombo, 0));
     }
 }

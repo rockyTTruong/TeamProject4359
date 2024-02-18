@@ -11,26 +11,26 @@ public class PlayerImpactState : PlayerState
 
     public override void Enter()
     {
-        AttackHandler attackHandler = playerStateMachine.GetComponent<AttackHandler>();
+        AttackHandler attackHandler = psm.GetComponent<AttackHandler>();
         attackHandler.HitboxDisabled();
         attackHandler.DisabledSwordTrail();
 
         PlayAnimation(impactHash, crossFixedDuration);
-        InputReader.Instance.DpadDownButtonPressEvent += LockOnMode;
+        InputReader.Instance.buttonPress[(int)GamePadButton.DpadDown] += LockOnMode;
     }
 
     public override void Exit()
     {
-        InputReader.Instance.DpadDownButtonPressEvent -= LockOnMode;
+        InputReader.Instance.buttonPress[(int)GamePadButton.DpadDown] -= LockOnMode;
     }
 
     public override void Tick()
     {
         Move(Vector3.zero); //Apply Force
-        float normalizedTime = GetNormalizedTime(playerStateMachine.animator, impactHash);
+        float normalizedTime = GetNormalizedTime(psm.animator, impactHash);
         if (normalizedTime >= 1f)
         {
-            playerStateMachine.SwitchState(new PlayerFreeLookState(playerStateMachine));
+            psm.SwitchState(new PlayerFreeLookState(psm));
         }
     }
 }
