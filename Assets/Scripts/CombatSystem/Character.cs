@@ -82,7 +82,8 @@ public class Character : MonoBehaviour, IDamageable
         if (currentStamina == 0) return false;
         currentStamina = Mathf.Max(currentStamina - amount, 0f);
         UpdateStaminaBar();
-        RecoverStamina();
+        if (currentStamina == 0) RecoverStamina(2.5f);
+        else RecoverStamina(1.5f);
         return true;
     }
 
@@ -174,19 +175,19 @@ public class Character : MonoBehaviour, IDamageable
         obj.transform.Find("DamageBuff").gameObject.SetActive(false);
     }
 
-    private void RecoverStamina()
+    public void RecoverStamina(float delayTime)
     {
         if (recoveringStamina != null)
         {
             StopCoroutine(recoveringStamina);
             recoveringStamina = null;
         }
-        recoveringStamina = StartCoroutine(RecoverStaminaCoroutine());
+        recoveringStamina = StartCoroutine(RecoverStaminaCoroutine(delayTime));
     }
 
-    private IEnumerator RecoverStaminaCoroutine()
+    private IEnumerator RecoverStaminaCoroutine(float delayTime)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(delayTime);
         int maxStamina = GetMaxStamina();
         while (currentStamina != maxStamina)
         {

@@ -34,5 +34,10 @@ public class PlayerJumpState : PlayerState
             psm.SwitchState(new PlayerFallingState(psm));
             return;
         }
+
+        if (psm.isDashing)
+        {
+            if (!psm.character.TryUseStamina(PlayerActionCost.runAction)) psm.isDashing = false;
+        }
     }
 }

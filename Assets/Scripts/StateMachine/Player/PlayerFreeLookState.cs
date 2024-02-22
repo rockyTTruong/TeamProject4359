@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerFreeLookState : PlayerState
@@ -54,6 +55,17 @@ public class PlayerFreeLookState : PlayerState
         HandlePlayerMovement();
         if (!psm.groundChecker.IsGrounded) psm.SwitchState(new PlayerFallingState(psm));
 
+        if (psm.isDashing)
+        {
+            if (!psm.character.TryUseStamina(PlayerActionCost.runAction)) psm.isDashing = false;
+        }
+
+        if (psm.character.CurrentStamina == 0f)
+        {
+            psm.isDashing = false;
+            psm.SwitchState(new PlayerExhaustionState(psm));
+        }
+
         footstepInterval += Time.deltaTime;
         if (InputReader.Instance.leftStickValue == Vector2.zero) return;
         if (psm.walkMode || Mathf.Max(Mathf.Abs(InputReader.Instance.leftStickValue.x), Mathf.Abs(InputReader.Instance.leftStickValue.y)) < 0.7f)
@@ -79,11 +91,6 @@ public class PlayerFreeLookState : PlayerState
                 if (!psm.footstepSource.isPlaying) psm.footstepSource.Play();
                 footstepInterval -= 0.2f;
             }
-        }
-
-        if (psm.isDashing)
-        {
-            if (!psm.character.TryUseStamina(PlayerActionCost.runAction)) psm.isDashing = false;
         }
     }
 
