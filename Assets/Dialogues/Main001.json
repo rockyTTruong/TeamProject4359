@@ -1,0 +1,28 @@
+{
+  "dialogues": [
+    {
+      "speaker": "Leon",
+      "message": "Morning, old friend. Anything unusual in the heart of the woods today?"
+    },
+    {
+      "speaker": "Fellow Hunter",
+      "message": "Leon! Good to see you up. There's been some suspicious activity near the southern edge. The Elder is worried."
+    },
+    {
+      "speaker": "Leon",
+      "message": "Suspicious, you say?"
+    },
+    {
+      "speaker": "Fellow Hunter",
+      "message": "Yeah, but the village has been on edge. They're counting on your roasted boar for the feast to lighten the mood."
+    },
+    {
+      "speaker": "Leon",
+      "message": "I'll make sure to get one during today's hunt. Keep an eye on the village for me, will you?"
+    },
+    {
+      "speaker": "Fellow Hunter",
+      "message": "Always do, Leon. Safe hunting!"
+    }
+  ]
+}
