@@ -18,6 +18,7 @@ public class PlayerAttackingState : PlayerState
 
     public override void Enter()
     {
+        psm.currentState = PlayerStates.Attacking;
         PlayAnimation(attackHash, attack.transitionDuration);
         InputReader.Instance.buttonPress[(int)GamePadButton.WestButton] += TryComboNormalAttack;
         InputReader.Instance.buttonLongPress[(int)GamePadButton.WestButton] += ChargeAttack;
@@ -25,7 +26,6 @@ public class PlayerAttackingState : PlayerState
         InputReader.Instance.buttonPress[(int)GamePadButton.DpadDown] += LockOnMode;
         InputReader.Instance.buttonPress[(int)GamePadButton.EastButton] += Dodge;
         InputReader.Instance.buttonPress[(int)GamePadButton.SouthButton] += Jump;
-        InputReader.Instance.buttonPress[(int)GamePadButton.DpadLeft] += QuickSwitchWeapon;
     }
 
     public override void Exit()
@@ -36,7 +36,6 @@ public class PlayerAttackingState : PlayerState
         InputReader.Instance.buttonPress[(int)GamePadButton.DpadDown] -= LockOnMode;
         InputReader.Instance.buttonPress[(int)GamePadButton.EastButton] -= Dodge;
         InputReader.Instance.buttonPress[(int)GamePadButton.SouthButton] -= Jump;
-        InputReader.Instance.buttonPress[(int)GamePadButton.DpadLeft] -= QuickSwitchWeapon;
     }
 
     public override void Tick()

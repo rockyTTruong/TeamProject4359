@@ -8,16 +8,10 @@ public class CoinManager : SingletonMonobehaviour<CoinManager>
 {
     [SerializeField] private Image arrowImage;
     [SerializeField] private Image greenCoinImage;
-    [SerializeField] private Image redCoinImage;
-    [SerializeField] private Image yellowCoinImage;
     [SerializeField] private TextMeshProUGUI arrowQuantityTextMesh;
     [SerializeField] private TextMeshProUGUI greenCoinQuantityTextMesh;
-    [SerializeField] private TextMeshProUGUI redCoinQuantityTextMesh;
-    [SerializeField] private TextMeshProUGUI yellowCoinQuantityTextMesh;
 
     private InventorySlot greenCoinSlot;
-    private InventorySlot redCoinSlot;
-    private InventorySlot yellowCoinSlot;
     private InventorySlot arrowSlot;
 
     private void Start()
@@ -44,24 +38,6 @@ public class CoinManager : SingletonMonobehaviour<CoinManager>
             greenCoinQuantityTextMesh.text = "0";
         }
 
-        if (redCoinSlot != null)
-        {
-            redCoinQuantityTextMesh.text = $"{redCoinSlot.quantity}";
-        }
-        else
-        {
-            redCoinQuantityTextMesh.text = "0";
-        }
-
-        if (yellowCoinSlot != null)
-        {
-            yellowCoinQuantityTextMesh.text = $"{yellowCoinSlot.quantity}";
-        }
-        else
-        {
-            yellowCoinQuantityTextMesh.text = "0";
-        }
-
         if (arrowSlot != null)
         {
             arrowQuantityTextMesh.text = $"{arrowSlot.quantity}";
@@ -75,8 +51,6 @@ public class CoinManager : SingletonMonobehaviour<CoinManager>
     public void UpdateCoinInfo(string itemGuid)
     {
         greenCoinSlot = InventoryBox.Instance.CheckInventory("9999");
-        redCoinSlot = InventoryBox.Instance.CheckInventory("9998");
-        yellowCoinSlot = InventoryBox.Instance.CheckInventory("9997");
         arrowSlot = InventoryBox.Instance.CheckInventory("5003");
         UpdateUI();
     }

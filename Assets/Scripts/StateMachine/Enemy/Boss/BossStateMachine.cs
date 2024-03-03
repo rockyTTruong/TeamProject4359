@@ -40,7 +40,7 @@ public class BossStateMachine : StateMachine
     public GameObject fireballPrefab;
     public GameObject firewallPrefab;
 
-    public bool below50Percent;
+    public bool rageMode;
     public int specialUseCount;
 
     public void Start()
@@ -60,11 +60,12 @@ public class BossStateMachine : StateMachine
 
     public void OnDamage()
     {
-        if (character.CurrentHpPercent <= 0.5f && !below50Percent)
+        if (character.CurrentHpPercent < 0.5 && !rageMode)
         {
-            below50Percent = true;
+            rageMode = true;
+            SwitchState(new BossImpactState(this));
         }
-        SwitchState(new BossImpactState(this));
+        if (!character.isUnflinching) SwitchState(new BossImpactState(this));
     }
 
     public void OnDie(GameObject dieCharacter)

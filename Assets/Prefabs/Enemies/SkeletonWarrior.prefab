@@ -527,6 +527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponCollider: {fileID: 7279805812307373121}
+  bowCollider: {fileID: 0}
   attacks:
   - {fileID: 11400000, guid: 27cb85564b9abf74eb51f1116b5efd82, type: 2}
   swordTrailEffect: {fileID: 0}
@@ -563,11 +564,13 @@ MonoBehaviour:
   isInvincible: 0
   attacks: []
   healthBar: {fileID: 4118429419338667167}
+  staminaBar: {fileID: 0}
   healthBarTextMesh: {fileID: 0}
   baseStats:
     level: 1
     experience: 0
     hp: 100
+    stamina: 0
     attack: 10
     defense: 5
   equipmentData:
@@ -578,6 +581,8 @@ MonoBehaviour:
     - 
     - 
     - 
+  healthUI: {fileID: 0}
+  healthDisplayDistance: 0
 --- !u!114 &5681303203830885003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -628,8 +633,8 @@ MonoBehaviour:
   character: {fileID: 1026095539947790403}
   dropItemPrefabs:
   - {fileID: 1402036301047889183, guid: d767da4848cee9d4596fbbb0313563bc, type: 3}
-  - {fileID: 1402036301047889183, guid: 664d95e9a4d546b42ba020d15a22feeb, type: 3}
-  - {fileID: 1402036301047889183, guid: c90bfa12f8aaf4c428b0f16873484033, type: 3}
+  - {fileID: 1402036301047889183, guid: d767da4848cee9d4596fbbb0313563bc, type: 3}
+  - {fileID: 1402036301047889183, guid: d767da4848cee9d4596fbbb0313563bc, type: 3}
   spawnInterval: 0.2
   spawnRadius: 2.5
 --- !u!1 &6272423119385921212

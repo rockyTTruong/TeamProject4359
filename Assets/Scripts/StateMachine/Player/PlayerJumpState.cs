@@ -9,6 +9,7 @@ public class PlayerJumpState : PlayerState
 
     public override void Enter()
     {
+        psm.currentState = PlayerStates.Jumping;
         psm.isJumping = true;
         AttackHandler attackHandler = psm.GetComponent<AttackHandler>();
         attackHandler.HitboxDisabled();

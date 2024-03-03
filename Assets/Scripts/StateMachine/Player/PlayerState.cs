@@ -135,33 +135,4 @@ public abstract class PlayerState : State
         float cameraAngle = Quaternion.FromToRotation(Vector3.forward, direction).eulerAngles.y;
         CameraController.Instance.SpanCamera(cameraAngle);
     }
-
-    public void QuickSwitchWeapon()
-    {
-        WeaponItemData currentWeapon = psm.character.GetCurrentWeaponData();
-        if (currentWeapon.weaponType == WeaponType.Sword)
-        {
-            if (InventoryBox.Instance.CheckInventory("5002") == null)
-            {
-                Debug.Log($"You don't have a bow yet.");
-                return;
-            }
-            Debug.Log($"Switch to Bow.");
-            psm.character.ChangeWeapon("5002");
-            psm.swordMainHand.SetActive(false);
-            psm.bowBack.SetActive(false);
-            psm.swordBack.SetActive(true);
-            psm.bowMainHand.SetActive(true);
-        }
-        else if (currentWeapon.weaponType == WeaponType.Bow)
-        {
-            Debug.Log($"Switch to Sword.");
-            psm.character.ChangeWeapon("5001");
-            psm.swordMainHand.SetActive(true);
-            psm.bowBack.SetActive(true);
-            psm.swordBack.SetActive(false);
-            psm.bowMainHand.SetActive(false);
-        }
-        EventHandler.OnSwitchWeaponEvent();
-    }
 }

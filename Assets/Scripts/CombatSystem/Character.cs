@@ -62,7 +62,7 @@ public class Character : MonoBehaviour, IDamageable
     {
         if (isDead || isInvincible) return false;
 
-        if (!isUnflinching) DamageEvent?.Invoke();
+        DamageEvent?.Invoke();
 
         currentHp = Mathf.Max(currentHp - damage, 0);
         UpdateHPBar();

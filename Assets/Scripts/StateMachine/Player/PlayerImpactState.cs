@@ -11,6 +11,7 @@ public class PlayerImpactState : PlayerState
 
     public override void Enter()
     {
+        psm.currentState = PlayerStates.Hit;
         AttackHandler attackHandler = psm.GetComponent<AttackHandler>();
         attackHandler.HitboxDisabled();
         attackHandler.DisabledSwordTrail();

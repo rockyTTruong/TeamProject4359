@@ -13,6 +13,7 @@ public class PlayerDodgingState : PlayerState
 
     public override void Enter()
     {
+        psm.currentState = PlayerStates.Dodging;
         AttackHandler attackHandler = psm.GetComponent<AttackHandler>();
         attackHandler.HitboxDisabled();
         attackHandler.DisabledSwordTrail();
@@ -26,7 +27,6 @@ public class PlayerDodgingState : PlayerState
         PlayAnimation(dodgeHash, crossFadeDuration);
         InputReader.Instance.buttonPress[(int)GamePadButton.DpadDown] += LockOnMode;
         InputReader.Instance.buttonPress[(int)GamePadButton.SouthButton] += Jump;
-        InputReader.Instance.buttonPress[(int)GamePadButton.DpadLeft] += QuickSwitchWeapon;
     }
 
     public override void Exit()
@@ -34,7 +34,6 @@ public class PlayerDodgingState : PlayerState
         psm.character.isInvincible = false;
         InputReader.Instance.buttonPress[(int)GamePadButton.DpadDown] -= LockOnMode;
         InputReader.Instance.buttonPress[(int)GamePadButton.SouthButton] -= Jump;
-        InputReader.Instance.buttonPress[(int)GamePadButton.DpadLeft] -= QuickSwitchWeapon;
     }
 
     public override void Tick()

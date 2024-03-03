@@ -435,7 +435,7 @@ GameObject:
   - component: {fileID: 3725000300230862189}
   - component: {fileID: 2378036393067051576}
   - component: {fileID: 4204883569171396088}
-  - component: {fileID: 4911402760374262734}
+  - component: {fileID: 2027123211264749821}
   m_Layer: 3
   m_Name: Npc-FellowHunter
   m_TagString: Untagged
@@ -507,7 +507,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.8
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &4911402760374262734
+--- !u!114 &2027123211264749821
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -521,8 +521,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableUIIndicator: {fileID: 6245618489856576911}
   dialogues:
-  - textJson: {fileID: 4900000, guid: d805cd2b05a3c3e4e8a87ba325f5fa26, type: 3}
-    playableDirector: {fileID: 0}
+  - {fileID: 11400000, guid: dbeaea7ba0bcfd94980c63a2ee8b2481, type: 2}
+  - {fileID: 11400000, guid: 059e8142a518b124da02e7ce70b3dad6, type: 2}
   facePlayerSpeed: 5
 --- !u!1 &4567679214787823739
 GameObject:

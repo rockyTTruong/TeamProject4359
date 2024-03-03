@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
-using UnityEngine.InputSystem.LowLevel;
 
 public class PlayerTalkingState : PlayerState
 {
@@ -13,6 +11,7 @@ public class PlayerTalkingState : PlayerState
 
     public override void Enter()
     {
+        psm.currentState = PlayerStates.Talking;
         InputReader.Instance.buttonPress[(int)GamePadButton.SouthButton] += NextDialogue;
     }
 

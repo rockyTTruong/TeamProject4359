@@ -12,6 +12,7 @@ public class PlayerFallingState : PlayerState
 
     public override void Enter()
     {
+        psm.currentState = PlayerStates.Falling;
         psm.isFalling = true;
         AttackHandler attackHandler = psm.GetComponent<AttackHandler>();
         attackHandler.HitboxDisabled();

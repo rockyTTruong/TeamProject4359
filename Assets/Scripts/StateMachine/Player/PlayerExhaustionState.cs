@@ -11,6 +11,7 @@ public class PlayerExhaustionState : PlayerState
 
     public override void Enter()
     {
+        psm.currentState = PlayerStates.Exhausting;
         AttackHandler attackHandler = psm.GetComponent<AttackHandler>();
         attackHandler.HitboxDisabled();
         attackHandler.DisabledSwordTrail();

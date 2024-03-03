@@ -13,7 +13,7 @@ public class BossIdleState : BossState
     private float idleTime = 2f;
     public override void Enter()
     {
-        if (sm.below50Percent) idleTime = 1f;
+        if (sm.rageMode) idleTime = 1f;
         timer = 0f;
         PlayAnimation(idleHash, crossFixedDuration);
     }
@@ -31,7 +31,7 @@ public class BossIdleState : BossState
         timer += Time.deltaTime;
         if (timer >= idleTime)
         {
-            if (sm.below50Percent)
+            if (sm.rageMode)
             {
                 float r = Random.Range(0f, 100f);
                 if (r < 25)

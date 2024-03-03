@@ -15,11 +15,21 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
 
     public void Interact(PlayerStateMachine psm)
     {
+        if (dialogues.Count == 0) return;
+
         FacePlayer(psm);
-        DialogueManager.Instance.StartDialogue(dialogues[0].textJson, dialogues[0].playableDirector);
+
+        for (int i = 0; i < dialogues.Count; i++)
+        {
+            if (dialogues[i].MeetRequirement())
+            {
+                DialogueManager.Instance.StartDialogue(dialogues[i]);
+                return;
+            }
+        }
     }
 
-    public void FacePlayer(PlayerStateMachine psm)
+    private void FacePlayer(PlayerStateMachine psm)
     {
         if (facingPlayer != null)
         {

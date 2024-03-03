@@ -11,6 +11,7 @@ public class PlayerDieState : PlayerState
 
     public override void Enter()
     {
+        psm.currentState = PlayerStates.Die;
         AttackHandler attackHandler = psm.GetComponent<AttackHandler>();
         attackHandler.HitboxDisabled();
         attackHandler.DisabledSwordTrail();

@@ -15,15 +15,13 @@ public class PlayerFreeLookState : PlayerState
 
     public override void Enter()
     {
+        psm.currentState = PlayerStates.Idle;
         InputReader.Instance.buttonPress[(int)GamePadButton.WestButton] += NormalAttack;
-        InputReader.Instance.buttonPress[(int)GamePadButton.DpadUp] += UseItem;
-        InputReader.Instance.buttonPress[(int)GamePadButton.DpadRight] += SwitchItem;
-        InputReader.Instance.buttonPress[(int)GamePadButton.DpadLeft] += QuickSwitchWeapon;
+        InputReader.Instance.buttonLongPress[(int)GamePadButton.WestButton] += ChargeAttack;
         InputReader.Instance.buttonPress[(int)GamePadButton.SouthButton] += Jump;
         InputReader.Instance.buttonPress[(int)GamePadButton.EastButton] += Dodge;
         InputReader.Instance.buttonPress[(int)GamePadButton.LeftStickPress] += Dash;
         InputReader.Instance.buttonPress[(int)GamePadButton.NorthButton] += TryInteract;
-        InputReader.Instance.buttonLongPress[(int)GamePadButton.DpadUp] += ChargeAttack;
         InputReader.Instance.buttonPress[(int)GamePadButton.RightStickPress] += SpanCameraFaceTarget;
         InputReader.Instance.buttonPress[(int)GamePadButton.DpadDown] += LockOnMode;
         PlayAnimation(freelookHash, crossFixedDuration);
@@ -32,14 +30,11 @@ public class PlayerFreeLookState : PlayerState
     public override void Exit()
     {
         InputReader.Instance.buttonPress[(int)GamePadButton.WestButton] -= NormalAttack;
-        InputReader.Instance.buttonPress[(int)GamePadButton.DpadUp] -= UseItem;
-        InputReader.Instance.buttonPress[(int)GamePadButton.DpadRight] -= SwitchItem;
-        InputReader.Instance.buttonPress[(int)GamePadButton.DpadLeft] -= QuickSwitchWeapon;
+        InputReader.Instance.buttonLongPress[(int)GamePadButton.WestButton] -= ChargeAttack;
         InputReader.Instance.buttonPress[(int)GamePadButton.SouthButton] -= Jump;
         InputReader.Instance.buttonPress[(int)GamePadButton.EastButton] -= Dodge;
         InputReader.Instance.buttonPress[(int)GamePadButton.LeftStickPress] -= Dash;
         InputReader.Instance.buttonPress[(int)GamePadButton.NorthButton] -= TryInteract;
-        InputReader.Instance.buttonLongPress[(int)GamePadButton.DpadUp] -= ChargeAttack;
         InputReader.Instance.buttonPress[(int)GamePadButton.RightStickPress] -= SpanCameraFaceTarget;
         InputReader.Instance.buttonPress[(int)GamePadButton.DpadDown] -= LockOnMode;
     }
@@ -108,20 +103,34 @@ public class PlayerFreeLookState : PlayerState
     {
         if (InputReader.Instance.leftStickValue == Vector2.zero)
         {
+            psm.currentState = PlayerStates.Idle;
             psm.animator.SetFloat(blendSpeedHash, 0f, 0.1f, Time.deltaTime);
             return;
         }
         if (psm.walkMode)
         {
             blendValue = 0.5f;
+            psm.currentState = PlayerStates.Walking;
         }
         else
         {
             blendValue = Mathf.Max(Mathf.Abs(InputReader.Instance.leftStickValue.x), Mathf.Abs(InputReader.Instance.leftStickValue.y));
-            if (blendValue > 0.7f) blendValue = 1f;
-            else blendValue = 0.5f;
+            if (blendValue > 0.7f)
+            {
+                blendValue = 1f;
+                psm.currentState = PlayerStates.Running;
+            }
+            else
+            {
+                blendValue = 0.5f;
+                psm.currentState = PlayerStates.Walking;
+            }
         }
 
+        if (psm.isDashing)
+        {
+            psm.currentState = PlayerStates.Dashing;
+        }
         psm.animator.SetFloat(blendSpeedHash, blendValue, 0.1f, Time.deltaTime);
     }
 
@@ -183,41 +192,9 @@ public class PlayerFreeLookState : PlayerState
         psm.isDashing = true;
     }
 
-    private void UseItem()
-    {
-        string itemGuid = psm.currentItemGuid;
-        Debug.Log($"Try using item {itemGuid}");
-        if (InventoryBox.Instance.RemoveItem(itemGuid, 1))
-        {
-            ConsumableItemData consumableItem = (ConsumableItemData)ItemDatabase.Instance.GetItemData(itemGuid);
-            consumableItem.Use(psm.gameObject);
-            EventHandler.OnUseItemEvent(itemGuid);
-        }
-    }
-
-    private void SwitchItem()
-    {
-        if (psm.currentItemGuid == "1001")
-        {
-            psm.currentItemGuid = "1002";
-            GameObject.FindObjectOfType<QuickSlotManager>().UpdateCurrentItemInfo("1002");
-
-        }
-        else if (psm.currentItemGuid == "1002")
-        {
-            psm.currentItemGuid = "1001";
-            GameObject.FindObjectOfType<QuickSlotManager>().UpdateCurrentItemInfo("1001");
-
-        }
-
-        Debug.Log($"Current Item {psm.currentItemGuid}");
-    }
-
     private void Cheat()
     {
-        InventoryBox.Instance.AddItem("9999", 10);
-        InventoryBox.Instance.AddItem("9998", 10);
-        InventoryBox.Instance.AddItem("9997", 10);
+        InventoryBox.Instance.AddItem("9999", 100);
         GameObject.FindObjectOfType<QuickSlotManager>().UpdateUI();
         CoinManager.Instance.UpdateUI();
     }

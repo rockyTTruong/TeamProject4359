@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.Playables;
 
@@ -17,23 +18,25 @@ public class DialogueManager : SingletonMonobehaviour<DialogueManager>
     private Queue<Dialogue> dialogueQueue = new Queue<Dialogue>();
     private Coroutine typing;
     private Dialogue currentDialogue;
-    private PlayableDirector playableDirector;
+    private DialogueData currentDialogueData;
+    private UnityAction action;
 
     protected override void Awake()
     {
         base.Awake();
     }
 
-    public void StartDialogue(TextAsset textJson, PlayableDirector playableDirector)
+    public void StartDialogue(DialogueData dialogueData)
     {
-        LoadDialogue(textJson);
+        currentDialogueData = dialogueData;
+        LoadDialogue(dialogueData.textJson);
         dialogueBox.SetActive(true);
-        if (playableDirector != null)
-        {
-            this.playableDirector = playableDirector;
-            playableDirector.Play();
-        }
         GoToNextDialogue();
+    }
+
+    public void ActionAfterDialogue(UnityAction action)
+    {
+        this.action = action;
     }
 
     public void LoadDialogue(TextAsset jsonFile)
@@ -88,6 +91,9 @@ public class DialogueManager : SingletonMonobehaviour<DialogueManager>
         dialogueBox.SetActive(false);
         PlayerStateMachine psm = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateMachine>();
         psm.SwitchState(new PlayerFreeLookState(psm));
+
+        currentDialogueData.RaiseFlag();
+        if (action != null) action.Invoke();
     }
 
     private IEnumerator TypeText(string text)
