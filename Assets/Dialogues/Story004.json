@@ -1,0 +1,36 @@
+{
+  "dialogues": [
+    {
+      "speaker": "Fisherman",
+      "message": "Whew. Leon, good to see ya! Where ya been? Everyone was looking for ya."
+    },
+    {
+      "speaker": "Fisherman",
+      "message": "I've been tryin' to snag some fish from the river, but those darn skeletons keep spookin' em off. Don't know where they're comin' from."
+    },
+    {
+      "speaker": "Leon",
+      "message": "I just handled the one by the bridge."
+    },
+    {
+      "speaker": "Fisherman",
+      "message": "I appreciate it, now I might catch a fish or two."
+    },
+    {
+      "speaker": "Fisherman",
+      "message": "How 'bout these dang quakes? Been through the second one in two days."
+    },
+    {
+      "speaker": "Leon",
+      "message": "Second one… in 2 days… Wait, what day is it, fisherman??"
+    },
+    {
+      "speaker": "Fisherman",
+      "message": "Ya done forgot my name again, huh? Oh well, anyways, it's Friday."
+    },
+    {
+      "speaker": "Leon",
+      "message": "FRIDAY? IT WAS JUST SUNDAY! I REALLY GOT TO GET BACK TO TOWN!"
+    }
+  ]
+}

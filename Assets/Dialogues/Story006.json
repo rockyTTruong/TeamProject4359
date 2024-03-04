@@ -1,0 +1,40 @@
+{
+  "dialogues": [
+    {
+      "speaker": "Ari",
+      "message": "LEON! OH MY GOD, THANK YOU!"
+    },
+    {
+      "speaker": "Leon",
+      "message": "Anytime. I'm just glad you're safe. What's the deal with all these skeletons?"
+    },
+    {
+      "speaker": "Ari",
+      "message": "They just started showing up after that first tremor a couple of days ago. Now, the whole village is crawling with them."
+    },
+    {
+      "speaker": "Ari",
+      "message": "It's gotta be some dark magic or something. Wizard Agnus might have answers."
+    },
+    {
+      "speaker": "Leon",
+      "message": "Yeah, I was just heading there. Hopefully, he's got a plan."
+    },
+    {
+      "speaker": "Ari",
+      "message": "Hold up, Leon! You saved my hide back there. Take this bow and arrow – it'll be handy on your journey."
+    },
+    {
+      "speaker": "Ari",
+      "message": "Don't stress about running low...if you've got gems, I'll trade 'em for arrows."
+    },
+    {
+      "speaker": "Ari",
+      "message": "Plus, I might snag some new items, so swing by when you can. Now, go see Agnus!"
+    },
+    {
+      "speaker": "Leon",
+      "message": "Thanks, Ari. I'll make sure to drop by. Take care of the shop!"
+    }
+  ]
+}

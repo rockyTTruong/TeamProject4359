@@ -1,0 +1,48 @@
+{
+  "dialogues": [
+    {
+      "speaker": "Leon",
+      "message": "Master Agnus!"
+    },
+    {
+      "speaker": "Agnus",
+      "message": "Ah, young Leon! You're finally here. The village was on edge, fearing the worst. But I knew you'd pull through."
+    },
+    {
+      "speaker": "Leon",
+      "message": "The forest is swarming with skeletons. I had to carve my way through them to reach you. The stench of dark sorcery hangs thick in the air."
+    },
+    {
+      "speaker": "Agnus",
+      "message": "I feared as much. My wayward apprentice has plunged into the abyss of forbidden magic. He's harnessed the power of necromancy to unleash the undead upon us."
+    },
+    {
+      "speaker": "Agnus",
+      "message": "Have you felt the ground tremble? He's at it again, and this time, the spell is far more potent. I sense an ominous and formidable evil lurking."
+    },
+    {
+      "speaker": "Leon",
+      "message": "Is there anything we can do to stop him?"
+    },
+    {
+      "speaker": "Agnus",
+      "message": "He goes by the name Velius the Dark. To save Sylvanleaf Haven, we must dispel his dark enchantment."
+    },
+    {
+      "speaker": "Agnus",
+      "message": "There's a ritual, a treacherous path only you can tread. Seek out this malevolent spirit. Confronting it is our only gateway to Velius."
+    },
+    {
+      "speaker": "Leon",
+      "message": "You can count on me."
+    },
+    {
+      "speaker": "Agnus",
+      "message": "Young warrior, our hope rests on your shoulders. Allow me to impart a combat spell. It'll be your ally in the battles ahead."
+    },
+    {
+      "speaker": "Leon",
+      "message": "I won't let Sylvanleaf fall. Teach me, Master Agnus. I'll face Velius and put an end to this darkness."
+    }
+  ]
+}
