@@ -93,8 +93,6 @@ public class PlayerFreeLookState : PlayerState
     {
         if (psm.interactableHandler.TryInteract(psm))
         {
-            psm.animator.SetFloat(blendSpeedHash, 0f);
-            psm.SwitchState(new PlayerTalkingState(psm));
         }
         else StrongAttack();
     }

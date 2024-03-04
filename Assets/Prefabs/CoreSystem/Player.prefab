@@ -1311,7 +1311,7 @@ MonoBehaviour:
   isGrounded: 0
   groundLayer:
     serializedVersion: 2
-    m_Bits: 9
+    m_Bits: 1
   checkRadius: 0.3
   groundMaxDistance: 0.2
   groundMaxAngle: 60

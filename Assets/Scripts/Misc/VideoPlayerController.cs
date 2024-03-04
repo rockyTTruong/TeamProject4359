@@ -11,7 +11,7 @@ public class VideoPlayerController : MonoBehaviour
     public GameObject skipTooltip;
     public PauseMenu pauseMenu;
     public string loadSceneAfterFinish;
-
+    public DialogueData postDialogue;
 
     private void Update()
     {
@@ -56,6 +56,13 @@ public class VideoPlayerController : MonoBehaviour
         if (!string.IsNullOrEmpty(loadSceneAfterFinish))
         {
             SceneManager.LoadSceneAsync(loadSceneAfterFinish, LoadSceneMode.Single);
+        }
+        if (postDialogue != null)
+        {
+            PlayerStateMachine psm = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateMachine>();
+            psm.SwitchState(new PlayerTalkingState(psm));
+
+            DialogueManager.Instance.StartDialogue(postDialogue);
         }
         this.gameObject.SetActive(false);
     }

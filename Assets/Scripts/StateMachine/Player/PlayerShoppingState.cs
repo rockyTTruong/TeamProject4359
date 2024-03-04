@@ -6,12 +6,14 @@ public class PlayerShoppingState : PlayerState
 {
     public PlayerShoppingState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
-    //private int freelookHash = AnimatorHash.freelookHash;
-    //private float crossFadeDuration = 0.1f;
+    private int freelookHash = Animator.StringToHash("FreeLookBlendTree");
+    private int blendSpeedHash = Animator.StringToHash("FreeLookBlendSpeed");
+    private float crossFadeDuration = 0.1f;
 
     public override void Enter()
     {
         psm.currentState = PlayerStates.Shopping;
+        PlayAnimation(freelookHash, crossFadeDuration);
     }
 
     public override void Exit()
@@ -20,5 +22,6 @@ public class PlayerShoppingState : PlayerState
 
     public override void Tick()
     {
+        Move(Vector2.zero);
     }
 }

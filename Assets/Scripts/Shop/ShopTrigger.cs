@@ -16,6 +16,7 @@ public class ShopTrigger : MonoBehaviour, IInteractable
     public void Interact(PlayerStateMachine psm)
     {
         FacePlayer(psm);
+        psm.SwitchState(new PlayerTalkingState(psm));
         DialogueManager.Instance.StartDialogue(shopStartDialogue);
         DialogueManager.Instance.ActionAfterDialogue(OpenShopMenu);
     }
