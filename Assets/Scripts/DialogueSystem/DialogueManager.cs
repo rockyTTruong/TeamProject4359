@@ -93,7 +93,11 @@ public class DialogueManager : SingletonMonobehaviour<DialogueManager>
         psm.SwitchState(new PlayerFreeLookState(psm));
 
         currentDialogueData.RaiseFlag();
-        if (action != null) action.Invoke();
+        if (action != null) 
+        { 
+            action.Invoke(); 
+            action = null;
+        }
     }
 
     private IEnumerator TypeText(string text)
