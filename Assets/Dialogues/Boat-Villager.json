@@ -1,0 +1,12 @@
+{
+  "dialogues": [
+    {
+      "speaker": "Villager",
+      "message": "Wait a minute..."
+    },
+    {
+      "speaker": "Villager",
+      "message": "How'd you get out here without a boat?"
+    }
+  ]
+}
