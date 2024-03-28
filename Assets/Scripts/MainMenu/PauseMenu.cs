@@ -14,6 +14,7 @@ public class PauseMenu : MonoBehaviour
     private static bool isPaused = false;
     public GameObject pauseUI;
     public GameObject optionsUI;
+    public GameObject controlsUI;
     public string MainMenu;
     public GameObject CharacterUI;
     public bool videoPlaying;
@@ -83,7 +84,11 @@ public class PauseMenu : MonoBehaviour
     {
         optionsUI.SetActive(true);
     }
-    
+    public void controls()
+    {
+        controlsUI.SetActive(true);
+    }
+
     private void StartButtonHandler()
     {
         if (optionsUI.activeSelf) return;
