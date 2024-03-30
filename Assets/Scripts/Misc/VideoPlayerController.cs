@@ -10,7 +10,7 @@ public class VideoPlayerController : MonoBehaviour
     public VideoPlayer videoPlayer;
     public GameObject skipTooltip;
     public PauseMenu pauseMenu;
-    public string loadSceneAfterFinish;
+    public Scene loadSceneAfterFinish;
     public DialogueData postDialogue;
 
     private void Update()
@@ -53,9 +53,9 @@ public class VideoPlayerController : MonoBehaviour
         videoPlayer.loopPointReached -= OnVideoFinished;
         skipTooltip.SetActive(false);
         pauseMenu.videoPlaying = false;
-        if (!string.IsNullOrEmpty(loadSceneAfterFinish))
+        if (loadSceneAfterFinish != Scene.None)
         {
-            SceneManager.LoadSceneAsync(loadSceneAfterFinish, LoadSceneMode.Single);
+            SceneManager.LoadSceneAsync((int)loadSceneAfterFinish, LoadSceneMode.Single);
         }
         if (postDialogue != null)
         {

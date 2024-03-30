@@ -8,31 +8,39 @@ using UnityEngine.UI;
 
 public class ShopMenu : MonoBehaviour
 {
+    [SerializeField] private AudioSource buySuccessAudio;
+    [SerializeField] private AudioSource buyFailureAudio;
+
     private QuickSlotManager qms;
-    public ItemData[] itemsForSale;
 
     public void ClickBuy(Button button)
     {
-        ItemData Item = button.gameObject.GetComponent<ShopItem>().item4Sale;
+        ShopItem shopItem = button.gameObject.GetComponent<ShopItem>();
+        ItemData itemData = shopItem.item4Sale;
+
         qms = FindObjectOfType<QuickSlotManager>();
 
-        if (CanBuy(Item))
+        if (CanBuy(shopItem))
         {
-            InventoryBox.Instance.AddItem(Item.id.ToString(),1);
-            InventoryBox.Instance.RemoveItem("9999", Item.sellingPrice);
+            InventoryBox.Instance.AddItem(itemData.id.ToString(), 1);
+            InventoryBox.Instance.RemoveItem("9999", itemData.sellingPrice);
             qms.UpdateUI();
             CoinManager.Instance.UpdateUI();
+            shopItem.UpdateShopItem();
         }
     }
 
-    private bool CanBuy(ItemData Item)
+    private bool CanBuy(ShopItem shopItem)
     {
-        if (Item.sellingPrice > InventoryBox.Instance.CheckInventory("9999").quantity)
+        if (shopItem.item4Sale.sellingPrice > InventoryBox.Instance.CheckInventory("9999").quantity ||
+            shopItem.maxQuantity <= InventoryBox.Instance.CheckInventory($"{shopItem.item4Sale.id}").quantity)
         {
+            buyFailureAudio.Play();
             return false;
+
         }
 
+        buySuccessAudio.Play();
         return true;
     }
-    
 }

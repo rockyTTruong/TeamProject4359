@@ -17,10 +17,10 @@ MonoBehaviour:
   isDiscardable: 1
   id: 5004
   itemName: Shield
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 5bea66b87b700434dadaa3e68b6794d2, type: 3}
   shortDescription: 
   longDescription: 
-  sellingPrice: 99999
+  sellingPrice: 20
   equipmentType: 2
   hp: 0
   stamina: 0
