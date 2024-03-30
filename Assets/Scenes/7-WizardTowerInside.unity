@@ -327,7 +327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemTextMesh: {fileID: 749138885}
   itemImage: {fileID: 778699502}
-  item4Sale: {fileID: 11400000, guid: 13ee59dc93858674ba11d6108af22bfa, type: 2}
+  item4Sale: {fileID: 11400000, guid: 95eed606e3bf2dd4ea12cc3c5d2efdf5, type: 2}
   maxQuantity: 9999
 --- !u!114 &599704094
 MonoBehaviour:

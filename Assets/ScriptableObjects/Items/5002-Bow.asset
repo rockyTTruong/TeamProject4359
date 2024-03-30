@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82e7e373758c95341af5d22598f2a3f9, type: 3}
-  m_Name: 5002-Leon's Bow
+  m_Name: 5002-Bow
   m_EditorClassIdentifier: 
   type: 2
   isStackable: 0
   isDiscardable: 1
   id: 5002
-  itemName: Leon's Bow
+  itemName: Bow
   sprite: {fileID: 21300000, guid: 5091e76a348996946a318f8d74466709, type: 3}
   shortDescription: 
   longDescription: 

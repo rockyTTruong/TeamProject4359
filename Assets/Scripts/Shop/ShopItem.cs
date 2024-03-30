@@ -21,12 +21,12 @@ public class ShopItem : MonoBehaviour
     {
         if (maxQuantity > InventoryBox.Instance.CheckInventory($"{item4Sale.id}").quantity)
         {
-            itemTextMesh.text = $"{item4Sale.itemName}\n" +
+            itemTextMesh.text = $"<color=white>{item4Sale.itemName}</color>\n" +
                                 $"<color=green>Price: {item4Sale.sellingPrice}</color>";
         }
         else
         {
-            itemTextMesh.text = $"{item4Sale.itemName}\n" +
+            itemTextMesh.text = $"<color=white>{item4Sale.itemName}</color>\n" +
                                 $"<color=red>Out of Stock</color>";
         }
         itemImage.sprite = item4Sale.sprite;
