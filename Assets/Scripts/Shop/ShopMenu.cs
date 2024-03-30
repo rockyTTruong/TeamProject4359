@@ -13,6 +13,16 @@ public class ShopMenu : MonoBehaviour
 
     private QuickSlotManager qms;
 
+    private void OnEnable()
+    {
+        GameManager.Instance.SetInMenuBool(true);   
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.SetInMenuBool(false);
+    }
+
     public void ClickBuy(Button button)
     {
         ShopItem shopItem = button.gameObject.GetComponent<ShopItem>();

@@ -28,6 +28,7 @@ public class DialogueManager : SingletonMonobehaviour<DialogueManager>
 
     public void StartDialogue(DialogueData dialogueData)
     {
+        GameManager.Instance.SetInMenuBool(true);
         currentDialogueData = dialogueData;
         LoadDialogue(dialogueData.textJson);
         dialogueBox.SetActive(true);
@@ -88,6 +89,7 @@ public class DialogueManager : SingletonMonobehaviour<DialogueManager>
 
     private void EndDialogue()
     {
+        GameManager.Instance.SetInMenuBool(false);
         dialogueBox.SetActive(false);
         PlayerStateMachine psm = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateMachine>();
         psm.SwitchState(new PlayerFreeLookState(psm));
