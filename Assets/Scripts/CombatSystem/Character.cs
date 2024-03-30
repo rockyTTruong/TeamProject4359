@@ -94,6 +94,12 @@ public class Character : MonoBehaviour, IDamageable
         UpdateHPBar();
     }
 
+    public void InstantRecoverStamina(int amount)
+    {
+        currentStamina = Mathf.Min(currentStamina + amount, GetMaxStamina());
+        UpdateStaminaBar();
+    }
+
     public void UpdateHPBar()
     {
         int maxHp = Mathf.RoundToInt(GetMaxHp());

@@ -14,7 +14,6 @@ public class Heal : ItemEffect
         {
             character.RecoverHp(healAmount);
             Instantiate(healEffect, target.transform);
-            Debug.Log($"Heal {target.name} for {healAmount} Hp");
         }
     }
 }

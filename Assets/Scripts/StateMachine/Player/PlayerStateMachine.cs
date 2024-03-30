@@ -108,7 +108,7 @@ public class PlayerStateMachine : StateMachine
         WeaponItemData currentWeapon = character.GetCurrentWeaponData();
         if (currentWeapon.weaponType == WeaponType.Sword)
         {
-            if (InventoryBox.Instance.CheckInventory("5002") == null)
+            if (InventoryBox.Instance.CheckInventory("5002").quantity == 0)
             {
                 return;
             }
@@ -156,6 +156,11 @@ public class PlayerStateMachine : StateMachine
 
         }
         else if (currentItemGuid == "1002")
+        {
+            currentItemGuid = "1003";
+            GameObject.FindObjectOfType<QuickSlotManager>().UpdateCurrentItemInfo("1003");
+        }
+        else if (currentItemGuid == "1003")
         {
             currentItemGuid = "1001";
             GameObject.FindObjectOfType<QuickSlotManager>().UpdateCurrentItemInfo("1001");
