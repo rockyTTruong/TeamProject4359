@@ -38,7 +38,7 @@ public class RetryMenuHandler : MonoBehaviour
         float fadeDuration = FadeScreen.Instance.GetFadeDuration();
         yield return new WaitForSeconds(fadeDuration);
 
-        AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync(psm.saveScene);
+        AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync((int)psm.saveScene);
         while (!unloadOperation.isDone)
         {
             yield return null;
@@ -46,7 +46,7 @@ public class RetryMenuHandler : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        AsyncOperation loadOperation = SceneManager.LoadSceneAsync(psm.saveScene, LoadSceneMode.Additive);
+        AsyncOperation loadOperation = SceneManager.LoadSceneAsync((int)psm.saveScene, LoadSceneMode.Additive);
         while (!loadOperation.isDone)
         {
             yield return null;

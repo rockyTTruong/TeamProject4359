@@ -457,6 +457,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""662f11e8-8908-41ed-8b9e-e69cff120886"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""LeftStickPress"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""ea6be9e3-c2fb-4ed6-bdbe-e3c64a86f334"",
                     ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",

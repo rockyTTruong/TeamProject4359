@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
-    public string loadSceneName;
-    public string unloadSceneName;
+    public Scene loadScene;
+    public Scene unloadScene;
     public Transform destination;
     public int bgmIndex = -1;
 
@@ -19,7 +19,7 @@ public class Portal : MonoBehaviour
             PlayerStateMachine psm = other.GetComponent<PlayerStateMachine>();
             psm.savePosition = destination.position;
             psm.saveRotation = destination.rotation;
-            psm.saveScene = loadSceneName;
+            psm.saveScene = loadScene;
             StartCoroutine(TeleportCoroutine(other));
         }
     }
@@ -33,7 +33,7 @@ public class Portal : MonoBehaviour
         float fadeDuration = FadeScreen.Instance.GetFadeDuration();
         yield return new WaitForSeconds(fadeDuration);
 
-        AsyncOperation loadOperation = SceneManager.LoadSceneAsync(loadSceneName, LoadSceneMode.Additive);
+        AsyncOperation loadOperation = SceneManager.LoadSceneAsync((int)loadScene, LoadSceneMode.Additive);
         while (!loadOperation.isDone)
         {
             yield return null;
@@ -46,7 +46,7 @@ public class Portal : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync(unloadSceneName);
+        AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync((int)unloadScene);
         while (!unloadOperation.isDone)
         {
             yield return null;

@@ -6,36 +6,36 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/0-MainMenu.unity
     guid: 94bb6736f0901f64a875a905e49c5a3f
   - enabled: 1
-    path: Assets/Scenes/PersistentScene.unity
+    path: Assets/Scenes/1-PersistentScene.unity
     guid: bed7d430672eb7f429d69c5458286ce3
   - enabled: 1
-    path: Assets/Scenes/Credits.unity
+    path: Assets/Scenes/2-Credits.unity
     guid: 864d40f25157d904ea2a6045439e07fd
   - enabled: 1
-    path: Assets/Scenes/OptionsMenu.unity
+    path: Assets/Scenes/3-OptionsMenu.unity
     guid: 6641e9cf691915a4bb2fbe922159e95a
   - enabled: 1
-    path: Assets/Scenes/StartingZone.unity
+    path: Assets/Scenes/4-StartingZone.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/MainZone.unity
+    path: Assets/Scenes/5-MainZone.unity
     guid: 97c97ea71e69dc14abdefab4d0bed1ac
   - enabled: 1
-    path: Assets/Scenes/ShopInside.unity
+    path: Assets/Scenes/6-ShopInside.unity
     guid: e07c61a3de1305d4ca96e2c98c88eb1e
   - enabled: 1
-    path: Assets/Scenes/WizardTowerInside.unity
+    path: Assets/Scenes/7-WizardTowerInside.unity
     guid: 4214ae7b369c69e4c8c823b4a9215170
   - enabled: 1
-    path: Assets/Scenes/BossZone.unity
+    path: Assets/Scenes/8-BossZone.unity
     guid: 2e729757dd6427f4886f0837c8c23d19
   - enabled: 1
-    path: Assets/Scenes/ForestZone.unity
+    path: Assets/Scenes/9-ForestZone.unity
     guid: f0b84f528fbda814193b7caf66f1f5c5
   - enabled: 1
-    path: Assets/Scenes/CaveInterior.unity
+    path: Assets/Scenes/10-CaveInterior.unity
     guid: 8d266e1c28e9f984d81ed3a767ab8a17
   m_configObjects: {}

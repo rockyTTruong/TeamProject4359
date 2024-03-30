@@ -53,7 +53,7 @@ public class PlayerStateMachine : StateMachine
     public bool isFalling;
     public Vector3 savePosition;
     public Quaternion saveRotation;
-    public string saveScene;
+    public Scene saveScene;
     public GameObject retryMenuUI;
 
     public void Start()

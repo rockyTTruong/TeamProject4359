@@ -4,9 +4,9 @@ using UnityEngine;
 
 public static class PlayerActionCost
 {
-    public static float runAction = 0.1f;
-    public static float dodgeAction = 20;
-    public static float attackAction = 10;
-    public static float strongAttackAction = 20;
-    public static float chargeAttackAction = 25;
+    public static float runAction = 0.05f;
+    public static float dodgeAction = 10;
+    public static float attackAction = 5;
+    public static float strongAttackAction = 10;
+    public static float chargeAttackAction = 10;
 }
