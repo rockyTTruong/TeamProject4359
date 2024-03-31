@@ -44,6 +44,16 @@ public abstract class PlayerState : State
         }
     }
 
+    public void HandleFrontLookMovement()
+    {
+        Vector3 movement = CalculateMovement();
+        Move(movement * (psm.walkSpeed));
+
+        Vector3 forward = psm.mainCameraTransform.forward;
+        forward.y = psm.transform.forward.y;
+        psm.transform.forward = forward;
+    }
+
     public void FaceTarget(GameObject target)
     {
         Vector3 lookPos = target.transform.position - psm.transform.position;
@@ -88,6 +98,13 @@ public abstract class PlayerState : State
     {
         if (psm.character.TryUseStamina(PlayerActionCost.dodgeAction))
             psm.SwitchState(new PlayerDodgingState(psm));
+    }
+
+    public void Block()
+    {
+        if (InventoryBox.Instance.CheckInventory("5004").quantity == 0) return;
+        if (psm.character.GetCurrentWeaponData().weaponType == WeaponType.Bow) return;
+        psm.SwitchState(new PlayerBlockingState(psm));
     }
 
     public void Jump()

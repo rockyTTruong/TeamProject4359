@@ -26,6 +26,7 @@ public class PlayerAttackingState : PlayerState
         InputReader.Instance.buttonPress[(int)GamePadButton.DpadDown] += LockOnMode;
         InputReader.Instance.buttonPress[(int)GamePadButton.EastButton] += Dodge;
         InputReader.Instance.buttonPress[(int)GamePadButton.SouthButton] += Jump;
+        InputReader.Instance.buttonPress[(int)GamePadButton.RightShoulder] += Block;
     }
 
     public override void Exit()
@@ -36,6 +37,7 @@ public class PlayerAttackingState : PlayerState
         InputReader.Instance.buttonPress[(int)GamePadButton.DpadDown] -= LockOnMode;
         InputReader.Instance.buttonPress[(int)GamePadButton.EastButton] -= Dodge;
         InputReader.Instance.buttonPress[(int)GamePadButton.SouthButton] -= Jump;
+        InputReader.Instance.buttonPress[(int)GamePadButton.RightShoulder] -= Block;
     }
 
     public override void Tick()

@@ -15,11 +15,11 @@ MonoBehaviour:
   type: 0
   isStackable: 1
   isDiscardable: 1
-  id: 1002
+  id: 1003
   itemName: Endurance Elixir
-  sprite: {fileID: 21300000, guid: 8767f2a3293b67f44a28253841fffd9b, type: 3}
-  shortDescription: Adds damage to each strike for 30 seconds
+  sprite: {fileID: 21300000, guid: 9492aff56be665a41b12a1a0b268b553, type: 3}
+  shortDescription: Fully recover stamina.
   longDescription: ' '
-  sellingPrice: 15
+  sellingPrice: 5
   itemEffects:
-  - {fileID: 11400000, guid: 41fd1f30f9ea4414c99569b52ebdafd2, type: 2}
+  - {fileID: 11400000, guid: 48d761d5f6d69c54e83670fe9f9f91f3, type: 2}

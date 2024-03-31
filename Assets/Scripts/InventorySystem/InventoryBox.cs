@@ -35,6 +35,26 @@ public class InventoryBox : SingletonMonobehaviour<InventoryBox>
             inventoryList.Add(newSlot);
             inventoryDictionary.Add(itemGuid, newSlot);
         }
+
+        if (itemGuid == "5002")
+        {
+            PlayerStateMachine psm = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateMachine>();
+            if (psm.character.GetCurrentWeaponData().weaponType == WeaponType.Sword) psm.bowBack.SetActive(true);
+        }
+        else if (itemGuid == "5004")
+        {
+            PlayerStateMachine psm = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateMachine>();
+            if (psm.character.GetCurrentWeaponData().weaponType == WeaponType.Sword)
+            {
+                psm.shield.SetActive(true);
+                psm.shieldBack.SetActive(false);
+            }
+            else if (psm.character.GetCurrentWeaponData().weaponType == WeaponType.Bow)
+            {
+                psm.shield.SetActive(false);
+                psm.shieldBack.SetActive(true);
+            }
+        }
     }
 
     public bool RemoveItem(string itemGuid, int quantity)
