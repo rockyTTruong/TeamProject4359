@@ -2,7 +2,19 @@
   "dialogues": [
     {
       "speaker": "Villager",
-      "message": "Quite a big tree we've got here"
+      "message": "You made it to the top of the Elderwood Pedestal!"
+    },
+    {
+      "speaker": "Villager",
+      "message": "Once, a mighty tree stood here, its roots deep in Thornwood's heart."
+    },
+    {
+      "speaker": "Villager",
+      "message": "Now, only this humble stump remains, a silent echo of ancient wisdom."
+    },
+    {
+      "speaker": "Villager",
+      "message": "Feel the forest's spirit, for the Elderwood lives on in every leaf in Thornwood."
     },
     {
       "speaker": "Villager",
