@@ -12,6 +12,11 @@ public class SelectionHandler : MonoBehaviour
         StartCoroutine(SetSelectCursor());
     }
 
+    private void OnDisable()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+    }
+
     private IEnumerator SetSelectCursor()
     {
         yield return new WaitForSecondsRealtime(0.5f);

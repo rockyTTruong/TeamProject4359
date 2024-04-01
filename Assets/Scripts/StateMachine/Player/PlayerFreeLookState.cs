@@ -24,6 +24,7 @@ public class PlayerFreeLookState : PlayerState
         InputReader.Instance.buttonPress[(int)GamePadButton.NorthButton] += TryInteract;
         InputReader.Instance.buttonPress[(int)GamePadButton.RightStickPress] += SpanCameraFaceTarget;
         InputReader.Instance.buttonPress[(int)GamePadButton.DpadDown] += LockOnMode;
+        InputReader.Instance.buttonPress[(int)GamePadButton.RightShoulder] += Block;
         PlayAnimation(freelookHash, crossFixedDuration);
     }
 
@@ -37,6 +38,7 @@ public class PlayerFreeLookState : PlayerState
         InputReader.Instance.buttonPress[(int)GamePadButton.NorthButton] -= TryInteract;
         InputReader.Instance.buttonPress[(int)GamePadButton.RightStickPress] -= SpanCameraFaceTarget;
         InputReader.Instance.buttonPress[(int)GamePadButton.DpadDown] -= LockOnMode;
+        InputReader.Instance.buttonPress[(int)GamePadButton.RightShoulder] -= Block;
     }
 
     public override void Tick()
@@ -163,11 +165,6 @@ public class PlayerFreeLookState : PlayerState
         WeaponType weaponType = psm.character.GetCurrentWeaponData().weaponType;
         if (weaponType == WeaponType.Sword)
         {
-            /*
-            playerStateMachine.swordMainHand.SetActive(true);
-            playerStateMachine.bowBack.SetActive(true);
-            playerStateMachine.swordBack.SetActive(false);
-            playerStateMachine.bowMainHand.SetActive(false);*/
             psm.SwitchState(new PlayerChargeAttackingState(psm));
         }
         else return;

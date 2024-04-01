@@ -14,6 +14,7 @@ public class PauseMenu : MonoBehaviour
     private static bool isPaused = false;
     public GameObject pauseUI;
     public GameObject optionsUI;
+    public GameObject controlsUI;
     public string MainMenu;
     public GameObject CharacterUI;
     public bool videoPlaying;
@@ -26,6 +27,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (videoPlaying) return;
         if (optionsUI.activeSelf) return;
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -40,7 +42,7 @@ public class PauseMenu : MonoBehaviour
             }
         }
         if (GameManager.Instance.IsInMenu) return;
-
+        */
         
     }
 
@@ -83,9 +85,14 @@ public class PauseMenu : MonoBehaviour
     {
         optionsUI.SetActive(true);
     }
-    
+    public void controls()
+    {
+        controlsUI.SetActive(true);
+    }
+
     private void StartButtonHandler()
     {
+        if (videoPlaying) return;
         if (optionsUI.activeSelf) return;
         if (GameManager.Instance.IsInMenu) return;
         if (isPaused)

@@ -1,0 +1,12 @@
+{
+  "dialogues": [
+    {
+      "speaker": "Villager",
+      "message": "Quite a big tree we've got here"
+    },
+    {
+      "speaker": "Villager",
+      "message": "Careful on your way down"
+    }
+  ]
+}

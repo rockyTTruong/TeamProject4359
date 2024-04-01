@@ -27,15 +27,33 @@ public class InventoryBox : SingletonMonobehaviour<InventoryBox>
     {
         if (inventoryDictionary.TryGetValue(itemGuid, out InventorySlot slot))
         {
-            Debug.Log($"Got Item {itemGuid}");
             slot.Add(quantity);
         }
         else
         {
-            Debug.Log($"Got New Item {itemGuid}");
             InventorySlot newSlot = new InventorySlot(itemGuid, quantity);
             inventoryList.Add(newSlot);
             inventoryDictionary.Add(itemGuid, newSlot);
+        }
+
+        if (itemGuid == "5002")
+        {
+            PlayerStateMachine psm = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateMachine>();
+            if (psm.character.GetCurrentWeaponData().weaponType == WeaponType.Sword) psm.bowBack.SetActive(true);
+        }
+        else if (itemGuid == "5004")
+        {
+            PlayerStateMachine psm = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateMachine>();
+            if (psm.character.GetCurrentWeaponData().weaponType == WeaponType.Sword)
+            {
+                psm.shield.SetActive(true);
+                psm.shieldBack.SetActive(false);
+            }
+            else if (psm.character.GetCurrentWeaponData().weaponType == WeaponType.Bow)
+            {
+                psm.shield.SetActive(false);
+                psm.shieldBack.SetActive(true);
+            }
         }
     }
 

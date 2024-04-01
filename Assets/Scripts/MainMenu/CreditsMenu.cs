@@ -19,7 +19,7 @@ public class CreditsMenu : MonoBehaviour
 
     public void back()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene((int)Scene.MainMenu);
     }
 
     

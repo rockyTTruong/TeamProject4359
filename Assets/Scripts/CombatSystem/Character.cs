@@ -9,9 +9,12 @@ public class Character : MonoBehaviour, IDamageable
     public bool isDead;
     public bool isUnflinching;
     public bool isInvincible;
+    public bool isPerfectBlock;
+    public bool isBlocking;
     private GameObject obj;
     public event Action<GameObject> DieEvent;
     public event Action DamageEvent;
+    public event Action BlockEvent;
     private int dmgBst;
     [SerializeField]public Attack[] attacks;
     
@@ -61,13 +64,29 @@ public class Character : MonoBehaviour, IDamageable
     public bool TryDealDamage(float damage)
     {
         if (isDead || isInvincible) return false;
-
-        DamageEvent?.Invoke();
-
-        currentHp = Mathf.Max(currentHp - damage, 0);
-        UpdateHPBar();
-        if (currentHp == 0) Die();
-        return true;
+        if (isPerfectBlock)
+        {
+            Debug.Log("Perfect Block!");
+            BlockEvent?.Invoke();
+            return false;
+        }
+        else if (isBlocking)
+        {
+            Debug.Log("Block!");
+            BlockEvent?.Invoke();
+            currentHp = (int)Mathf.Max(currentHp - damage * 0.1f, 0);
+            UpdateHPBar();
+            if (currentHp == 0) Die();
+            return false;
+        }
+        else
+        {
+            DamageEvent?.Invoke();
+            currentHp = (int)Mathf.Max(currentHp - damage, 0);
+            UpdateHPBar();
+            if (currentHp == 0) Die();
+            return true;
+        }
     }
 
     public void Die()
@@ -92,6 +111,12 @@ public class Character : MonoBehaviour, IDamageable
         int maxHp = Mathf.RoundToInt(GetMaxHp());
         currentHp = Mathf.Min(currentHp + amount, maxHp);
         UpdateHPBar();
+    }
+
+    public void InstantRecoverStamina(int amount)
+    {
+        currentStamina = Mathf.Min(currentStamina + amount, GetMaxStamina());
+        UpdateStaminaBar();
     }
 
     public void UpdateHPBar()

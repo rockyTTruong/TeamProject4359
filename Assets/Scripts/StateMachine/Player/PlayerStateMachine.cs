@@ -5,7 +5,7 @@ using UnityEngine;
 public enum PlayerStates
 {
     Idle, Walking, Running, Dashing, Jumping, Falling, Die,
-    Dodging, Attacking, Hit, Exhausting,
+    Dodging, Attacking, Hit, Exhausting, Blocking, BlockImpact,
     Talking, Shopping
 }
 
@@ -47,13 +47,15 @@ public class PlayerStateMachine : StateMachine
     public GameObject bowMainHand;
     public GameObject swordBack;
     public GameObject bowBack;
+    public GameObject shield;
+    public GameObject shieldBack;
     public AudioSource footstepSource;
     public string currentItemGuid = "1001";
     public bool isJumping;
     public bool isFalling;
     public Vector3 savePosition;
     public Quaternion saveRotation;
-    public string saveScene;
+    public Scene saveScene;
     public GameObject retryMenuUI;
 
     public void Start()
@@ -68,6 +70,7 @@ public class PlayerStateMachine : StateMachine
         interactableHandler = GetComponent<InteractableHandler>();
         character.DamageEvent += OnDamage;
         character.DieEvent += OnDie;
+        character.BlockEvent += OnBlock;
 
         savePosition = transform.position;
         saveRotation = transform.rotation;
@@ -95,6 +98,11 @@ public class PlayerStateMachine : StateMachine
         SwitchState(new PlayerDieState(this));
     }
 
+    public void OnBlock()
+    {
+        SwitchState(new PlayerBlockingImpactState(this));
+    }
+
     private void ApplySlide()
     {
         slideDirection = Vector3.ProjectOnPlane(transform.forward, groundNormal).normalized * slideSpeed;
@@ -108,7 +116,7 @@ public class PlayerStateMachine : StateMachine
         WeaponItemData currentWeapon = character.GetCurrentWeaponData();
         if (currentWeapon.weaponType == WeaponType.Sword)
         {
-            if (InventoryBox.Instance.CheckInventory("5002") == null)
+            if (InventoryBox.Instance.CheckInventory("5002").quantity == 0)
             {
                 return;
             }
@@ -117,6 +125,11 @@ public class PlayerStateMachine : StateMachine
             bowBack.SetActive(false);
             swordBack.SetActive(true);
             bowMainHand.SetActive(true);
+            if (InventoryBox.Instance.CheckInventory("5004").quantity != 0)
+            {
+                shieldBack.SetActive(true);
+                shield.SetActive(false);
+            }
         }
         else if (currentWeapon.weaponType == WeaponType.Bow)
         {
@@ -125,6 +138,11 @@ public class PlayerStateMachine : StateMachine
             bowBack.SetActive(true);
             swordBack.SetActive(false);
             bowMainHand.SetActive(false);
+            if (InventoryBox.Instance.CheckInventory("5004").quantity != 0)
+            {
+                shield.SetActive(true);
+                shieldBack.SetActive(false);
+            }
         }
         EventHandler.OnSwitchWeaponEvent();
     }
@@ -156,6 +174,11 @@ public class PlayerStateMachine : StateMachine
 
         }
         else if (currentItemGuid == "1002")
+        {
+            currentItemGuid = "1003";
+            GameObject.FindObjectOfType<QuickSlotManager>().UpdateCurrentItemInfo("1003");
+        }
+        else if (currentItemGuid == "1003")
         {
             currentItemGuid = "1001";
             GameObject.FindObjectOfType<QuickSlotManager>().UpdateCurrentItemInfo("1001");
