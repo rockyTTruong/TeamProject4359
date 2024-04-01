@@ -29,7 +29,7 @@ public class CameraController : SingletonMonobehaviour<CameraController>
 
     CinemachineFramingTransposer midRigTransposer;
 
-    private CinemachineFreeLook freeLook;
+    public CinemachineFreeLook freeLook;
     private Coroutine cameraSpanning;
     private float currentSensitive;
 
