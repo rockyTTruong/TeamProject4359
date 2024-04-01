@@ -2726,7 +2726,7 @@ MonoBehaviour:
   loadScene: 5
   unloadScene: 10
   destination: {fileID: 1644851166}
-  bgmIndex: -1
+  bgmIndex: 1
 --- !u!65 &270009545
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13347,7 +13347,7 @@ MonoBehaviour:
   loadScene: 10
   unloadScene: 5
   destination: {fileID: 287721746}
-  bgmIndex: -1
+  bgmIndex: 3
 --- !u!65 &1095258570
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25848,6 +25848,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8110462276637558649, guid: e76f644755ab3ec45838f6155aa6df89,
+        type: 3}
+      propertyPath: bgms.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8110462276637558649, guid: e76f644755ab3ec45838f6155aa6df89,
+        type: 3}
+      propertyPath: bgms.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7bbdee266b9062e44a871f82b2bfe175, type: 3}
     - target: {fileID: 8905714543165388307, guid: e76f644755ab3ec45838f6155aa6df89,
         type: 3}
       propertyPath: m_Name
