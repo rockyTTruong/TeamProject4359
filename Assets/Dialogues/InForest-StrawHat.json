@@ -1,0 +1,32 @@
+{
+  "dialogues": [
+    {
+      "speaker": "Osupp",
+      "message": "I AM THE NOTORIOUS CAPTAIN OSUPP!!! FEARED PIRATE, AND RULER OF THIS VILLAGE!!!"
+    },
+    {
+      "speaker": "Leon",
+      "message": "Hey Osupp. Still playing pretend with all these skeletons around?"
+    },
+    {
+      "speaker": "Osupp",
+      "message": "PRETEND??? DARN! HE SAW THROUGH ME!"
+    },
+    {
+      "speaker": "Leon",
+      "message": "Hahahaha you're funny!! Have you really not noticed the skeletons?"
+    },
+    {
+      "speaker": "Osupp",
+      "message": "HEY! ARE YOU LAUGHING!? AT ME!!? I'M A PROUD MAN! WHICH IS WHY THEY CALL ME PROUD CAPTAIN OSUPP!"
+    },
+    {
+      "speaker": "Leon",
+      "message": "Okay Captain! Anyways, be careful with the skeletons."
+    },
+    {
+      "speaker": "Osupp",
+      "message": "Skeletons? Only new thing I've seen here are old men, each with a big wound."
+    }
+  ]
+}

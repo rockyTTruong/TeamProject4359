@@ -1,0 +1,36 @@
+{
+  "dialogues": [
+    {
+      "speaker": "Joni",
+      "message": "...and that's 100! I love exercising! It's GREAT!"
+    },
+    {
+      "speaker": "Leon",
+      "message": "Wow Joni, not even the apocalypse can stop you from working out."
+    },
+    {
+      "speaker": "Joni",
+      "message": "YUP!! Gotta be in my best shape if I'm gonna survive the crazy times we live in!"
+    },
+    {
+      "speaker": "Joni",
+      "message": "You been keeping up with your routine?"
+    },
+    {
+      "speaker": "Leon",
+      "message": "Ehh not really, kinda been busy dealing with..."
+    },
+    {
+      "speaker": "Joni",
+      "message": "OH right! The skeletons!! Well at least you're keeping active!!"
+    },
+    {
+      "speaker": "Leon",
+      "message": "I gotta go deal with the rest of them now. See you, Joni."
+    },
+    {
+      "speaker": "Joni",
+      "message": "Bye bye! Keep up the good work, Leon!"
+    }
+  ]
+}
