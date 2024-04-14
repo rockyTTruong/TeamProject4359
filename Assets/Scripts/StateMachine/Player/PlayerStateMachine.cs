@@ -57,6 +57,7 @@ public class PlayerStateMachine : StateMachine
     public Quaternion saveRotation;
     public Scene saveScene;
     public GameObject retryMenuUI;
+    public GameObject blockEffectPrefab;
 
     public void Start()
     {
@@ -110,6 +111,7 @@ public class PlayerStateMachine : StateMachine
 
     public void QuickSwitchWeapon()
     {
+        if (currentState == PlayerStates.Die) return;
         if (currentState == PlayerStates.Talking) return;
         if (currentState == PlayerStates.Shopping) return;
 
@@ -149,6 +151,7 @@ public class PlayerStateMachine : StateMachine
 
     public void UseItem()
     {
+        if (currentState == PlayerStates.Die) return;
         if (currentState == PlayerStates.Talking) return;
         if (currentState == PlayerStates.Shopping) return;
 
@@ -164,6 +167,7 @@ public class PlayerStateMachine : StateMachine
 
     public void SwitchItem()
     {
+        if (currentState == PlayerStates.Die) return;
         if (currentState == PlayerStates.Talking) return;
         if (currentState == PlayerStates.Shopping) return;
 

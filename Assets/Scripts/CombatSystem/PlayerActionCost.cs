@@ -9,4 +9,5 @@ public static class PlayerActionCost
     public static float attackAction = 5;
     public static float strongAttackAction = 10;
     public static float chargeAttackAction = 10;
+    public static float blockSuccessAction = 10;
 }

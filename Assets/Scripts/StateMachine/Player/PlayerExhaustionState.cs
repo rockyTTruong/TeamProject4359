@@ -11,6 +11,8 @@ public class PlayerExhaustionState : PlayerState
 
     public override void Enter()
     {
+        psm.character.isPerfectBlock = false;
+        psm.character.isBlocking = false;
         psm.currentState = PlayerStates.Exhausting;
         AttackHandler attackHandler = psm.GetComponent<AttackHandler>();
         attackHandler.HitboxDisabled();

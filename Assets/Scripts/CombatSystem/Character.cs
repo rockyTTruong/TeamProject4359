@@ -98,6 +98,7 @@ public class Character : MonoBehaviour, IDamageable
 
     public bool TryUseStamina(float amount)
     {
+        if (isDead) return false;
         if (currentStamina == 0) return false;
         currentStamina = Mathf.Max(currentStamina - amount, 0f);
         UpdateStaminaBar();
@@ -108,6 +109,7 @@ public class Character : MonoBehaviour, IDamageable
 
     public void RecoverHp(int amount)
     {
+        if (isDead) return;
         int maxHp = Mathf.RoundToInt(GetMaxHp());
         currentHp = Mathf.Min(currentHp + amount, maxHp);
         UpdateHPBar();
@@ -115,6 +117,7 @@ public class Character : MonoBehaviour, IDamageable
 
     public void InstantRecoverStamina(int amount)
     {
+        if (isDead) return;
         currentStamina = Mathf.Min(currentStamina + amount, GetMaxStamina());
         UpdateStaminaBar();
     }
@@ -165,11 +168,13 @@ public class Character : MonoBehaviour, IDamageable
 
     public void ChangeWeapon(string itemGuid)
     {
+        if (isDead) return;
         equipmentData.Equip(itemGuid);
     }
 
     public void increaseDamage(int amount, float duration = 5)
     {
+        if (isDead) return;
         dmgBst = amount;
         foreach (Attack attack in attacks)
         {
@@ -195,6 +200,7 @@ public class Character : MonoBehaviour, IDamageable
         currentHp = maxHp;
         UpdateHPBar();
     }
+
     private void turnOff()
     {
         obj.transform.Find("DamageBuff").gameObject.SetActive(false);

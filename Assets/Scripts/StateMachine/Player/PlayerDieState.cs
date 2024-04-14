@@ -11,6 +11,8 @@ public class PlayerDieState : PlayerState
 
     public override void Enter()
     {
+        psm.character.isPerfectBlock = false;
+        psm.character.isBlocking = false;
         psm.currentState = PlayerStates.Die;
         AttackHandler attackHandler = psm.GetComponent<AttackHandler>();
         attackHandler.HitboxDisabled();
