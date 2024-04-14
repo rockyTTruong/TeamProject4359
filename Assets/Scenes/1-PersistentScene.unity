@@ -26985,12 +26985,12 @@ PrefabInstance:
     - target: {fileID: 5159530160431019990, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000046885685
+      value: -0.000000046885702
       objectReference: {fileID: 0}
     - target: {fileID: 5159530160431019990, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000031374686
+      value: 0.000000031374697
       objectReference: {fileID: 0}
     - target: {fileID: 5758371339625058580, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
@@ -27105,12 +27105,12 @@ PrefabInstance:
     - target: {fileID: 8445755155010935276, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000006818277
+      value: -0.00000003256357
       objectReference: {fileID: 0}
     - target: {fileID: 8445755155010935276, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000027843011
+      value: 0.000000013297606
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -28405,7 +28405,7 @@ PrefabInstance:
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
       propertyPath: questDatabase.Array.data[4].questDescription
-      value: A little Hocus Pocus never hurt anyone!
+      value: Talk to Agnus to learn more about the skeletons.
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
