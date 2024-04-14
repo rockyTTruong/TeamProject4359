@@ -30,11 +30,14 @@ public class ItemSpawner : MonoBehaviour
             GameObject dropitem = dropItemPrefabs[i];
             dropitem.transform.position = spawnPosition;
 
-            Instantiate(dropitem);
+            GameObject newDropItem = Instantiate(dropitem);
+            newDropItem.GetComponent<ItemDropData>().TriggerAutoCollect();
+
             yield return new WaitForSeconds(spawnInterval);
         }
         Destroy(this.gameObject);
     }
+
     private void OnDestroy()
     {
         character.DieEvent -= DropItem;

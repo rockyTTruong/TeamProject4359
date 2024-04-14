@@ -25,6 +25,7 @@ public class ItemDropData : MonoBehaviour
 
     private float scaleDamping;
     private Coroutine collecting;
+
     private void OnDisable()
     {
         Destroy(this.gameObject);
@@ -95,9 +96,21 @@ public class ItemDropData : MonoBehaviour
             transform.Translate(moveDirection * Time.deltaTime * collectSpeed * 1.25f);
             yield return null;
         }
+
         InventoryBox.Instance.AddItem(itemGuid, quantity);
         EventHandler.OnPickUpItemEvent(itemGuid);
         transform.GetChild(0).gameObject.SetActive(false);
         StartCoroutine(PlayAudio());
+    }
+
+    private void AutoCollect()
+    {
+        if (collecting == null)
+            collecting = StartCoroutine(CollectCoroutine());
+    }
+
+    public void TriggerAutoCollect()
+    {
+        Invoke(nameof(AutoCollect), 1f);
     }
 }
