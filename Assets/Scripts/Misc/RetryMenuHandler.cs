@@ -24,7 +24,7 @@ public class RetryMenuHandler : MonoBehaviour
 
     public void OnQuit()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene((int)Scene.MainMenu);
     }
 
     public IEnumerator RetryCoroutine(GameObject player)
