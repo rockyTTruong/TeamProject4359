@@ -1696,6 +1696,73 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 145714616}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &151126467
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 151126468}
+  - component: {fileID: 151126470}
+  - component: {fileID: 151126469}
+  m_Layer: 0
+  m_Name: WizardStartQuestCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &151126468
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151126467}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 55.02112, y: -19.879852, z: 126.70444}
+  m_LocalScale: {x: 15, y: 5, z: 0.55808}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 305734634}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &151126469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151126467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda6ee62f776a1d42b5551aab3bea25c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questStartID: 5
+--- !u!65 &151126470
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151126467}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &161166483
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3180,7 +3247,9 @@ Transform:
   m_Children:
   - {fileID: 6347444720091037455}
   - {fileID: 1133116143}
+  - {fileID: 415926615}
   - {fileID: 1642747288}
+  - {fileID: 151126468}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &310167311
@@ -4656,6 +4725,73 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 413417585}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &415926614
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 415926615}
+  - component: {fileID: 415926617}
+  - component: {fileID: 415926616}
+  m_Layer: 0
+  m_Name: ShopStartQuestCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &415926615
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415926614}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -104.77588, y: -17.647202, z: 225.0698}
+  m_LocalScale: {x: 15, y: 5, z: 3.52}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 305734634}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &415926616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415926614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda6ee62f776a1d42b5551aab3bea25c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questStartID: 4
+--- !u!65 &415926617
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415926614}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &416706879
 GameObject:
   m_ObjectHideFlags: 0
@@ -6705,6 +6841,73 @@ Transform:
   - {fileID: 1417796470}
   m_Father: {fileID: 1814686778}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &620019421
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 620019422}
+  - component: {fileID: 620019424}
+  - component: {fileID: 620019423}
+  m_Layer: 0
+  m_Name: QuestCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &620019422
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620019421}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.2611084, y: 2.2326508, z: -1.88}
+  m_LocalScale: {x: 15, y: 5, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6347444720091037455}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &620019423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620019421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda6ee62f776a1d42b5551aab3bea25c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questStartID: 2
+--- !u!65 &620019424
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620019421}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &620501894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13735,7 +13938,7 @@ GameObject:
   - component: {fileID: 1133116145}
   - component: {fileID: 1133116144}
   m_Layer: 3
-  m_Name: Dialogue-Story006
+  m_Name: Dialogue-Story006 (Shop)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13756,6 +13959,7 @@ Transform:
   m_Children:
   - {fileID: 1144341123}
   - {fileID: 2038342556}
+  - {fileID: 1576934535}
   m_Father: {fileID: 305734634}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1133116144
@@ -15203,8 +15407,8 @@ Transform:
   m_GameObject: {fileID: 1332305333}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: 0}
-  m_LocalScale: {x: 15, y: 5, z: 5}
+  m_LocalPosition: {x: 0, y: 2.5, z: -0.1}
+  m_LocalScale: {x: 15, y: 5, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1191370531}
@@ -16851,6 +17055,87 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496400375}
   m_CullTransparentMesh: 1
+--- !u!1 &1498993512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1498993513}
+  - component: {fileID: 1498993516}
+  - component: {fileID: 1498993515}
+  - component: {fileID: 1498993514}
+  m_Layer: 0
+  m_Name: QuestCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1498993513
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498993512}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.2611084, y: 2.232651, z: 0}
+  m_LocalScale: {x: 15, y: 5, z: 1.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1642747288}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1498993514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498993512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda6ee62f776a1d42b5551aab3bea25c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questStartID: 5
+--- !u!114 &1498993515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498993512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 378b84853e8fc5b43933eb10466a1de1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questEnd: 4
+--- !u!65 &1498993516
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498993512}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1499074689
 GameObject:
   m_ObjectHideFlags: 0
@@ -17584,6 +17869,73 @@ RectTransform:
   m_AnchoredPosition: {x: 771, y: -482}
   m_SizeDelta: {x: 348.6454, y: 87.1613}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1576934534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1576934535}
+  - component: {fileID: 1576934538}
+  - component: {fileID: 1576934537}
+  m_Layer: 0
+  m_Name: QuestCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1576934535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576934534}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.2611084, y: 2.232651, z: -1.46}
+  m_LocalScale: {x: 15, y: 5, z: 1.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1133116143}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1576934537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576934534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 378b84853e8fc5b43933eb10466a1de1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questEnd: 3
+--- !u!65 &1576934538
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576934534}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1576944304
 GameObject:
   m_ObjectHideFlags: 0
@@ -18309,7 +18661,7 @@ GameObject:
   - component: {fileID: 1642747290}
   - component: {fileID: 1642747289}
   m_Layer: 3
-  m_Name: Dialogue-Story007
+  m_Name: Dialogue-Story007 (Wizard)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18330,6 +18682,7 @@ Transform:
   m_Children:
   - {fileID: 1312840071}
   - {fileID: 1109436171}
+  - {fileID: 1498993513}
   m_Father: {fileID: 305734634}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1642747289
@@ -24414,8 +24767,8 @@ Transform:
   m_GameObject: {fileID: 2737619131364271818}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: 0}
-  m_LocalScale: {x: 15, y: 5, z: 5}
+  m_LocalPosition: {x: 0, y: 2.5, z: -1.57}
+  m_LocalScale: {x: 4, y: 5, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6295938073408122858}
@@ -25396,7 +25749,6 @@ GameObject:
   - component: {fileID: 1290015703734178913}
   - component: {fileID: 2360010830117887070}
   - component: {fileID: 2737619131364271821}
-  - component: {fileID: 2737619131364271820}
   - component: {fileID: 2737619131364271819}
   m_Layer: 0
   m_Name: Collider
@@ -25418,19 +25770,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questStartID: 3
---- !u!114 &2737619131364271820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2737619131364271818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fda6ee62f776a1d42b5551aab3bea25c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questStartID: 2
 --- !u!114 &2737619131364271821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26746,22 +27085,22 @@ PrefabInstance:
     - target: {fileID: 6925781021553903600, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6899661
+      value: 0.68996614
       objectReference: {fileID: 0}
     - target: {fileID: 6925781021553903600, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.7238418
+      value: 0.7238417
       objectReference: {fileID: 0}
     - target: {fileID: 6925781021553903600, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000026882022
+      value: -0.000000028662265
       objectReference: {fileID: 0}
     - target: {fileID: 6925781021553903600, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000011532704
+      value: 0.000000012296444
       objectReference: {fileID: 0}
     - target: {fileID: 8445755155010935276, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
@@ -27093,7 +27432,7 @@ GameObject:
   - component: {fileID: 5954588249698846703}
   - component: {fileID: 6347444720091037456}
   m_Layer: 3
-  m_Name: Dialogue-Story003
+  m_Name: Dialogue-Story003 (Bridge)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27114,6 +27453,7 @@ Transform:
   m_Children:
   - {fileID: 2411295009817764223}
   - {fileID: 368899134807456514}
+  - {fileID: 620019422}
   m_Father: {fileID: 305734634}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &6347444720091037456
@@ -27980,84 +28320,146 @@ PrefabInstance:
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
       propertyPath: questDatabase.Array.size
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
-      propertyPath: questDatabase.Array.data[6].questName
+      propertyPath: questDatabase.Array.data[1].questName
+      value: Forboding Darkness
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[2].questName
+      value: Unknown Visitor
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[3].questName
+      value: Protect the Shop
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[4].questName
+      value: Off to See the Wizard
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[5].questName
       value: The One and Bonely
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
-      propertyPath: questDatabase.Array.data[7].questName
+      propertyPath: questDatabase.Array.data[6].questName
       value: Off 2 See the Wizard
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
-      propertyPath: questDatabase.Array.data[8].questName
+      propertyPath: questDatabase.Array.data[7].questName
       value: Spelunking Time!
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
-      propertyPath: questDatabase.Array.data[9].questName
+      propertyPath: questDatabase.Array.data[8].questName
       value: Off to See th3 Wizard
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
-      propertyPath: questDatabase.Array.data[10].questName
+      propertyPath: questDatabase.Array.data[9].questName
       value: Duel of Fates
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
-      propertyPath: questDatabase.Array.data[11].questName
+      propertyPath: questDatabase.Array.data[10].questName
       value: Spring Cleaning
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
-      propertyPath: questDatabase.Array.data[12].questName
+      propertyPath: questDatabase.Array.data[11].questName
       value: Our Hero!
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
-      propertyPath: questDatabase.Array.data[6].questDescription
+      propertyPath: questDatabase.Array.data[12].questName
+      value: Finale
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[13].questName
+      value: Bone-jour
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[1].questDescription
+      value: There's been an explosion! Head home as quickly as possible.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[2].questDescription
+      value: Defeat the skeleton blocking your path.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[3].questDescription
+      value: Clear out the skeletons surrounding the shop.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[4].questDescription
+      value: A little Hocus Pocus never hurt anyone!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[5].questDescription
       value: Leon must battle the elite skeleton boss. To complete this quest, defeat
         the elite skeleton boss.
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
-      propertyPath: questDatabase.Array.data[7].questDescription
+      propertyPath: questDatabase.Array.data[6].questDescription
       value: Leon gained an enchanted item from defeating the boss. To complete this
         quest, return the item to Wizard Agnus.
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
-      propertyPath: questDatabase.Array.data[8].questDescription
+      propertyPath: questDatabase.Array.data[7].questDescription
       value: Leon must investigate Velius's lair. To complete this quest, obtain
         the scroll in Velius's lair.
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
-      propertyPath: questDatabase.Array.data[9].questDescription
+      propertyPath: questDatabase.Array.data[8].questDescription
       value: Leon has obtained the scroll. To complete this quest, give the scroll
         to Wizard Agnus.
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
-      propertyPath: questDatabase.Array.data[10].questDescription
+      propertyPath: questDatabase.Array.data[9].questDescription
       value: Leon must defeat Velius the Dark to obtain the 2nd half of the scroll.
         To complete this quest, defeat Velius.
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
-      propertyPath: questDatabase.Array.data[11].questDescription
+      propertyPath: questDatabase.Array.data[10].questDescription
       value: 'Leon must protect Agnus, while Agnus is reversing the undead curse.
         To complete this quest, defeat the enemies that try to stop Agnus. '
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
-      propertyPath: questDatabase.Array.data[12].questDescription
+      propertyPath: questDatabase.Array.data[11].questDescription
       value: Leon succeded in defending the town. To complete this quest, enter the
         town square.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[12].questDescription
+      value: You cleared out the skeletons in the deep forest. Return to the village
+        and see where the true source of evil is...
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[13].questDescription
+      value: You got some new tools! Say hi to the skeletons! Head deeper into the
+        forest to clear out the Skeletons invading.
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
@@ -28096,18 +28498,98 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
-      propertyPath: questDatabase.Array.data[6].coinReward.Array.data[0]
+      propertyPath: questDatabase.Array.data[13].coinReward.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[1].coinReward.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[1].coinReward.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[1].coinReward.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[2].coinReward.Array.data[0]
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[2].coinReward.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[2].coinReward.Array.data[2]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[3].coinReward.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[3].coinReward.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[3].coinReward.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[4].coinReward.Array.data[0]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[4].coinReward.Array.data[1]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[4].coinReward.Array.data[2]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[5].coinReward.Array.data[0]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[5].coinReward.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[5].coinReward.Array.data[2]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[6].coinReward.Array.data[0]
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
       propertyPath: questDatabase.Array.data[6].coinReward.Array.data[1]
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
       propertyPath: questDatabase.Array.data[6].coinReward.Array.data[2]
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
@@ -28142,17 +28624,17 @@ PrefabInstance:
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
       propertyPath: questDatabase.Array.data[9].coinReward.Array.data[0]
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
       propertyPath: questDatabase.Array.data[9].coinReward.Array.data[1]
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
       propertyPath: questDatabase.Array.data[9].coinReward.Array.data[2]
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
@@ -28187,17 +28669,32 @@ PrefabInstance:
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
       propertyPath: questDatabase.Array.data[12].coinReward.Array.data[0]
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
       propertyPath: questDatabase.Array.data[12].coinReward.Array.data[1]
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
       propertyPath: questDatabase.Array.data[12].coinReward.Array.data[2]
-      value: 50
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[13].coinReward.Array.data[0]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[13].coinReward.Array.data[1]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[13].coinReward.Array.data[2]
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
