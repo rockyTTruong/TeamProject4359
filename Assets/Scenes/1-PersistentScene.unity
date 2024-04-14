@@ -26542,12 +26542,12 @@ PrefabInstance:
     - target: {fileID: 4364663221375633692, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000004617347
+      value: -0.000000010824691
       objectReference: {fileID: 0}
     - target: {fileID: 4364663221375633692, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000019842687
+      value: 0.0000000046518256
       objectReference: {fileID: 0}
     - target: {fileID: 4411995271372536807, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
@@ -26622,12 +26622,12 @@ PrefabInstance:
     - target: {fileID: 5159530160431019990, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000046885685
+      value: -0.00000004688571
       objectReference: {fileID: 0}
     - target: {fileID: 5159530160431019990, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000031374686
+      value: 0.0000000313747
       objectReference: {fileID: 0}
     - target: {fileID: 5758371339625058580, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
@@ -26742,12 +26742,12 @@ PrefabInstance:
     - target: {fileID: 8445755155010935276, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000006818277
+      value: -0.000000032563577
       objectReference: {fileID: 0}
     - target: {fileID: 8445755155010935276, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000027843011
+      value: 0.000000013297608
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27944,18 +27944,84 @@ PrefabInstance:
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
       propertyPath: questDatabase.Array.size
-      value: 6
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
       propertyPath: questDatabase.Array.data[6].questName
-      value: Finale
+      value: The One and Bonely
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[7].questName
+      value: Off 2 See the Wizard
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[8].questName
+      value: Spelunking Time!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[9].questName
+      value: Off to See th3 Wizard
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[10].questName
+      value: Duel of Fates
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[11].questName
+      value: Spring Cleaning
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[12].questName
+      value: Our Hero!
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
       propertyPath: questDatabase.Array.data[6].questDescription
-      value: You cleared out the skeletons in the deep forest. Return to the village
-        and see where the true source of evil is...
+      value: Leon must battle the elite skeleton boss. To complete this quest, defeat
+        the elite skeleton boss.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[7].questDescription
+      value: Leon gained an enchanted item from defeating the boss. To complete this
+        quest, return the item to Wizard Agnus.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[8].questDescription
+      value: Leon must investigate Velius's lair. To complete this quest, obtain
+        the scroll in Velius's lair.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[9].questDescription
+      value: Leon has obtained the scroll. To complete this quest, give the scroll
+        to Wizard Agnus.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[10].questDescription
+      value: Leon must defeat Velius the Dark to obtain the 2nd half of the scroll.
+        To complete this quest, defeat Velius.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[11].questDescription
+      value: 'Leon must protect Agnus, while Agnus is reversing the undead curse.
+        To complete this quest, defeat the enemies that try to stop Agnus. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[12].questDescription
+      value: Leon succeded in defending the town. To complete this quest, enter the
+        town square.
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
@@ -27964,18 +28030,138 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
+      propertyPath: questDatabase.Array.data[7].coinReward.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[8].coinReward.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[9].coinReward.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[10].coinReward.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[11].coinReward.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[12].coinReward.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
       propertyPath: questDatabase.Array.data[6].coinReward.Array.data[0]
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
       propertyPath: questDatabase.Array.data[6].coinReward.Array.data[1]
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
         type: 3}
       propertyPath: questDatabase.Array.data[6].coinReward.Array.data[2]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[7].coinReward.Array.data[0]
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[7].coinReward.Array.data[1]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[7].coinReward.Array.data[2]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[8].coinReward.Array.data[0]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[8].coinReward.Array.data[1]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[8].coinReward.Array.data[2]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[9].coinReward.Array.data[0]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[9].coinReward.Array.data[1]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[9].coinReward.Array.data[2]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[10].coinReward.Array.data[0]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[10].coinReward.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[10].coinReward.Array.data[2]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[11].coinReward.Array.data[0]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[11].coinReward.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[11].coinReward.Array.data[2]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[12].coinReward.Array.data[0]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[12].coinReward.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[12].coinReward.Array.data[2]
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
