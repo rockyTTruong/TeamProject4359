@@ -3444,7 +3444,7 @@ MonoBehaviour:
     m_SelectOnUp: {fileID: 1378430963}
     m_SelectOnDown: {fileID: 1628877423}
     m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnRight: {fileID: 1087664454}
   m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -13224,11 +13224,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnLeft: {fileID: 1378430963}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
@@ -17908,6 +17908,11 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
       objectReference: {fileID: 338819662}
+    - target: {fileID: 2117740017873371459, guid: 2364ad62b5f738147b395de46398c33f,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnRight
+      value: 
+      objectReference: {fileID: 1087664454}
     - target: {fileID: 2695373051307879278, guid: 2364ad62b5f738147b395de46398c33f,
         type: 3}
       propertyPath: m_IsActive
@@ -17928,6 +17933,11 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
       objectReference: {fileID: 1628877422}
+    - target: {fileID: 2807857927057021788, guid: 2364ad62b5f738147b395de46398c33f,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnRight
+      value: 
+      objectReference: {fileID: 1087664454}
     - target: {fileID: 2807857927057021788, guid: 2364ad62b5f738147b395de46398c33f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -18073,6 +18083,11 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
       objectReference: {fileID: 1378430963}
+    - target: {fileID: 6307943135445017790, guid: 2364ad62b5f738147b395de46398c33f,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnRight
+      value: 
+      objectReference: {fileID: 1087664454}
     - target: {fileID: 6973369281214793691, guid: 2364ad62b5f738147b395de46398c33f,
         type: 3}
       propertyPath: m_ReferenceResolution.x
@@ -26527,12 +26542,12 @@ PrefabInstance:
     - target: {fileID: 4364663221375633692, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000010824691
+      value: 0.00000004617347
       objectReference: {fileID: 0}
     - target: {fileID: 4364663221375633692, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000046518256
+      value: -0.000000019842687
       objectReference: {fileID: 0}
     - target: {fileID: 4411995271372536807, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
@@ -26607,12 +26622,12 @@ PrefabInstance:
     - target: {fileID: 5159530160431019990, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000004688571
+      value: 0.000000046885685
       objectReference: {fileID: 0}
     - target: {fileID: 5159530160431019990, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000313747
+      value: -0.000000031374686
       objectReference: {fileID: 0}
     - target: {fileID: 5758371339625058580, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
@@ -26727,12 +26742,12 @@ PrefabInstance:
     - target: {fileID: 8445755155010935276, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000032563577
+      value: 0.00000006818277
       objectReference: {fileID: 0}
     - target: {fileID: 8445755155010935276, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000013297608
+      value: -0.000000027843011
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27926,6 +27941,42 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 86039cbf6324e7c4bbf5f7851dd4f6ea,
         type: 2}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[6].questName
+      value: Finale
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[6].questDescription
+      value: You cleared out the skeletons in the deep forest. Return to the village
+        and see where the true source of evil is...
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[6].coinReward.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[6].coinReward.Array.data[0]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[6].coinReward.Array.data[1]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550325917454713194, guid: 1609dd6d3b464f147b3f8fca1eb72500,
+        type: 3}
+      propertyPath: questDatabase.Array.data[6].coinReward.Array.data[2]
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
