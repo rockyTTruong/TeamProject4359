@@ -28,6 +28,7 @@ public class Character : MonoBehaviour, IDamageable
     [SerializeField] private CharacterEquipmentData equipmentData;
     [SerializeField] protected GameObject healthUI;
     [SerializeField] protected float healthDisplayDistance;
+    [SerializeField] private GameObject levelUpEffectPrefab;
 
     private float currentHp;
     private float currentStamina;
@@ -249,6 +250,7 @@ public class Character : MonoBehaviour, IDamageable
 
     private void LevelUp()
     {
+        Instantiate(levelUpEffectPrefab, transform.position, transform.rotation);
         baseStats.level++;
         levelTextMesh.text = $"LV {baseStats.level}";
         baseStats.hp = (int)(baseStats.hp * 1.1f);

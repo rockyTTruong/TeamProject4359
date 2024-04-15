@@ -26872,6 +26872,12 @@ PrefabInstance:
       propertyPath: baseStats.attack
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2042140603278367666, guid: 49a7ce7ede2c4be4cab084b69b13759f,
+        type: 3}
+      propertyPath: levelUpEffectPrefab
+      value: 
+      objectReference: {fileID: 8108297552573712994, guid: e045459051be05545b99755630f03022,
+        type: 3}
     - target: {fileID: 2895270028738102551, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -27016,12 +27022,12 @@ PrefabInstance:
     - target: {fileID: 5159530160431019990, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000046885702
+      value: -0.00000004688571
       objectReference: {fileID: 0}
     - target: {fileID: 5159530160431019990, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000031374697
+      value: 0.0000000313747
       objectReference: {fileID: 0}
     - target: {fileID: 5199439220072694176, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
@@ -27146,12 +27152,12 @@ PrefabInstance:
     - target: {fileID: 8445755155010935276, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000003256357
+      value: -0.000000032563577
       objectReference: {fileID: 0}
     - target: {fileID: 8445755155010935276, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000013297606
+      value: 0.000000013297608
       objectReference: {fileID: 0}
     - target: {fileID: 8553823886355416880, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
