@@ -6,6 +6,7 @@ using UnityEngine;
 public class ItemSpawner : MonoBehaviour
 {
     [SerializeField] private Character character;
+    [SerializeField] private int experience;
     [SerializeField] List<GameObject> dropItemPrefabs;
     [SerializeField] private float spawnInterval = 1f;
     [SerializeField] private float spawnRadius = 2f;
@@ -22,6 +23,7 @@ public class ItemSpawner : MonoBehaviour
 
     private IEnumerator DropCoroutine()
     {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateMachine>().character.GainExp(experience);
         for (int i = 0; i < dropItemPrefabs.Count(); i++)
         {
             Vector2 randomPosition = Random.insideUnitCircle * spawnRadius;

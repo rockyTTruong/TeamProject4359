@@ -21,7 +21,9 @@ public class Character : MonoBehaviour, IDamageable
 
     [SerializeField] private GaugeBar healthBar;
     [SerializeField] private GaugeBar staminaBar;
+    [SerializeField] private GaugeBar expBar;
     [SerializeField] private TextMeshProUGUI healthBarTextMesh;
+    [SerializeField] private TextMeshProUGUI levelTextMesh;
     [SerializeField] private CharacterBaseStats baseStats;
     [SerializeField] private CharacterEquipmentData equipmentData;
     [SerializeField] protected GameObject healthUI;
@@ -45,6 +47,12 @@ public class Character : MonoBehaviour, IDamageable
             currentStamina = maxStamina;
             staminaBar.SetBar(maxStamina);
             UpdateStaminaBar();
+
+            int requiredExp = Mathf.RoundToInt(10 + Mathf.Pow(baseStats.level, 2f));
+            expBar.SetBar(requiredExp);
+            UpdateExpBar();
+
+            levelTextMesh.text = $"LV {baseStats.level}";
         }
     }
 
@@ -135,6 +143,11 @@ public class Character : MonoBehaviour, IDamageable
         staminaBar.ChangeBar(Mathf.RoundToInt(currentStamina));
     }
 
+    public void UpdateExpBar()
+    {
+        expBar.ChangeBar(Mathf.RoundToInt(baseStats.experience));
+    }
+
     public int GetMaxHp()
     {
         return Mathf.RoundToInt(baseStats.hp + equipmentData.TotalHp());
@@ -147,7 +160,7 @@ public class Character : MonoBehaviour, IDamageable
 
     public float GetAttack()
     {
-        return baseStats.attack + equipmentData.TotalAttack();
+        return baseStats.attack;// + equipmentData.TotalAttack();
     }
 
     public float GetDefense()
@@ -214,6 +227,50 @@ public class Character : MonoBehaviour, IDamageable
             recoveringStamina = null;
         }
         recoveringStamina = StartCoroutine(RecoverStaminaCoroutine(delayTime));
+    }
+
+    public void GainExp(int amount)
+    {
+        baseStats.experience += amount;
+        UpdateExpBar();
+        CheckLevelUp();
+    }
+
+    private void CheckLevelUp()
+    {
+        int requiredExp = Mathf.RoundToInt(10 + Mathf.Pow(baseStats.level, 2f));
+        if (baseStats.experience >= requiredExp)
+        {
+            baseStats.experience -= requiredExp;
+            UpdateExpBar();
+            LevelUp();
+        }
+    }
+
+    private void LevelUp()
+    {
+        baseStats.level++;
+        levelTextMesh.text = $"LV {baseStats.level}";
+        baseStats.hp = (int)(baseStats.hp * 1.1f);
+        baseStats.stamina = Mathf.Min((int)(baseStats.stamina * 1.1f), 200f);
+        baseStats.attack = (int)(baseStats.attack * 1.2f);
+        baseStats.defense = (int)(baseStats.defense * 1.2f);
+
+        int maxHp = GetMaxHp();
+        currentHp = maxHp;
+        healthBar.SetBar(maxHp);
+        UpdateHPBar();
+        if (this.gameObject.CompareTag("Player"))
+        {
+            int maxStamina = GetMaxStamina();
+            currentStamina = maxStamina;
+            staminaBar.SetBar(maxStamina);
+            UpdateStaminaBar();
+
+            int requiredExp = Mathf.RoundToInt(10 + Mathf.Pow(baseStats.level, 2f));
+            expBar.SetBar(requiredExp);
+            UpdateExpBar();
+        }
     }
 
     private IEnumerator RecoverStaminaCoroutine(float delayTime)

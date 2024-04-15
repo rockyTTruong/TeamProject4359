@@ -13,6 +13,8 @@ public class AttackHandler : MonoBehaviour
     [SerializeField] private List<Attack> attacks;
     [SerializeField] private GameObject swordTrailEffect;
 
+    float attackDamage;
+
     public void EnabledAttack(int index)
     {
         if (index >= attacks.Count())
@@ -21,7 +23,13 @@ public class AttackHandler : MonoBehaviour
             return;
         }
         weaponCollider.gameObject.SetActive(true);
-        weaponCollider.SetAttack(attacks[index].damage, attacks[index].knockBack, attacks[index].launchForce,
+
+        if (this.GetComponent<PlayerStateMachine>())
+        {
+            attackDamage = attacks[index].damage + this.GetComponent<PlayerStateMachine>().character.GetAttack();
+        }
+        else attackDamage = attacks[index].damage;
+        weaponCollider.SetAttack((int)attackDamage, attacks[index].knockBack, attacks[index].launchForce,
                          attacks[index].hitLagDuration, attacks[index].hitLagStrength, attacks[index].hitEffectPrefab);
     }
 

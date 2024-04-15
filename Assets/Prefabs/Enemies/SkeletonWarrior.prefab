@@ -562,6 +562,8 @@ MonoBehaviour:
   isDead: 0
   isUnflinching: 0
   isInvincible: 0
+  isPerfectBlock: 0
+  isBlocking: 0
   attacks: []
   healthBar: {fileID: 4118429419338667167}
   staminaBar: {fileID: 0}
@@ -631,6 +633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 1026095539947790403}
+  experience: 3
   dropItemPrefabs:
   - {fileID: 1402036301047889183, guid: d767da4848cee9d4596fbbb0313563bc, type: 3}
   - {fileID: 1402036301047889183, guid: d767da4848cee9d4596fbbb0313563bc, type: 3}
