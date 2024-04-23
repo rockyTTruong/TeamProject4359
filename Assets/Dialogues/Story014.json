@@ -1,0 +1,21 @@
+{
+    "dialogues": [
+      {
+        "speaker": "Leon",
+        "message": "Here they come, Master Agnus! Focus on the ritual, I'll handle them!"
+      },
+      {
+        "speaker": "Master Agnus",
+        "message": "It is done! The curse has been lifted, and the undead have been vanquished!"
+      },
+      {
+        "speaker": "Master Agnus",
+        "message": "Leon, you have proven yourself to be the true savior of our people. Without your bravery and dedication, we would have been lost. Thank you, from the bottom of my heart. With pride, I name you as the Guardian of Sylvanleaf Haven."
+      },
+      {
+        "speaker": "Leon",
+        "message": "It was my honor, Master Agnus. I will always protect Sylvanleaf Haven from any threat that may arise."
+      }
+    ]
+  }
+  

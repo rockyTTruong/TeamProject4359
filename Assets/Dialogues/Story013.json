@@ -1,0 +1,33 @@
+{
+    "dialogues": [
+      {
+        "speaker": "Leon",
+        "message": "Velius! Your reign of darkness ends here and now."
+      },
+      {
+        "speaker": "Velius",
+        "message": "(laughs darkly) Ah, Leon. So eager to play the hero, are we? You truly believe you can defeat me, the master of dark magic?"
+      },
+      {
+        "speaker": "Leon",
+        "message": "I may not have your power, Velius, but I have something you lack - courage."
+      },
+      {
+        "speaker": "Velius",
+        "message": "(sneers) Courage, you say? Courage won't save you from the might of my magic. Prepare to witness true power!"
+      },
+      {
+        "speaker": "Leon",
+        "message": "Your darkness ends now, Velius! Surrender, and perhaps you will find redemption."
+      },
+      {
+        "speaker": "Velius",
+        "message": "(wounded and furious) Redemption? There is no redemption for one such as me. But know this, Leon - even if you defeat me, the darkness will always find a way to return."
+      },
+      {
+        "speaker": "Leon",
+        "message": "(defiant) Perhaps. But as long as there are those willing to stand against it, the light will never be extinguished."
+      }
+    ]
+  }
+  

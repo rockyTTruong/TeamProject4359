@@ -1,0 +1,21 @@
+{
+    "dialogues": [
+      {
+        "speaker": "Agnus",
+        "message": "You are ready Leon, seek out the evil spirit and defeat him."
+      },
+      {
+        "speaker": "Leon",
+        "message": "Yes Master Agnus, with the power of this new spell I am sure I will conquer the evil spirit."
+      },
+      {
+        "speaker": "Agnus",
+        "message": "I can sense the presence of this evil, it must be somewhere in the town square."
+      },
+      {
+        "speaker": "Leon",
+        "message": "Thank you, Master Agnus. I will head to the town square immediately."
+      }
+    ]
+  }
+  
