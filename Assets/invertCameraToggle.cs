@@ -21,6 +21,6 @@ public class InvertXX : MonoBehaviour
     public void OnToggleValueChanged(bool newValue)
     {
         freeLookCamera.m_YAxis.m_InvertInput = !freeLookCamera.m_YAxis.m_InvertInput;
-        freeLookCamera.m_XAxis.m_InvertInput = !freeLookCamera.m_XAxis.m_InvertInput;
+        //freeLookCamera.m_XAxis.m_InvertInput = !freeLookCamera.m_XAxis.m_InvertInput;
     }
 }
