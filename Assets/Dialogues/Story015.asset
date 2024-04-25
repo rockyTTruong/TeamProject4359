@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16b3d6f52acef5f4b80f4edd6872113f, type: 3}
-  m_Name: Story014
+  m_Name: Story015
   m_EditorClassIdentifier: 
-  textJson: {fileID: 4900000, guid: bf8b20d05b404414f9017e2694bddef9, type: 3}
+  textJson: {fileID: 4900000, guid: ccfc0227fbb8c494092e38d85fb3a9cc, type: 3}
   requiredFlags: 
   raiseFlags: 

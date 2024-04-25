@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16b3d6f52acef5f4b80f4edd6872113f, type: 3}
   m_Name: Story013
   m_EditorClassIdentifier: 
-  textJson: {fileID: 4900000, guid: bf8b20d05b404414f9017e2694bddef9, type: 3}
+  textJson: {fileID: 4900000, guid: 9199ffba75bd6a24dae00a77c8fcf525, type: 3}
   requiredFlags: 
   raiseFlags: 
