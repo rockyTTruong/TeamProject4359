@@ -6,6 +6,7 @@ using UnityEngine;
 public class QuestTriggerEndEnemy : MonoBehaviour
 {
     public int questEnd;
+    public GameObject colliderToEnable;
 
     [SerializeField] private Character character;
 
@@ -16,6 +17,7 @@ public class QuestTriggerEndEnemy : MonoBehaviour
 
     public void EndQuestOnDeath(GameObject enemyGameObject)
     {
+        colliderToEnable.SetActive(true);
         if (enemyGameObject.CompareTag("Enemy") && !QuestDatabase.Instance.questDatabase[questEnd].completed)
         {
             QuestA2Manager.Instance.finishQuest(questEnd);
