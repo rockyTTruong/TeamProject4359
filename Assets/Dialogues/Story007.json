@@ -34,15 +34,7 @@
     },
     {
       "speaker": "Leon",
-      "message": "You can count on me."
-    },
-    {
-      "speaker": "Agnus",
-      "message": "Young warrior, our hope rests on your shoulders. Allow me to impart a combat spell. It'll be your ally in the battles ahead."
-    },
-    {
-      "speaker": "Leon",
-      "message": "I won't let Sylvanleaf fall. Teach me, Master Agnus. I'll face Velius and put an end to this darkness."
+      "message": "You can count on me. I won't let Sylvanleaf fall."
     }
   ]
 }

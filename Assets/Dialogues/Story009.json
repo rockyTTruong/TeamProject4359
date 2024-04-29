@@ -1,0 +1,21 @@
+{
+    "dialogues": [
+      {
+        "speaker": "Random Villager",
+        "message": "Leon! There is a hulking skeleton in the town square destroying everything. Please hurry!"
+      },
+      {
+        "speaker": "Leon",
+        "message": "Please find a safe space to hide from the skeletons. I will head to the town square immediately!"
+      },
+      {
+        "speaker": "Elite",
+        "message": "Puny Human, you come here to challenge me. HA HA HA!! (Evil Laugh)."
+      },
+      {
+        "speaker": "Leon",
+        "message": "Enough of your rampage. I am going to defeat you!"
+      }
+    ]
+  }
+  
