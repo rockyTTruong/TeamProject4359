@@ -2484,6 +2484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questEnd: 2
+  colliderToEnable: {fileID: 1116026316}
   character: {fileID: 325809943}
 --- !u!1001 &339451707
 PrefabInstance:

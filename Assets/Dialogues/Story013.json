@@ -14,31 +14,31 @@
       },
       {
         "speaker": "Agnus",
-        "message": "This is indeed the scroll Velius used to raise the dead. But as I feared, it is torn, missing a crucial part."
+        "message": "This is indeed the scroll Velius used to raise the dead. But as I feared, it requires an artifact that resonates with dark magic."
       },
       {
         "speaker": "Leon",
-        "message": "Missing a part? But what does that mean, Master Agnus?"
+        "message": "Do you happen to have an artifact that would work?"
       },
       {
         "speaker": "Agnus",
-        "message": "It means that the information needed to lift the curse, to undo Velius' dark magic, lies within the missing portion. Without it, we cannot hope to banish the darkness that plagues Sylvanleaf Haven."
+        "message": "No, I never dared to experiment with that darkness. Without an artifact, we cannot hope to banish the darkness that plagues Sylvanleaf Haven."
       },
       {
         "speaker": "Leon",
-        "message": "And where is this missing part, Master Agnus? Can it be found within the cave?"
+        "message": "Would the skull of the skeleton brute have remnants of dakr magic, Master Agnus? After defeating the skeleton in the village, all that remained was its skull and the first scroll."
       },
       {
         "speaker": "Agnus",
-        "message": "No, Leon. Velius holds the missing part. It is in his possession, guarded by his malevolent will."
+        "message": "That's the answer Leon! Velius must've expected we would try to reverse his curse, which is why he appeared in the village to secure the skull. The missing part is in his possession, guarded by his malevolent will."
       },
       {
         "speaker": "Leon",
-        "message": "Then defeating Velius is the only way to obtain it. I must confront him and put an end to his reign of terror."
+        "message": "If defeating Velius is the only way to obtain it. I must confront him and put an end to his reign of terror."
       },
       {
         "speaker": "Agnus",
-        "message": "Yes, Leon. The fate of our village rests upon your shoulders. But remember, Velius is a formidable foe. Prepare yourself well before facing him. Seek allies, gather strength, and when you are ready, confront him with all the courage and determination you possess."
+        "message": "Yes, Leon. The fate of our village rests upon your shoulders. But remember, Velius is a formidable foe. Prepare yourself well before facing him once again in the village. Seek allies, gather strength, and when you are ready, confront him with all the courage and determination you possess."
       },
       {
         "speaker": "Leon",
