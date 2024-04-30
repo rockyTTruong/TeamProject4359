@@ -10,8 +10,9 @@ public enum Scene
     WizardTowerInside,      //7
     BossZone,               //8
     ForestZone,             //9
-    CaveInterior,            //10
-    None
+    CaveInterior,           //10
+    None,
+    WizardBossZone         //11
 }
 
 public enum ItemType

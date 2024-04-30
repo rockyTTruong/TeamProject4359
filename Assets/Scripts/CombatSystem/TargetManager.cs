@@ -94,7 +94,7 @@ public class TargetManager : MonoBehaviour
 
     public void DisableLockOn()
     {
-        currentTarget.GetComponent<EnemyStateMachine>().targetManager.DisableTargetedMark();
+        //currentTarget.GetComponent<EnemyStateMachine>().targetManager.DisableTargetedMark();
         currentTarget = null;
     }
 
@@ -107,9 +107,9 @@ public class TargetManager : MonoBehaviour
         {
             targetIndex = 0;
         }
-        currentTarget.GetComponent<EnemyStateMachine>().targetManager.DisableTargetedMark();
+        //currentTarget.GetComponent<EnemyStateMachine>().targetManager.DisableTargetedMark();
         currentTarget = targets[targetIndex];
-        currentTarget.GetComponent<EnemyStateMachine>().targetManager.EnabledTargetedMark();
+        //currentTarget.GetComponent<EnemyStateMachine>().targetManager.EnabledTargetedMark();
     }
 
     public void PreviouTarget()
@@ -121,9 +121,9 @@ public class TargetManager : MonoBehaviour
         {
             targetIndex = targets.Count() - 1;
         }
-        currentTarget.GetComponent<EnemyStateMachine>().targetManager.DisableTargetedMark();
+        //currentTarget.GetComponent<EnemyStateMachine>().targetManager.DisableTargetedMark();
         currentTarget = targets[targetIndex];
-        currentTarget.GetComponent<EnemyStateMachine>().targetManager.EnabledTargetedMark();
+        //currentTarget.GetComponent<EnemyStateMachine>().targetManager.EnabledTargetedMark();
     }
 
     public void EnabledTargetedMark()

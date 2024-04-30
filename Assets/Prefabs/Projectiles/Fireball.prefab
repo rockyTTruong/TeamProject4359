@@ -9830,6 +9830,9 @@ MonoBehaviour:
   changeDirectionSpeed: 6
   lifeTime: 5
   stopChaseTime: 3
+  stanbyTimeRange:
+  - 1.6
+  - 2.4
   damage: 20
   knockback: 10
   launchForce: 0

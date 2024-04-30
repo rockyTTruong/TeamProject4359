@@ -10,6 +10,7 @@ public class FireballController : MonoBehaviour
     [SerializeField] private float changeDirectionSpeed = 5f;
     [SerializeField] private float lifeTime = 3.5f;
     [SerializeField] private float stopChaseTime = 3f;
+    [SerializeField] private float[] stanbyTimeRange = new float[2];
     [SerializeField] private int damage = 20;
     [SerializeField] private float knockback;
     [SerializeField] private float launchForce;
@@ -20,10 +21,12 @@ public class FireballController : MonoBehaviour
     private GameObject player;
     private float timer;
     private float chaseTime;
+    private bool chasing;
 
     private void Start()
     {
-        chaseTime = Random.Range(1.6f, 2.4f);
+        chasing = true;
+        chaseTime = Random.Range(stanbyTimeRange[0], stanbyTimeRange[1]);
         controller = GetComponent<CharacterController>();
         player = GameObject.FindGameObjectWithTag("Player");
         Invoke(nameof(DestroySelf), lifeTime);
@@ -37,7 +40,7 @@ public class FireballController : MonoBehaviour
 
         controller.Move(Time.deltaTime * speed * transform.forward);
 
-        if (timer < stopChaseTime)
+        if (timer < stopChaseTime && chasing)
         {
             ChasePlayer();
         }
@@ -53,5 +56,13 @@ public class FireballController : MonoBehaviour
     private void DestroySelf()
     {
         GameObject.Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            chasing = false;
+        }
     }
 }

@@ -61,6 +61,7 @@ public class ForceReceiver : MonoBehaviour
     }
     public void ApplyImpact(Vector3 impact)
     {
+        if (this.name == "Wizard") return;
         this.impact += impact;
     }
 
