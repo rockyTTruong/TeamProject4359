@@ -17,7 +17,10 @@ public class QuestTriggerEndEnemy : MonoBehaviour
 
     public void EndQuestOnDeath(GameObject enemyGameObject)
     {
-        colliderToEnable.SetActive(true);
+        if (colliderToEnable != null)
+        {
+            colliderToEnable.SetActive(true);
+        }
         if (enemyGameObject.CompareTag("Enemy") && !QuestDatabase.Instance.questDatabase[questEnd].completed)
         {
             QuestA2Manager.Instance.finishQuest(questEnd);

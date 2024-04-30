@@ -192,5 +192,6 @@ public class PlayerFreeLookState : PlayerState
         InventoryBox.Instance.AddItem("9999", 100);
         GameObject.FindObjectOfType<QuickSlotManager>().UpdateUI();
         CoinManager.Instance.UpdateUI();
+        psm.character.GainExp(9999);
     }
 }

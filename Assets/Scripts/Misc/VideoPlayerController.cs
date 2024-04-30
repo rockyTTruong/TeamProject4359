@@ -3,6 +3,7 @@ using UnityEngine.InputSystem.Controls;
 using UnityEngine.InputSystem;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class VideoPlayerController : MonoBehaviour
 {
@@ -11,7 +12,10 @@ public class VideoPlayerController : MonoBehaviour
     public GameObject skipTooltip;
     public PauseMenu pauseMenu;
     public Scene loadSceneAfterFinish;
+    public int nextVideoIndexPlayAfterFinish = -1;
     public DialogueData postDialogue;
+    public List<GameObject> activateObjectsBeforeDialogue = new List<GameObject>();
+    public List<GameObject> activateObjectsAfterDialogue = new List<GameObject>();
 
     private void Update()
     {
@@ -62,7 +66,33 @@ public class VideoPlayerController : MonoBehaviour
             PlayerStateMachine psm = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateMachine>();
             psm.SwitchState(new PlayerTalkingState(psm));
 
+            if (nextVideoIndexPlayAfterFinish != -1)
+            {
+                DialogueManager.Instance.PlayVideoAfterDialogue(nextVideoIndexPlayAfterFinish);
+            }
+            if (activateObjectsBeforeDialogue.Count != 0)
+            {
+                foreach (GameObject activateObject in activateObjectsBeforeDialogue)
+                {
+                    activateObject.SetActive(!activateObject.activeSelf);
+                }
+            }
+            if (activateObjectsAfterDialogue.Count != 0)
+            {
+                DialogueManager.Instance.ActivateObjectAfterDialogue(activateObjectsAfterDialogue);
+            }
             DialogueManager.Instance.StartDialogue(postDialogue);
+        }
+        else if (nextVideoIndexPlayAfterFinish != -1)
+        {
+            VideoManager.Instance.PlayVideo(nextVideoIndexPlayAfterFinish);
+        }
+        else if (activateObjectsAfterDialogue.Count != 0)
+        {
+            foreach (GameObject activateObject in activateObjectsAfterDialogue)
+            {
+                activateObject.SetActive(!activateObject.activeSelf);
+            }
         }
         this.gameObject.SetActive(false);
     }
