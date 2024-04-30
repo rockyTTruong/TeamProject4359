@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using System.Collections;
 
 public class VideoPlayerController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class VideoPlayerController : MonoBehaviour
     public GameObject skipTooltip;
     public PauseMenu pauseMenu;
     public Scene loadSceneAfterFinish;
+    public Scene unloadScene;
     public int nextVideoIndexPlayAfterFinish = -1;
     public DialogueData postDialogue;
     public List<GameObject> activateObjectsBeforeDialogue = new List<GameObject>();
@@ -59,7 +61,23 @@ public class VideoPlayerController : MonoBehaviour
         pauseMenu.videoPlaying = false;
         if (loadSceneAfterFinish != Scene.None)
         {
-            SceneManager.LoadSceneAsync((int)loadSceneAfterFinish, LoadSceneMode.Single);
+            if (loadSceneAfterFinish == Scene.Credits)
+            {
+                SceneManager.LoadSceneAsync((int)loadSceneAfterFinish, LoadSceneMode.Single);
+                return;
+            }
+            else
+            {
+                if (activateObjectsAfterDialogue.Count != 0)
+                {
+                    foreach (GameObject activateObject in activateObjectsAfterDialogue)
+                    {
+                        activateObject.SetActive(!activateObject.activeSelf);
+                    }
+                }
+                StartCoroutine(LoadSceneCoroutine());
+                return;
+            }
         }
         if (postDialogue != null)
         {
@@ -95,5 +113,34 @@ public class VideoPlayerController : MonoBehaviour
             }
         }
         this.gameObject.SetActive(false);
+    }
+
+    public IEnumerator LoadSceneCoroutine()
+    {
+        InputReader.Instance.DisableInput();
+
+        FadeScreen.Instance.FadeOut();
+        float fadeDuration = FadeScreen.Instance.GetFadeDuration();
+        yield return new WaitForSeconds(fadeDuration);
+
+        AsyncOperation loadOperation = SceneManager.LoadSceneAsync((int)loadSceneAfterFinish, LoadSceneMode.Additive);
+        while (!loadOperation.isDone)
+        {
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(2f);
+
+        AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync((int)unloadScene);
+        while (!unloadOperation.isDone)
+        {
+            yield return null;
+        }
+        FadeScreen.Instance.FadeIn();
+        yield return new WaitForSeconds(fadeDuration);
+
+        InputReader.Instance.EnableInput();
+        this.gameObject.SetActive(false);
+        yield break;
     }
 }

@@ -30,7 +30,7 @@ public class BossDefeatCutsceneTrigger : MonoBehaviour
         FadeScreen.Instance.FadeOut();
         yield return new WaitForSeconds(fadeDuration);
 
-        skullAndScroll.SetActive(true);
+        if (skullAndScroll != null) skullAndScroll.SetActive(true);
         PlayerStateMachine psm = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateMachine>();
         psm.controller.enabled = false;
         psm.transform.position = psm.savePosition;

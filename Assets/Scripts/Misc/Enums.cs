@@ -11,8 +11,8 @@ public enum Scene
     BossZone,               //8
     ForestZone,             //9
     CaveInterior,           //10
-    None,
-    WizardBossZone         //11
+    WizardBossZone,         //11
+    None
 }
 
 public enum ItemType

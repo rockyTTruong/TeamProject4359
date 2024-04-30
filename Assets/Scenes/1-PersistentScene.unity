@@ -1537,7 +1537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &100519195
 Transform:
   m_ObjectHideFlags: 0
@@ -1563,8 +1563,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100519194}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 68d4b5b2eb393f84189d05ef0c608c94, type: 3}
+  m_Controller: {fileID: 9100000, guid: 75afb110bb9230e428dc1620b1c830db, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -29126,7 +29126,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5866666021909216657, guid: 68d4b5b2eb393f84189d05ef0c608c94, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -31314,7 +31315,8 @@ MonoBehaviour:
   videoPlayer: {fileID: 3412694757771698314}
   skipTooltip: {fileID: 7225702342064689555}
   pauseMenu: {fileID: 1386348847}
-  loadSceneAfterFinish: 11
+  loadSceneAfterFinish: 12
+  unloadScene: 12
   nextVideoIndexPlayAfterFinish: -1
   postDialogue: {fileID: 11400000, guid: f52880b0055d8cd41805ef836bd5e956, type: 2}
   activateObjectsBeforeDialogue: []
@@ -32050,7 +32052,8 @@ MonoBehaviour:
   videoPlayer: {fileID: 1543106203815769486}
   skipTooltip: {fileID: 4838825944186569279}
   pauseMenu: {fileID: 1386348847}
-  loadSceneAfterFinish: 11
+  loadSceneAfterFinish: 12
+  unloadScene: 12
   nextVideoIndexPlayAfterFinish: -1
   postDialogue: {fileID: 11400000, guid: e9276cf01c5b1b841a6c76ba5499590c, type: 2}
   activateObjectsBeforeDialogue: []
@@ -32276,7 +32279,8 @@ MonoBehaviour:
   videoPlayer: {fileID: 6639002473257672194}
   skipTooltip: {fileID: 8351057693253230000}
   pauseMenu: {fileID: 1386348847}
-  loadSceneAfterFinish: 11
+  loadSceneAfterFinish: 12
+  unloadScene: 12
   nextVideoIndexPlayAfterFinish: -1
   postDialogue: {fileID: 11400000, guid: eff7d80e933c9224cac749ef99ee37ef, type: 2}
   activateObjectsBeforeDialogue: []
@@ -33212,7 +33216,8 @@ MonoBehaviour:
   videoPlayer: {fileID: 3538304279215126353}
   skipTooltip: {fileID: 111660818485158351}
   pauseMenu: {fileID: 1386348847}
-  loadSceneAfterFinish: 11
+  loadSceneAfterFinish: 12
+  unloadScene: 12
   nextVideoIndexPlayAfterFinish: -1
   postDialogue: {fileID: 11400000, guid: e0bf746e7dafdb7469351af2532fb0c9, type: 2}
   activateObjectsBeforeDialogue: []
@@ -33578,7 +33583,8 @@ MonoBehaviour:
   videoPlayer: {fileID: 4640346914509995963}
   skipTooltip: {fileID: 4386569108295081044}
   pauseMenu: {fileID: 1386348847}
-  loadSceneAfterFinish: 11
+  loadSceneAfterFinish: 12
+  unloadScene: 12
   nextVideoIndexPlayAfterFinish: -1
   postDialogue: {fileID: 11400000, guid: e848c6c21082d6540958c7e7ea9587c5, type: 2}
   activateObjectsBeforeDialogue: []
@@ -35117,7 +35123,8 @@ MonoBehaviour:
   videoPlayer: {fileID: 5277268406797363728}
   skipTooltip: {fileID: 5263608278258272974}
   pauseMenu: {fileID: 1386348847}
-  loadSceneAfterFinish: 11
+  loadSceneAfterFinish: 12
+  unloadScene: 12
   nextVideoIndexPlayAfterFinish: -1
   postDialogue: {fileID: 11400000, guid: bcdb787cc46579b40891036f85d882c2, type: 2}
   activateObjectsBeforeDialogue: []
@@ -35427,12 +35434,12 @@ PrefabInstance:
     - target: {fileID: 4364663221375633692, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000010824691
+      value: 0.00000004617347
       objectReference: {fileID: 0}
     - target: {fileID: 4364663221375633692, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000046518256
+      value: -0.000000019842687
       objectReference: {fileID: 0}
     - target: {fileID: 4411995271372536807, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
@@ -35513,12 +35520,12 @@ PrefabInstance:
     - target: {fileID: 5159530160431019990, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000046885688
+      value: 0.000000046885685
       objectReference: {fileID: 0}
     - target: {fileID: 5159530160431019990, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00000003137469
+      value: -0.000000031374686
       objectReference: {fileID: 0}
     - target: {fileID: 5199439220072694176, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
@@ -35643,12 +35650,12 @@ PrefabInstance:
     - target: {fileID: 8445755155010935276, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000006818278
+      value: 0.00000006818277
       objectReference: {fileID: 0}
     - target: {fileID: 8445755155010935276, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00000002784301
+      value: -0.000000027843011
       objectReference: {fileID: 0}
     - target: {fileID: 8553823886355416880, guid: 49a7ce7ede2c4be4cab084b69b13759f,
         type: 3}
@@ -36981,7 +36988,8 @@ MonoBehaviour:
   videoPlayer: {fileID: 8990421311110924895}
   skipTooltip: {fileID: 558029106534961449}
   pauseMenu: {fileID: 1386348847}
-  loadSceneAfterFinish: 11
+  loadSceneAfterFinish: 12
+  unloadScene: 12
   nextVideoIndexPlayAfterFinish: -1
   postDialogue: {fileID: 0}
   activateObjectsBeforeDialogue: []
@@ -37038,7 +37046,8 @@ MonoBehaviour:
   videoPlayer: {fileID: 1956263961617713196}
   skipTooltip: {fileID: 6972579410154320733}
   pauseMenu: {fileID: 1386348847}
-  loadSceneAfterFinish: 11
+  loadSceneAfterFinish: 12
+  unloadScene: 12
   nextVideoIndexPlayAfterFinish: -1
   postDialogue: {fileID: 0}
   activateObjectsBeforeDialogue: []
@@ -37497,6 +37506,7 @@ MonoBehaviour:
   skipTooltip: {fileID: 5414148141650089452}
   pauseMenu: {fileID: 1386348847}
   loadSceneAfterFinish: 2
+  unloadScene: 12
   nextVideoIndexPlayAfterFinish: -1
   postDialogue: {fileID: 0}
   activateObjectsBeforeDialogue: []
@@ -37951,7 +37961,8 @@ MonoBehaviour:
   videoPlayer: {fileID: 7989761582388292759}
   skipTooltip: {fileID: 5209239986080909732}
   pauseMenu: {fileID: 1386348847}
-  loadSceneAfterFinish: 11
+  loadSceneAfterFinish: 12
+  unloadScene: 12
   nextVideoIndexPlayAfterFinish: -1
   postDialogue: {fileID: 0}
   activateObjectsBeforeDialogue: []
@@ -38881,10 +38892,12 @@ MonoBehaviour:
   skipTooltip: {fileID: 4195716991273496463}
   pauseMenu: {fileID: 1386348847}
   loadSceneAfterFinish: 11
+  unloadScene: 8
   nextVideoIndexPlayAfterFinish: -1
   postDialogue: {fileID: 0}
   activateObjectsBeforeDialogue: []
-  activateObjectsAfterDialogue: []
+  activateObjectsAfterDialogue:
+  - {fileID: 100519194}
 --- !u!1 &7883997220215942180
 GameObject:
   m_ObjectHideFlags: 0
@@ -39297,7 +39310,8 @@ MonoBehaviour:
   videoPlayer: {fileID: 9220261270577788003}
   skipTooltip: {fileID: 986038672637352744}
   pauseMenu: {fileID: 1386348847}
-  loadSceneAfterFinish: 11
+  loadSceneAfterFinish: 12
+  unloadScene: 12
   nextVideoIndexPlayAfterFinish: -1
   postDialogue: {fileID: 0}
   activateObjectsBeforeDialogue: []
@@ -40491,7 +40505,8 @@ MonoBehaviour:
   videoPlayer: {fileID: 8912251127171473687}
   skipTooltip: {fileID: 6203861209495270072}
   pauseMenu: {fileID: 1386348847}
-  loadSceneAfterFinish: 11
+  loadSceneAfterFinish: 12
+  unloadScene: 12
   nextVideoIndexPlayAfterFinish: -1
   postDialogue: {fileID: 11400000, guid: 1cd499d21938a974ca20c9160cfec4d8, type: 2}
   activateObjectsBeforeDialogue:
