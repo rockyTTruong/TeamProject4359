@@ -11,6 +11,7 @@ public class ShowNextTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (nextCollider != null)
             nextCollider.SetActive(true);
             portalToEnable.SetActive(true);
         }

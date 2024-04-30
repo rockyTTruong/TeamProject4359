@@ -20,6 +20,8 @@ public class DialogueManager : SingletonMonobehaviour<DialogueManager>
     private Dialogue currentDialogue;
     private DialogueData currentDialogueData;
     private UnityAction action;
+    private int videoIndex = -1;
+    private List<GameObject> activateObjects = new List<GameObject>();
 
     protected override void Awake()
     {
@@ -38,6 +40,16 @@ public class DialogueManager : SingletonMonobehaviour<DialogueManager>
     public void ActionAfterDialogue(UnityAction action)
     {
         this.action = action;
+    }
+
+    public void PlayVideoAfterDialogue(int videoIndex)
+    {
+        this.videoIndex = videoIndex;
+    }
+
+    public void ActivateObjectAfterDialogue(List<GameObject> activateObjects)
+    {
+        this.activateObjects = activateObjects;
     }
 
     public void LoadDialogue(TextAsset jsonFile)
@@ -99,6 +111,19 @@ public class DialogueManager : SingletonMonobehaviour<DialogueManager>
         { 
             action.Invoke(); 
             action = null;
+        }
+        if (videoIndex != -1)
+        {
+            VideoManager.Instance.PlayVideo(videoIndex);
+            videoIndex = -1;
+        }
+        if (activateObjects.Count != 0)
+        {
+            foreach (GameObject activateObject in activateObjects)
+            {
+                activateObject.SetActive(!activateObject.activeSelf);
+            }
+            activateObjects.Clear();
         }
     }
 

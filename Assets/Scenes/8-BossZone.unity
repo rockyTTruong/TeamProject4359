@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3027,6 +3027,12 @@ PrefabInstance:
 --- !u!4 &1187188734 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3314482405174095825, guid: 8378fcf79353a8a4389a5582e6bcc532,
+    type: 3}
+  m_PrefabInstance: {fileID: 1187188733}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1187188735 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8378fcf79353a8a4389a5582e6bcc532,
     type: 3}
   m_PrefabInstance: {fileID: 1187188733}
   m_PrefabAsset: {fileID: 0}
@@ -16597,6 +16603,7 @@ MonoBehaviour:
   character: {fileID: 5491774304033563325}
   videoIndex: 7
   triggerCutscene: 0
+  skullAndScroll: {fileID: 1187188735}
 --- !u!114 &5491774304033563332
 MonoBehaviour:
   m_ObjectHideFlags: 0

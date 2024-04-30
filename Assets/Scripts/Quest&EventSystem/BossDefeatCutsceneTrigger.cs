@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BossDefeatCutsceneTrigger : MonoBehaviour
@@ -7,6 +8,7 @@ public class BossDefeatCutsceneTrigger : MonoBehaviour
     public Character character;
     public int videoIndex;
     public bool triggerCutscene;
+    public GameObject skullAndScroll; 
 
     private void Start()
     {
@@ -27,6 +29,13 @@ public class BossDefeatCutsceneTrigger : MonoBehaviour
 
         FadeScreen.Instance.FadeOut();
         yield return new WaitForSeconds(fadeDuration);
+
+        skullAndScroll.SetActive(true);
+        PlayerStateMachine psm = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateMachine>();
+        psm.controller.enabled = false;
+        psm.transform.position = psm.savePosition;
+        psm.transform.rotation = psm.saveRotation; 
+        psm.controller.enabled = true;
 
         FadeScreen.Instance.FadeIn();
         VideoManager.Instance.PlayVideo(videoIndex);
