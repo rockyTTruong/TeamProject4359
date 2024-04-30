@@ -2,11 +2,11 @@
     "dialogues": [
       {
         "speaker": "Leon",
-        "message": "Master Agnus, I have defeted the elite  and I have returned with an enchated item."
+        "message": "Master Agnus, I have defeated the elite and I have returned with a scroll."
       },
       {
         "speaker": "Agnus",
-        "message": "Ah, Leon. I sense the magic emanating from you. You've embraced the essence of the elite skeleton's power well. But there is much more at stake than mere enchantments."
+        "message": "Ah, Leon. I sensed a shift in the dark magic. Defeating the the elite skeleton is only the first part of our quest. How was your battle?"
       },
       {
         "speaker": "Leon",
@@ -14,11 +14,11 @@
       },
       {
         "speaker": "Agnus",
-        "message": "Velius is cunning, and his ambitions know no bounds. But we must remain steadfast in our resolve to thwart his plans. There is an ancient scroll, hidden within a cave, that holds the key to undoing the undead ritual Velius has invoked."
+        "message": "Velius is cunning, and his ambitions know no bounds. But we must remain steadfast in our resolve to thwart his plans. There is another part to this ancient scroll, hidden within a cave, that holds the key to undoing the undead ritual Velius has invoked."
       },
       {
         "speaker": "Leon",
-        "message": "A cave? Do you mean the mad wizard's lair?"
+        "message": "A cave? Is that where Velius has his lair?"
       },
       {
         "speaker": "Agnus",
