@@ -54,9 +54,9 @@ public class AttackCollider : MonoBehaviour
                     direction.y = 0f;
                     forceReceiver.ApplyImpact(direction * knockback + Vector3.up * launchForce);
                 }
+                this.gameObject.SetActive(false);
             }
         }
-        //this.gameObject.SetActive(false);
     }
 
     private IEnumerator HitLag()
