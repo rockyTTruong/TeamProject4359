@@ -16111,13 +16111,19 @@ MonoBehaviour:
   isDead: 0
   isUnflinching: 1
   isInvincible: 0
+  isPerfectBlock: 0
+  isBlocking: 0
   attacks: []
   healthBar: {fileID: 259739659}
+  staminaBar: {fileID: 0}
+  expBar: {fileID: 0}
   healthBarTextMesh: {fileID: 0}
+  levelTextMesh: {fileID: 0}
   baseStats:
     level: 0
     experience: 0
     hp: 1000
+    stamina: 0
     attack: 10
     defense: 5
   equipmentData:
@@ -16130,6 +16136,7 @@ MonoBehaviour:
     - 
   healthUI: {fileID: 259739658}
   healthDisplayDistance: 32
+  levelUpEffectPrefab: {fileID: 0}
 --- !u!114 &5491774304033563326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16184,7 +16191,7 @@ MonoBehaviour:
     type: 3}
   firewallPrefab: {fileID: 8894701330001263019, guid: 8ad10a0688ff75c4ab99a61697ba5bf4,
     type: 3}
-  below50Percent: 0
+  rageMode: 0
   specialUseCount: 0
 --- !u!114 &5491774304033563328
 MonoBehaviour:
@@ -16242,6 +16249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponCollider: {fileID: 2001393947}
+  bowCollider: {fileID: 0}
   attacks:
   - {fileID: 11400000, guid: 858a17c5dc2348e4b96b3645950b9b5a, type: 2}
   - {fileID: 11400000, guid: 1800ce7b431cec44a8f1132256ac1681, type: 2}
