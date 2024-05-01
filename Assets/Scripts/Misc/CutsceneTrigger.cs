@@ -28,5 +28,6 @@ public class CutsceneTrigger : MonoBehaviour
         transform.parent.Find("Cube").gameObject.SetActive(false);
         transform.parent.Find("Cube (1)").gameObject.SetActive(false);
         triggerCutscene = false;
+        this.gameObject.transform.parent.gameObject.SetActive(false);
     }
 }
